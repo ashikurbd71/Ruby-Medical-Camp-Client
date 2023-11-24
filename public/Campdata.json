@@ -1,0 +1,63 @@
+[
+    {
+      "CampName": "Health Expo 2023",
+      "Image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tbsnews.net%2Fbangladesh%2Fhealth%2Fbangladesh-international-healthcare-expo-2023-28-30-sep-670186&psig=AOvVaw0IxBNqPLwFWBBJIk8ZXpxb&ust=1700868525994000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJiU5ZSj24IDFQAAAAAdAAAAABAE",
+      "CampFees": "$0 (Free)",
+      "ScheduledDateTime": "2023-12-01T10:00:00",
+      "VenueLocation": "City Convention Center",
+      "SpecializedServices": ["Health Screenings", "Vaccinations", "Nutritional Consultations"],
+      "HealthcareProfessionals": ["Dr. Smith (General Practitioner)", "Dr. Johnson (Nutritionist)", "Nurse Davis"],
+      "TargetAudience": "All Ages"
+    },
+    {
+      "CampName": "Heart Health Awareness",
+      "Image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fhumanhealthproject.org%2Fheart-health%2F&psig=AOvVaw1UcLtRt5HcIAP_DJ9OqCZM&ust=1700868501698000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNCqs4mj24IDFQAAAAAdAAAAABAE",
+      "CampFees": "$0 (Free)",
+      "ScheduledDateTime": "2023-12-15T14:30:00",
+      "VenueLocation": "Community Health Center",
+      "SpecializedServices": ["Cardiac Screenings", "Blood Pressure Checks", "Heart Health Seminars"],
+      "HealthcareProfessionals": ["Cardiologist Dr. Rodriguez", "Nurse Hernandez"],
+      "TargetAudience": "Adults 30 and above"
+    },
+    {
+      "CampName": "Pediatric Wellness Day",
+      "Image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.skininc.com%2Fbusiness%2Findustry-news%2Farticle%2F21878569%2Fkids-leading-global-wellness-day&psig=AOvVaw0LsZbPpukzkRJ9_mwE_vUd&ust=1700868300795000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCODp3qmi24IDFQAAAAAdAAAAABAE",
+      "CampFees": "$0 (Free)",
+      "ScheduledDateTime": "2023-11-28T09:00:00",
+      "VenueLocation": "Children's Hospital",
+      "SpecializedServices": ["Pediatric Check-ups", "Immunizations", "Parenting Workshops"],
+      "HealthcareProfessionals": ["Pediatrician Dr. Brown", "Pediatric Nurse Johnson"],
+      "TargetAudience": "Children and Parents"
+    },
+    {
+      "CampName": "Dental Care Clinic",
+      "Image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.peoples-center.org%2Fdental-care&psig=AOvVaw2J2Nf6WefySvOP8Yayjv4m&ust=1700868369434000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIiFtMqi24IDFQAAAAAdAAAAABAE",
+      "CampFees": "$10 (Dental Check-up)",
+      "ScheduledDateTime": "2023-12-05T11:00:00",
+      "VenueLocation": "Smile Dental Clinic",
+      "SpecializedServices": ["Dental Check-ups", "Oral Hygiene Education"],
+      "HealthcareProfessionals": ["Dentist Dr. White", "Dental Hygienist Smith"],
+      "TargetAudience": "All Ages"
+    },
+    {
+      "CampName": "Women's Health Symposium",
+      "Image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.anatomytrains.com%2Fproduct%2Faustralian-womens-health-symposium-2022-full-package%2F&psig=AOvVaw3trQbk49mr8HyfOEVqBXfh&ust=1700868423806000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOj_huSi24IDFQAAAAAdAAAAABAE",
+      "CampFees": "$0 (Free)",
+      "ScheduledDateTime": "2023-11-30T13:00:00",
+      "VenueLocation": "Women's Health Center",
+      "SpecializedServices": ["Women's Health Screenings", "Gynecological Consultations", "Educational Sessions"],
+      "HealthcareProfessionals": ["OB-GYN Dr. Taylor", "Women's Health Nurse Anderson"],
+      "TargetAudience": "Women of all ages"
+    },
+    {
+      "CampName": "Mental Health Awareness",
+      "Image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mentalhealth.org.uk%2Four-work%2Fpublic-engagement%2Fworld-mental-health-day&psig=AOvVaw1PqLE_hwHZYjyBdWH1a6WT&ust=1700868471490000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNi85_qi24IDFQAAAAAdAAAAABAE",
+      "CampFees": "$0 (Free)",
+      "ScheduledDateTime": "2023-12-10T15:30:00",
+      "VenueLocation": "Community Center",
+      "SpecializedServices": ["Mental Health Screenings", "Counseling Sessions", "Mindfulness Workshops"],
+      "HealthcareProfessionals": ["Psychiatrist Dr. Miller", "Mental Health Counselor Brown"],
+      "TargetAudience": "All Ages"
+    }
+  ]
+  

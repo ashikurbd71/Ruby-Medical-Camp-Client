@@ -1,0 +1,26 @@
+[
+    {
+      "campName": "Health and Wellness Expo",
+      "date": "2023-05-10",
+      "feedback": "Attending the Health and Wellness Expo was a truly informative experience. The medical professionals provided valuable insights into maintaining a healthy lifestyle. The free health check-ups were an added bonus. Thank you for organizing such a beneficial event!",
+      "rating": 4.5
+    },
+    {
+      "campName": "Community Vaccination Drive",
+      "date": "2023-08-20",
+      "feedback": "I participated in the Community Vaccination Drive, and I'm impressed by the efficiency and organization. The medical team was courteous, and the process was quick and painless. Thank you for contributing to community health!",
+      "rating": 5
+    },
+    {
+      "campName": "Mental Health Awareness Seminar",
+      "date": "2023-06-15",
+      "feedback": "The Mental Health Awareness Seminar was incredibly enlightening. The experts addressed critical issues and provided resources for support. This initiative is vital, and I appreciate the efforts to destigmatize mental health challenges.",
+      "rating": 4.8
+    },
+    {
+      "campName": "Diabetes Prevention Workshop",
+      "date": "2023-07-05",
+      "feedback": "The Diabetes Prevention Workshop was educational and practical. The nutritionists and doctors shared valuable tips on managing a healthy diet to prevent diabetes. I left with a better understanding of how to take control of my health.",
+      "rating": 4.7
+    }
+  ]
