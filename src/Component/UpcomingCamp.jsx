@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PersonIcon from '@mui/icons-material/Person';
 import { red } from '@mui/material/colors';
-const PopularMedicalCamps = () => {
+const UpcomingCamp = () => {
     const[data,setData] = useState()
   useEffect(() => {
 
@@ -25,7 +25,7 @@ const PopularMedicalCamps = () => {
     return (
       
        <>
-        <SectionTitle title={' Insights into Successful and Popular Medical Camps'} heading={'Popular Medical Camps'}></SectionTitle>
+        <SectionTitle title={' Discover Tomorrows Path to Health Today'} heading={'Upcoming Camps'}></SectionTitle>
         
         <Container maxWidth="lg">
         <Box sx={{ width: '100%', my:10 }}>
@@ -36,7 +36,7 @@ const PopularMedicalCamps = () => {
                         <Card sx={{maxHeight:500}}>
                              <CardMedia
                                sx={{ height: 150 }}
-                               image='https://ibb.co/XZGgfcg'
+                               image={camp?.Image}
                                
                                
                                title="green iguana"
@@ -60,7 +60,7 @@ const PopularMedicalCamps = () => {
 
                              </CardContent>
                              <CardActions>
-                               <Button size="small">{camp?.ScheduledDateTime}</Button>
+                               <Button size="small">{'UpComing'}</Button>
                                <Button size="small">{camp?.TargetAudience}</Button>
                                <Button size="small">{camp?.VenueLocation}</Button>
                              </CardActions>
@@ -79,7 +79,7 @@ const PopularMedicalCamps = () => {
   
 };
 
-export default PopularMedicalCamps;
+export default UpcomingCamp;
 
 
  

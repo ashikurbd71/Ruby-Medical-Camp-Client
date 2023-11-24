@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { ListItem } from '@mui/material';
 import { Link,NavLink } from 'react-router-dom';
+import logo from '../assets/logo.png'
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -43,23 +44,27 @@ const Navber = () => {
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <img src={logo} alt="" className='w-[30px]'/>
                         <Typography
                             variant="h6"
                             noWrap
                             component="a"
                             href="#app-bar-with-responsive-menu"
                             sx={{
-                                mr: 2,
+
+                                mr: 10,
                                 display: { xs: 'none', md: 'flex' },
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
-                                letterSpacing: '.3rem',
+                                letterSpacing: '.1rem',
                                 color: 'inherit',
                                 textDecoration: 'none',
                             }}
                         >
-                            LOGO
+                            
+                             <Link to={'/'}>
+                             Ruby Medical Camps
+                             </Link>
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -94,7 +99,7 @@ const Navber = () => {
                                 <NavLink
      to="/"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-green-600" : ""
+    isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
 <MenuItem>Home</MenuItem>
@@ -102,9 +107,9 @@ const Navber = () => {
 
 
 <NavLink
-     to="/availablecamps"
+     to="/avaliblecamps"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-green-600" : ""
+    isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
 <MenuItem>Available Camps</MenuItem>
@@ -113,7 +118,7 @@ const Navber = () => {
 <NavLink
      to="/dashboard"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-green-600" : ""
+    isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
 <MenuItem>Dashboard</MenuItem>
@@ -122,7 +127,7 @@ const Navber = () => {
 <NavLink
      to="/contactus"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-green-600" : ""
+    isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
 <MenuItem>Contact Us</MenuItem>
@@ -132,7 +137,7 @@ const Navber = () => {
                               
                             </Menu>
                         </Box>
-                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
                         <Typography
                             variant="h5"
                             noWrap
@@ -149,14 +154,14 @@ const Navber = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            LOGO
+                      {/* <img src={logo} alt="" /> */}
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                        
                         <NavLink
      to="/"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-green-600" : ""
+    isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
 <MenuItem>Home</MenuItem>
@@ -164,9 +169,9 @@ const Navber = () => {
 
 
 <NavLink
-     to="/availablecamp"
+     to="/avaliblecamps"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-green-600" : ""
+    isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
 <MenuItem>Available Camps</MenuItem>
@@ -175,7 +180,7 @@ const Navber = () => {
 <NavLink
      to="/dashboard"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-green-600" : ""
+    isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
 <MenuItem>Dashboard</MenuItem>
@@ -184,7 +189,7 @@ const Navber = () => {
 <NavLink
      to="/contactus"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-green-600" : ""
+    isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
 <MenuItem>Contact Us</MenuItem>
