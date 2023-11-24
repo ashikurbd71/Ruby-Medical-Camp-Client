@@ -41,7 +41,7 @@ const Navber = () => {
 
     return (
         <div>
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                     <img src={logo} alt="" className='w-[30px]'/>
