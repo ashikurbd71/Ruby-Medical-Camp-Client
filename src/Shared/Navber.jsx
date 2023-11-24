@@ -15,12 +15,23 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { ListItem } from '@mui/material';
 import { Link,NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png'
+import useAuth from '../Hook/useAuth';
+import toast from 'react-hot-toast';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navber = () => {
 
+     const{user,logOut} = useAuth()
+
+     const handlelogout = () => {
+
+        logOut()
+        .then(res => { console.log(res)
+            toast.success('Logout Successfuly')
+        })
+     }
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -196,44 +207,52 @@ const Navber = () => {
 </NavLink>
                         </Box>
 
-                        <Link>
+         {
+
+            user?   <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src={user?.photoURL} />
+                </IconButton>
+            </Tooltip>
+            <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+            >
+                <ListItem>
+                <button onClick={handlelogout}>
+                <MenuItem>LogOut </MenuItem>
+                </button>
+               
+                </ListItem>
+            </Menu>
+        </Box> :  <Box className={'flex gap-2'}>
+        <Link to={'/signin'} >
                                     <MenuItem>Login </MenuItem>
                                 </Link>
 
-                                <Link>
+                                <Link to={'/signup'}>
                                     <MenuItem sx={{mr:2}}>Register </MenuItem>
                                 </Link>
+        </Box>
+         }
 
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                                </IconButton>
-                            </Tooltip>
-                            <Menu
-                                sx={{ mt: '45px' }}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
-                                <ListItem>
-                                <Link>
-                                    <MenuItem>Home</MenuItem>
-                                </Link>
-                               
-                                </ListItem>
-                            </Menu>
-                        </Box>
+
+                       
+
+                      
                     </Toolbar>
                 </Container>
             </AppBar>

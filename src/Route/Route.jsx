@@ -7,6 +7,8 @@ import Dashboardlayout from "../Pages/DashLayoutpages/Dashboardlayout";
 import AddCamp from "../Pages/DashLayoutpages/Organizers/AddCamp";
 import ManagesCamp from './../Pages/DashLayoutpages/Organizers/ManagesCamp';
 import ManagesRegister from "../Pages/DashLayoutpages/Organizers/ManagesRegister";
+import SignUp from "../From/Signup";
+import Signin from "../From/Signin";
 
 const router = createBrowserRouter([
     {
@@ -24,7 +26,15 @@ const router = createBrowserRouter([
         {
          path:'/contactus',
          element:<ContactUs/>
-        }
+        },
+        {
+         path:'/signup',
+         element:<SignUp/>
+       },
+       {
+         path:'/signin',
+         element:<Signin/>
+       }
      ]
     },
     {
@@ -43,9 +53,11 @@ const router = createBrowserRouter([
          {
             path:'/dashboard/managesregister',
             element:<ManagesRegister/>
-         }
+         },
+       
       ]
-    }
+    },
+  
 
   ]);
 

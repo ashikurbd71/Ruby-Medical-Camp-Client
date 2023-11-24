@@ -1,45 +1,32 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
-import axios from 'axios';
 
-// import { getToken, saveuser } from '../../API/Userdata';
-
+// import { getToken, saveuser } from '../../API/Userdata'
+import toast from 'react-hot-toast'
 import { GiSpinalCoil } from "react-icons/gi"
-import useAuth from '../Hook/useAuth';
-import toast from 'react-hot-toast';
+import useAuth from '../Hook/useAuth'
 
-const SignUp = () => {
+const Signin = () => {
+  
+  const location = useLocation()
   const navigate = useNavigate()
-  const{createUser,updateUserProfile,loading,signInWithGoogle,logOut}=useAuth()
+  const{signIn,loading,signInWithGoogle,}=useAuth()
    const handlesubmit = async(event) => {
 
     event.preventDefault()
     const from = event.target
-    const name = from?.name.value
     const password = from?.password.value
     const email = from?.email.value
-    const image = from?.image.files[0]
+
    
     try{
-// photo upload
-      const fromdata = new FormData()
-      fromdata.append('image',image)
-  
-      const {data} = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_API_KEY}`,fromdata)
-  
-      console.log(data)
-      console.log(name,password)
+
+    
   
       // create user
 
-     const result = await createUser(email,password)
-      
-
-    //  update profile
-     await updateUserProfile(name, data?.data?.display_url)
-
-     console.log(result)
-
+     const result = await signIn(email,password)
+      console.log(result)
     //  save databages
 
 //   const dbresult = await saveuser(result?.user)
@@ -48,8 +35,10 @@ const SignUp = () => {
     // create token
 
 //    await getToken(result?.user?.email)
-    toast.success('sucessfuly signup')
-    navigate('/')
+    toast.success('sucessfuly signin')
+    navigate(location?.state ? location?.state : '/')
+
+
 
     }
 
@@ -80,7 +69,7 @@ const SignUp = () => {
           // create token
       
         //  await getToken(result?.user?.email)
-          toast.success('sucessfuly signup')
+          toast.success('sucessfuly signin')
           navigate('/')
       
           }
@@ -97,45 +86,23 @@ const SignUp = () => {
    }
 
 
+
   return (
     <div className='flex justify-center items-center my-28 min-h-screen'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-[#f8f9fa] text-gray-900'>
+      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
         <div className='mb-8 text-center'>
-          <h1 className='my-3 text-4xl font-bold text-[#1976D2]'>Register</h1>
-          <p className='text-sm text-gray-400'>Welcome to Ruby Medical Camps</p>
+          <h1 className='my-3 text-4xl font-bold text-[#1976D2]'>Log In</h1>
+          <p className='text-sm text-gray-400'>
+            Sign in to access your account
+          </p>
         </div>
         <form
+        onSubmit={handlesubmit}
           noValidate=''
-          onSubmit={handlesubmit}
           action=''
           className='space-y-6 ng-untouched ng-pristine ng-valid'
         >
           <div className='space-y-4'>
-            <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
-                Name
-              </label>
-              <input
-                type='text'
-                name='name'
-                id='name'
-                placeholder='Enter Your Name Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#1976D2] bg-gray-200 text-gray-900'
-                data-temp-mail-org='0'
-              />
-            </div>
-            <div>
-              <label htmlFor='image' className='block mb-2 text-sm'>
-                Select Image:
-              </label>
-              <input
-                required
-                type='file'
-                id='image'
-                name='image'
-                accept='image/*'
-              />
-            </div>
             <div>
               <label htmlFor='email' className='block mb-2 text-sm'>
                 Email address
@@ -159,7 +126,7 @@ const SignUp = () => {
               <input
                 type='password'
                 name='password'
-                autoComplete='new-password'
+                autoComplete='current-password'
                 id='password'
                 required
                 placeholder='*******'
@@ -173,16 +140,21 @@ const SignUp = () => {
               type='submit'
               className='bg-[#1976D2] w-full rounded-md py-3 text-white'
             >
-             {
+            {
               loading? <GiSpinalCoil className=' animate-spin mx-auto text-2xl'/> : ' Continue'
              }
             </button>
           </div>
         </form>
+        <div className='space-y-1'>
+          <button className='text-xs hover:underline hover:text-[#1976D2] text-gray-400'>
+            Forgot password?
+          </button>
+        </div>
         <div className='flex items-center pt-4 space-x-1'>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
           <p className='px-3 text-sm dark:text-gray-400'>
-            Signup with social accounts
+            Login with social accounts
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
@@ -192,12 +164,12 @@ const SignUp = () => {
           <p>Continue with Google</p>
         </div>
         <p className='px-6 text-sm text-center text-gray-400'>
-          Already have an account?{' '}
+          Don&apos;t have an account yet?{' '}
           <Link
-            to='/login'
-            className='hover:underline hover:text-rose-500 text-gray-600'
+            to='/signup'
+            className='hover:underline hover:text-[#1976D2] text-gray-600'
           >
-            Login
+            Sign up
           </Link>
           .
         </p>
@@ -206,4 +178,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default Signin

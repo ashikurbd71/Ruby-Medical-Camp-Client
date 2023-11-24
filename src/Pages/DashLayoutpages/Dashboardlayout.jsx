@@ -5,7 +5,10 @@ import img from '../../assets/logo.png'
 import { FaHome } from "react-icons/fa";
 import { FaHandHoldingMedical } from "react-icons/fa"
 import OrganizerMenu from '../../Shared/Organizer/OrganizerMenu';
+import useAuth from '../../Hook/useAuth';
 const Dashboardlayout = () => {
+
+  const{user,logOut} = useAuth()
     return (
         <div>
            
@@ -69,15 +72,15 @@ const Dashboardlayout = () => {
     <a href="#" className="flex gap-2 items-center  mt-5 w-full ">
       <img
         alt="Man"
-        src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+        src={user?.photoURL}
         className="h-10 w-10 rounded-full object-cover"
       />
 
       <div>
         <p className="text-xs">
-          <strong className="block font-medium text-black">Eric Frusciante</strong>
+          <strong className="block font-medium text-black">{user?.displayName}</strong>
 
-          <span> eric@frusciante.com </span>
+          <span> {user?.email} </span>
         </p>
       </div>
     </a>
