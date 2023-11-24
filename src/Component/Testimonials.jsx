@@ -45,19 +45,23 @@ const Testimonials = () => {
       datas?.map(data => <SwiperSlide key={data._id}>
   
   
-   <div className='flex  flex-col justify-center ite items-center space-y-4 mx-14 lg:mx-28'>
+   <div className='flex  flex-col justify-center ite items-center space-y-3 mx-14 lg:mx-28'>
  
     <img src={img} alt="" className='rounded-full h-[100px] w-[150px]' />
-    <p className='text-[#CD9003] lg:text-[25px] text-2xl font-semibold'>{data?.campName}</p>
      
+     <h1 className='font-bold text-lg'>Ashikur Rahman Ovi</h1>
     <Rating
         style={{ maxWidth: 180 }}
         value={data?.rating}
         readOnly
       />
+   
+    <p className='text-[#CD9003] lg:text-[25px] text-2xl font-semibold'>{data?.campName}</p>
+     
+    
 
-      <h1 className='text-[#444] font-medium text-xl  lg:text-[20px]'>{data?.feedback}</h1>
-      <h1 className='text-[#444] font-medium text-xl  lg:text-[20px]'>{data?.date}</h1>
+      <h1 className='text-[#444] font-medium text-lg  lg:text-[20px]'>{data?.feedback}</h1>
+      <h1 className='text-[#444] font-medium text-lg  lg:text-[20px]'>{data?.date}</h1>
    </div>
   
       

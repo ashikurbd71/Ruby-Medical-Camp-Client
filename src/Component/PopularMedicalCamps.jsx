@@ -10,6 +10,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PersonIcon from '@mui/icons-material/Person';
 import { red } from '@mui/material/colors';
+import PinDropIcon from '@mui/icons-material/PinDrop';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import Groups2Icon from '@mui/icons-material/Groups2';
 const PopularMedicalCamps = () => {
     const[data,setData] = useState()
   useEffect(() => {
@@ -58,11 +61,24 @@ const PopularMedicalCamps = () => {
                                <PersonIcon/>  {camp?.HealthcareProfessionals}
                                </Typography>
 
+                               <Typography sx={{mt:2}} variant="body2" color="text.secondary">
+                               <PinDropIcon/>  {camp?.VenueLocation}
+                               </Typography>
+                        
+                         <Typography sx={{mt:2}} variant="body2" color="text.secondary">
+                         <CalendarTodayIcon/> {camp?.ScheduledDateTime}
+                               </Typography>
+
+                               <Typography sx={{mt:2}} variant="body2" color="text.secondary">
+                               <Groups2Icon/>  {camp?.TargetAudience}
+                               </Typography>
+
+                        
                              </CardContent>
-                             <CardActions>
-                               <Button size="small">{camp?.ScheduledDateTime}</Button>
-                               <Button size="small">{camp?.TargetAudience}</Button>
-                               <Button size="small">{camp?.VenueLocation}</Button>
+                             <CardActions >
+
+                              
+                         
                              </CardActions>
                            </Card>
                          </Grid>  )

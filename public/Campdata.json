@@ -5,8 +5,8 @@
       "CampFees": "$0 (Free)",
       "ScheduledDateTime": "2023-12-01T10:00:00",
       "VenueLocation": "City Convention Center",
-      "SpecializedServices": ["Health Screenings", "Vaccinations", "Nutritional Consultations"],
-      "HealthcareProfessionals": ["Dr. Smith (General Practitioner)", "Dr. Johnson (Nutritionist)", "Nurse Davis"],
+      "SpecializedServices": "Parenting Workshops",
+      "HealthcareProfessionals":  "Pediatric Nurse Johnson",
       "TargetAudience": "All Ages"
     },
     {
@@ -15,8 +15,8 @@
       "CampFees": "$0 (Free)",
       "ScheduledDateTime": "2023-12-15T14:30:00",
       "VenueLocation": "Community Health Center",
-      "SpecializedServices": ["Cardiac Screenings", "Blood Pressure Checks", "Heart Health Seminars"],
-      "HealthcareProfessionals": ["Cardiologist Dr. Rodriguez", "Nurse Hernandez"],
+      "SpecializedServices": "Parenting Workshops",
+      "HealthcareProfessionals":  "Pediatric Nurse Johnson",
       "TargetAudience": "Adults 30 and above"
     },
     {
@@ -25,8 +25,8 @@
       "CampFees": "$0 (Free)",
       "ScheduledDateTime": "2023-11-28T09:00:00",
       "VenueLocation": "Children's Hospital",
-      "SpecializedServices": ["Pediatric Check-ups", "Immunizations", "Parenting Workshops"],
-      "HealthcareProfessionals": ["Pediatrician Dr. Brown", "Pediatric Nurse Johnson"],
+      "SpecializedServices": "Parenting Workshops",
+      "HealthcareProfessionals":  "Pediatric Nurse Johnson",
       "TargetAudience": "Children and Parents"
     },
     {
@@ -35,8 +35,8 @@
       "CampFees": "$10 (Dental Check-up)",
       "ScheduledDateTime": "2023-12-05T11:00:00",
       "VenueLocation": "Smile Dental Clinic",
-      "SpecializedServices": ["Dental Check-ups", "Oral Hygiene Education"],
-      "HealthcareProfessionals": ["Dentist Dr. White", "Dental Hygienist Smith"],
+      "SpecializedServices": "Parenting Workshops",
+      "HealthcareProfessionals":  "Pediatric Nurse Johnson",
       "TargetAudience": "All Ages"
     },
     {
@@ -45,8 +45,8 @@
       "CampFees": "$0 (Free)",
       "ScheduledDateTime": "2023-11-30T13:00:00",
       "VenueLocation": "Women's Health Center",
-      "SpecializedServices": ["Women's Health Screenings", "Gynecological Consultations", "Educational Sessions"],
-      "HealthcareProfessionals": ["OB-GYN Dr. Taylor", "Women's Health Nurse Anderson"],
+      "SpecializedServices": "Parenting Workshops",
+      "HealthcareProfessionals":  "Pediatric Nurse Johnson",
       "TargetAudience": "Women of all ages"
     },
     {
@@ -55,8 +55,8 @@
       "CampFees": "$0 (Free)",
       "ScheduledDateTime": "2023-12-10T15:30:00",
       "VenueLocation": "Community Center",
-      "SpecializedServices": ["Mental Health Screenings", "Counseling Sessions", "Mindfulness Workshops"],
-      "HealthcareProfessionals": ["Psychiatrist Dr. Miller", "Mental Health Counselor Brown"],
+      "SpecializedServices": "Parenting Workshops",
+      "HealthcareProfessionals":  "Pediatric Nurse Johnson",
       "TargetAudience": "All Ages"
     }
   ]

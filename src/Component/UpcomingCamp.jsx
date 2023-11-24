@@ -10,6 +10,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PersonIcon from '@mui/icons-material/Person';
 import { red } from '@mui/material/colors';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import Groups2Icon from '@mui/icons-material/Groups2';
+import PinDropIcon from '@mui/icons-material/PinDrop';
 const UpcomingCamp = () => {
     const[data,setData] = useState()
   useEffect(() => {
@@ -46,7 +49,7 @@ const UpcomingCamp = () => {
                               <Typography gutterBottom sx={{fontWeight:700}} variant="h6" component="div">
                                  {camp?.CampName}
                                </Typography >
-                               <Typography gutterBottom variant="h6" component="div">
+                               <Typography gutterBottom variant="h6" sx={{textColor:'#1976D2'}} component="div">
                                {camp?.CampFees}
                                </Typography>
                               </Grid>
@@ -58,11 +61,23 @@ const UpcomingCamp = () => {
                                <PersonIcon/>  {camp?.HealthcareProfessionals}
                                </Typography>
 
+                                <Typography sx={{mt:2}} variant="body2" color="text.secondary">
+                               <PinDropIcon/>  {camp?.VenueLocation}
+                               </Typography>
+
+                                          <Typography sx={{mt:2}} variant="body2" color="text.secondary">
+                         <CalendarTodayIcon/> {'upcoming'}
+                               </Typography>
+
+                               <Typography sx={{mt:2}} variant="body2" color="text.secondary">
+                               <Groups2Icon/>  {camp?.TargetAudience}
+                               </Typography>
+
+
                              </CardContent>
-                             <CardActions>
-                               <Button size="small">{'UpComing'}</Button>
-                               <Button size="small">{camp?.TargetAudience}</Button>
-                               <Button size="small">{camp?.VenueLocation}</Button>
+                             <CardActions sx={{mx:5}}>
+                              
+                             
                              </CardActions>
                            </Card>
                          </Grid>  )
