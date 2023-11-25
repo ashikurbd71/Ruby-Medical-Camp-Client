@@ -6,9 +6,13 @@ import { FaHome } from "react-icons/fa";
 import { FaHandHoldingMedical } from "react-icons/fa"
 import OrganizerMenu from '../../Shared/Organizer/OrganizerMenu';
 import useAuth from '../../Hook/useAuth';
+import useRole from '../../Hook/userRole';
 const Dashboardlayout = () => {
 
   const{user,logOut} = useAuth()
+
+  const [role] = useRole()
+  console.log('role--->',role)
     return (
         <div>
            
@@ -30,7 +34,7 @@ const Dashboardlayout = () => {
 
    {/* menu */}
 
-   <OrganizerMenu/>
+     {role === 'organizer' && <OrganizerMenu/>}
 
     <span className="flex py-6 items-center">
 

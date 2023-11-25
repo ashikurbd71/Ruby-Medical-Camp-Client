@@ -7,6 +7,7 @@ import axios from 'axios';
 import { GiSpinalCoil } from "react-icons/gi"
 import useAuth from '../Hook/useAuth';
 import toast from 'react-hot-toast';
+import { postuser } from '../API/userData';
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -42,8 +43,8 @@ const SignUp = () => {
 
     //  save databages
 
-//   const dbresult = await saveuser(result?.user)
-//    console.log(dbresult)
+  const dbresult = await postuser(result?.user)
+   console.log(dbresult)
 
     // create token
 
@@ -72,10 +73,11 @@ const SignUp = () => {
 
       const result = await signInWithGoogle()
       console.log(result)
+
           //  save databages
       
-        // const dbresult = await saveuser(result?.user)
-        //  console.log(dbresult)
+        const dbresult = await postuser(result?.user)
+         console.log(dbresult)
       
           // create token
       

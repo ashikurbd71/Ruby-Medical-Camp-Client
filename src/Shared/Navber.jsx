@@ -233,7 +233,7 @@ const Navber = () => {
             >
                 <ListItem>
                 <button onClick={handlelogout}>
-                <MenuItem>LogOut </MenuItem>
+                LogOut 
                 </button>
                
                 </ListItem>
