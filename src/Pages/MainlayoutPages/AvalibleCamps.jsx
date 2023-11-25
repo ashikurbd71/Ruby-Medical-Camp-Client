@@ -1,9 +1,19 @@
 import React from 'react';
 import Container from '../../Shared/Container';
 import bg from '../../assets/avalible.jpg'
+import { Helmet } from 'react-helmet';
+
 const AvalibleCamps = () => {
     return (
         <>
+
+   
+<Helmet>
+        <title>R M C || AvalibleCamps</title>
+        
+    </Helmet>
+
+
         <div className='bg-black bg-blend-overlay bg-opacity-70 lg:h-[800px] my-16 bg-fixed lg:mb-40' style={{ backgroundImage: `url('${bg}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
 
       

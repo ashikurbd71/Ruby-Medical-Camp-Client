@@ -93,3 +93,19 @@ const AuthProvider = ({ children }) => {
 }
 
 export default AuthProvider
+
+
+// const userEmail =currentuser?.email || user?.email
+// const loguser ={ 'email': userEmail}
+// setLoading(false)
+// setUser(currentuser)
+// console.log(currentuser)
+
+//  if(currentuser){
+//         axios.post('https://blogsph-server.vercel.app/jwt',loguser,{withCredentials:true})
+//         .then(res => console.log(res.data))
+//     }else{
+
+//         axios.post('https://blogsph-server.vercel.app/logout',loguser,{withCredentials:true})
+//         .then(res => console.log(res.data))
+//     }

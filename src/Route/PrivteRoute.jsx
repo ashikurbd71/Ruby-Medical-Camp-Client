@@ -1,6 +1,7 @@
-';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+
+import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../Hook/useAuth';
+import Loader from '../Shared/Loader';
 
 const PrivteRoute = ({children}) => {
 
@@ -17,7 +18,7 @@ const PrivteRoute = ({children}) => {
 
         return children
      }else{
-        return <Navigate to={'/login'} state={location.pathname} replace></Navigate>
+        return <Navigate to={'/signin'} state={location.pathname} replace></Navigate>
      }
  
 

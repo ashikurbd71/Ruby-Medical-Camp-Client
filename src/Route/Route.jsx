@@ -9,6 +9,9 @@ import ManagesCamp from './../Pages/DashLayoutpages/Organizers/ManagesCamp';
 import ManagesRegister from "../Pages/DashLayoutpages/Organizers/ManagesRegister";
 import SignUp from "../From/Signup";
 import Signin from "../From/Signin";
+import PrivteRoute from "./PrivteRoute";
+import OrganizerRoute from "./OrganaizerRoute";
+import Profile from "../Shared/Profile";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +24,7 @@ const router = createBrowserRouter([
         },
         {
          path:'/avaliblecamps',
-         element:<AvalibleCamps/>
+         element:<PrivteRoute><AvalibleCamps/></PrivteRoute>
         },
         {
          path:'/contactus',
@@ -39,20 +42,24 @@ const router = createBrowserRouter([
     },
     {
       path:'/dashboard',
-      element:<Dashboardlayout/>,
+      element:<PrivteRoute><Dashboardlayout/></PrivteRoute>,
       children:[
 
          {
-            path:'/dashboard/addcamp',
-            element:<AddCamp/>
+            path:'/dashboard/add-a-camp',
+            element:<OrganizerRoute><AddCamp/></OrganizerRoute>
          },
          {
-            path:'/dashboard/managescamp',
-            element:<ManagesCamp/>
+            path:'/dashboard/manage-camps',
+            element:<OrganizerRoute><ManagesCamp/></OrganizerRoute>
          },
          {
-            path:'/dashboard/managesregister',
-            element:<ManagesRegister/>
+            path:'/dashboard/manage-registered-camps',
+            element:<OrganizerRoute><ManagesRegister/></OrganizerRoute>
+         },
+         {
+            path:'/dashboard/profile',
+            element:<PrivteRoute><Profile/></PrivteRoute>
          },
        
       ]

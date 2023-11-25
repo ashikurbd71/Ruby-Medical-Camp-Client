@@ -9,7 +9,7 @@ const Loader = ({smallHeight}) => {
       justify-center 
       items-center `}
     >
-      <SiSpinrilla className=" text-4xl  animate-spin"/>
+      <SiSpinrilla className=" text-5xl text-[#1976D2]  animate-spin"/>
     </div>
   )
 }

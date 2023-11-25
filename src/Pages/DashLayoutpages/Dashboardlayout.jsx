@@ -7,6 +7,7 @@ import { FaHandHoldingMedical } from "react-icons/fa"
 import OrganizerMenu from '../../Shared/Organizer/OrganizerMenu';
 import useAuth from '../../Hook/useAuth';
 import useRole from '../../Hook/userRole';
+import { Helmet } from 'react-helmet';
 const Dashboardlayout = () => {
 
   const{user,logOut} = useAuth()
@@ -14,12 +15,17 @@ const Dashboardlayout = () => {
   const [role] = useRole()
   console.log('role--->',role)
     return (
+<>
+      <Helmet>
+        <title>R M C || DashBoard</title>
+        
+    </Helmet>
         <div>
            
-           <div className=" h-screen flex  border-e bg-white">
+           <div className=" min-h-screen flex  border-e">
   <div className="px-12 py-6 bg-[#1976D2]">
   <span
-      className="grid h-10 w-full place-content-center rounded-lg  text-black"
+      className="grid h-10  w-full place-content-center rounded-lg  text-black"
     >
     <Link to={'/'}>
     
@@ -72,7 +78,9 @@ const Dashboardlayout = () => {
        </Link>  
       
 {/* user */}
-    <div className="sticky mt-10 inset-x-0 bottom-0 border-t border-gray-100">
+   <Link to={'/dashboard/profile'}>
+   
+   <div className=" mt-10 inset-x-0 bottom-0 border-t">
     <a href="#" className="flex gap-2 items-center  mt-5 w-full ">
       <img
         alt="Man"
@@ -89,10 +97,11 @@ const Dashboardlayout = () => {
       </div>
     </a>
   </div>
+   </Link>
   </div>
 
   
-   <div className='w-full col-span-8'>
+   <div className='w-full h-full col-span-8'>
 
     <Outlet/>
 
@@ -101,6 +110,7 @@ const Dashboardlayout = () => {
 </div>
 
         </div>
+        </>
     );
 };
 
