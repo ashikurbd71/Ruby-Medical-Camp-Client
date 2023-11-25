@@ -34,3 +34,15 @@ export const updateCampdata = async (_id,campInfo) => {
 }
 
 
+// delete camp
+
+export const deleteCampdata = async (_id) => {
+
+    console.log("from 31 ---->",_id)
+    const{data} = await axoissecure.delete(`/deletecamp/delete/${_id}`)
+   return data
+}
+
+
+
+

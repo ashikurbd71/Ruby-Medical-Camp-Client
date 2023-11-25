@@ -2,11 +2,12 @@ import React from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
 import { Helmet } from 'react-helmet';
 import { useQuery } from '@tanstack/react-query';
-import { getCampdata } from '../../../API/CampsData/addCamp';
+import { deleteCampdata, getCampdata } from '../../../API/CampsData/addCamp';
 import useAuth from '../../../Hook/useAuth';
 import Container from '../../../Shared/Container';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 const ManagesCamp = () => {
@@ -15,7 +16,7 @@ const ManagesCamp = () => {
   const{user,loading} = useAuth()
     const {
         data: campdata = [],
-        isLoading,
+        isLoading,refetch
       
       } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -27,8 +28,36 @@ const ManagesCamp = () => {
 
      const handledelte = (_id) => {
 
-   console.log(_id)
-   
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await deleteCampdata(_id);
+                console.log(res);
+                if (res.deletedCount > 0) {
+                   
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${campdata?.campname} has been deleted`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    refetch()
+                }
+
+
+            }
+        });
+
 
      }
 
