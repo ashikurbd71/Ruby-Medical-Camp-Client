@@ -1,9 +1,7 @@
 import React from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
 import Container from '../../../Shared/Container';
-import axoispublic from '../../../Hook/AxoissecurePublic';
 import { useForm } from 'react-hook-form';
-import axoissecure from '../../../Hook/Axoissecure';
 import Swal from 'sweetalert2';
 import { addCampdata } from '../../../API/CampsData/addCamp';
 import axios from 'axios';
@@ -11,8 +9,7 @@ import useAuth from '../../../Hook/useAuth';
 
 
 
-// const img_api_token =import.meta.env.VITE_API_KEY
-// const img_hosting_api=`https://api.imgbb.com/1/upload?key=${img_api_token}`
+
 
 
 

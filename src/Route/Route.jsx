@@ -12,6 +12,7 @@ import Signin from "../From/Signin";
 import PrivteRoute from "./PrivteRoute";
 import OrganizerRoute from "./OrganaizerRoute";
 import Profile from "../Shared/Profile";
+import UpdateCamp from "../Pages/DashLayoutpages/Organizers/UpdateCamp";
 
 const router = createBrowserRouter([
     {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       path:'/dashboard',
       element:<PrivteRoute><Dashboardlayout/></PrivteRoute>,
       children:[
-
+// ----------------------organizer routee-----------------------
          {
             path:'/dashboard/add-a-camp',
             element:<OrganizerRoute><AddCamp/></OrganizerRoute>
@@ -61,11 +62,16 @@ const router = createBrowserRouter([
             path:'/dashboard/profile',
             element:<PrivteRoute><Profile/></PrivteRoute>
          },
+         {
+            path:'/dashboard/update-camp/:campId',
+            element:<OrganizerRoute><UpdateCamp/></OrganizerRoute>,
+            loader: ({params}) => fetch(`http://localhost:5000/all-camp/${params.campId}`)
+         },
        
       ]
     },
   
-
+    
   ]);
 
   export default router

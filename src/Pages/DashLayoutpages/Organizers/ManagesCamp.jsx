@@ -6,6 +6,7 @@ import { getCampdata } from '../../../API/CampsData/addCamp';
 import useAuth from '../../../Hook/useAuth';
 import Container from '../../../Shared/Container';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
 const ManagesCamp = () => {
@@ -23,6 +24,13 @@ const ManagesCamp = () => {
       })
 
       console.log(campdata)
+
+     const handledelte = (_id) => {
+
+   console.log(_id)
+   
+
+     }
 
     return (
    <>
@@ -60,10 +68,10 @@ const ManagesCamp = () => {
             Fee
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Action
+            Update
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Action
+            Cancel
           </th>
         </tr>
       </thead>
@@ -90,14 +98,16 @@ const ManagesCamp = () => {
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
              ${data?.fees}
                     </td>
-                    <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
+                    <td  className="whitespace-nowrap px-4 py-2 t text-gray-900">
            
-              <FaEdit className='text-2xl text-green-500'/>
+             <Link to={`/dashboard/update-camp/${data?._id}`}>
+             <FaEdit className='text-2xl text-green-500'/>
+             </Link>
                     </td>
 
                     
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-                    <FaTrashAlt className='text-2xl text-red-500'/>
+                   <button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button>
                     </td>
               </tr>   
                 
