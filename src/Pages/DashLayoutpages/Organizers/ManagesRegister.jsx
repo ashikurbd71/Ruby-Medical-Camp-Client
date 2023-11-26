@@ -2,10 +2,37 @@ import React from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
 import { Helmet } from 'react-helmet';
 import Container from '../../../Shared/Container';
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import useAuth from '../../../Hook/useAuth';
+import axoissecure from '../../../Hook/Axoissecure';
+import Loader from '../../../Shared/Loader';
 
 const ManagesRegister = () => {
+
+  const{user,loading} = useAuth()
+  const {
+      data: campdata = [],
+      isLoading,refetch
+    
+    } = useQuery({
+      queryKey: ['register'],
+      enabled: !loading,
+      queryFn: async () => await axoissecure.get('/register-camp'),
+    })
+
+    if(isLoading){
+      return <Loader/>
+    }
+
+      console.log(campdata?.data)
+
+
+      const handledelte = (_id) => {
+
+ console.log(_id)
+      }
     return (
 <>
 
@@ -24,25 +51,25 @@ const ManagesRegister = () => {
       <thead className="ltr:text-left rtl:text-right bg-[#1976D2]">
         <tr>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Camp Name
+             Name
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Service
+            Phone
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Healthcare
+          Gender
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Location
+            Adress
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Date
+           Problem
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Fee
+          Status
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Update
+            fees
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
             Cancel
@@ -52,41 +79,43 @@ const ManagesRegister = () => {
 
       <tbody className="divide-y divide-[#1976D2]">
         
-        {/* {
-            campdata?.map(data => 
+      {
+            campdata?.data?.map(data => 
                 
                 <tr key={data?._id}>
                 <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                  {data?.campname}
+                  {data?.name}
                 </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-900"> {data?.services}</td>
+                <td className="whitespace-nowrap px-4 py-2 text-gray-900"> {data?.phone}</td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-900">
-                {data?.professional}
+                {data?.gender}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-              {data?.location}
+                 {data?.adress}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-              {data?.date}
+                  {data?.meassge}
                     </td>
-                    <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-             ${data?.fees}
+                    <button>
+                    <td className="whitespace-nowrap  font-medium  px-4 py-2 t text-green-700">
+                   {data?.Status}
                     </td>
+                    </button>
+                   
                     <td  className="whitespace-nowrap px-4 py-2 t text-gray-900">
-           
-             <Link to={`/dashboard/update-camp/${data?._id}`}>
-             <FaEdit className='text-2xl text-green-500'/>
-             </Link>
+                     ${data?.campfees}
                     </td>
 
-                    
+              
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-                   {/* <button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button> */}
-                    {/* </td>
-              </tr>    */}
+                   <button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button>
+                    </td>
+              </tr>   
                 
-                {/* ) */}
-        {/* */} 
+                )
+        }
+                
+      
 
       </tbody>
     </table>

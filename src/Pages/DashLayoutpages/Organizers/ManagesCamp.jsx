@@ -8,6 +8,7 @@ import Container from '../../../Shared/Container';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Loader from '../../../Shared/Loader';
 
 
 const ManagesCamp = () => {
@@ -24,6 +25,9 @@ const ManagesCamp = () => {
         queryFn: async () => await getCampdata(user?.email),
       })
 
+      if(isLoading){
+        return <Loader/>
+      }
       console.log(campdata)
 
      const handledelte = (_id) => {

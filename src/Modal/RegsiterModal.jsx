@@ -1,9 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
 // import { Elements } from '@stripe/react-stripe-js'
-import { format, getDate } from 'date-fns'
+// import { format, getDate } from 'date-fns'
 import { Fragment } from 'react'
 import { useForm } from 'react-hook-form';
 import useAuth from '../Hook/useAuth';
+import Swal from 'sweetalert2';
+import { postRegister } from '../API/Register/Register';
 // import CheckoutForm from '../../From/CheckoutFrom'
 // import { loadStripe } from '@stripe/stripe-js'
 
@@ -18,7 +20,7 @@ const RegsiterModal = ({ closeModal, isOpen, item }) => {
     
          
 
-          const campInfo = {
+          const registerInfo = {
             name: data.name,
             phone : data.phone,
             campfees: parseInt(data.fees) ,
@@ -27,13 +29,30 @@ const RegsiterModal = ({ closeModal, isOpen, item }) => {
             meassge:data.message,
             date:  new Date(),
             Status:'pedding',
+            campid:item?._id,
           
             participants:{
               email:user?.email,
               name:user?.displayName
             }
         }
-        console.table(campInfo)
+
+        const campRes = await postRegister(registerInfo);
+        console.log(campRes)
+        if(campRes.insertedId){
+      
+            reset();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `${data.name} Register Sucessfuly.`,
+                showConfirmButton: false,
+                timer: 1500
+              });
+
+              console.log( 'with image url', campRes.data);
+        }
+        console.table(registerInfo)
 
 
         
