@@ -8,6 +8,8 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../Hook/useAuth';
 import axoissecure from '../../../Hook/Axoissecure';
 import Loader from '../../../Shared/Loader';
+import Swal from 'sweetalert2';
+import { updateStatus } from '../../../API/Register/Register';
 
 const ManagesRegister = () => {
 
@@ -33,6 +35,30 @@ const ManagesRegister = () => {
 
  console.log(_id)
       }
+
+      const handlestatus = async(_id) => {
+
+        console.log(_id)
+        const res = await updateStatus(_id)
+        console.log(res)
+      
+
+            console.log(res.data)
+
+            if(res.modifiedCount > 0){
+              refetch()
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title:'Confrim Request',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+      
+
+      }
+
     return (
 <>
 
@@ -97,8 +123,8 @@ const ManagesRegister = () => {
                   {data?.meassge}
                     </td>
                     <button>
-                    <td className="whitespace-nowrap  font-medium  px-4 py-2 t text-green-700">
-                   {data?.Status}
+                    <td className="whitespace-nowrap  font-medium  px-4 py-2 t text-green-500 ">
+                  {data?.status === 'Confrim' ? 'Confrim' : <button onClick={() => handlestatus(data?._id)} className='text-red-700'> Padding</button>}
                     </td>
                     </button>
                    

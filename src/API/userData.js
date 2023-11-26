@@ -26,3 +26,7 @@ export const getRole = async email => {
     return data.role
 
 }
+
+
+
+

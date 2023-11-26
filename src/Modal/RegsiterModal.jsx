@@ -29,6 +29,7 @@ const RegsiterModal = ({ closeModal, isOpen, item }) => {
             meassge:data.message,
             date:  new Date(),
             Status:'pedding',
+            payment:'unpaid',
             campid:item?._id,
           
             participants:{

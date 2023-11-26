@@ -17,12 +17,14 @@ export const postRegister = async registerInfo => {
 }
 
 
-// // get camp data all
+// get camp data all
 
-// export const getCampdata = async () => {
+export const updateStatus = async (_id,) => {
 
-//     const{data} = await axoissecure.get(`/register-camp`)
-//    return data
-// }
+    
+    console.log("email from api 25 line --->",_id)
+    const{data} = await axoissecure.patch(`/register-camp/status/${_id}`)
+     return data
+}
 
 
