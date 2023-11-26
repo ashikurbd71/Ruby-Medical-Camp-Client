@@ -13,6 +13,7 @@ import PrivteRoute from "./PrivteRoute";
 import OrganizerRoute from "./OrganaizerRoute";
 import Profile from "../Shared/Profile";
 import UpdateCamp from "../Pages/DashLayoutpages/Organizers/UpdateCamp";
+import CampDetails from "../Pages/MainlayoutPages/CampDetails";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,15 @@ const router = createBrowserRouter([
          path:'/avaliblecamps',
          element:<PrivteRoute><AvalibleCamps/></PrivteRoute>
         },
+
+          {
+         path:'/camp-details/:campId',
+         element:<PrivteRoute><CampDetails/></PrivteRoute>,
+         loader: ({params}) => fetch (`http://localhost:5000/all-camp/${params.campId}`)
+        },
+
+        
+
         {
          path:'/contactus',
          element:<ContactUs/>

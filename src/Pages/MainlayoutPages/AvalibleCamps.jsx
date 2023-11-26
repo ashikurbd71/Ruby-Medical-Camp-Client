@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet';
 import useAuth from '../../Hook/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import axoissecure from '../../Hook/Axoissecure';
+import { Link } from 'react-router-dom';
+import { FaCalendar, FaClock, FaLocationArrow, FaServicestack, FaUser, FaUsers } from 'react-icons/fa';
 
 const AvalibleCamps = () => {
 
@@ -100,112 +102,118 @@ const AvalibleCamps = () => {
          <div className="mt-2">
            <dl>
              <div>
-               <dt className="sr-only">Price</dt>
+               <dt className="sr-only">Feee</dt>
        
-               <dd className="text-sm text-gray-500">$240,000</dd>
+               <dd className="text-xl text-gray-500">${item?.fees}</dd>
              </div>
        
              <div>
-               <dt className="sr-only">Address</dt>
+               <dt className="sr-only">Camp Name</dt>
        
-               <dd className="font-medium">123 Wallaby Avenue, Park Road</dd>
+               <dd className="font-medium text-xl">{item?.campname}</dd>
+
+                <div className='flex mt-3 items-center gap-1'>
+                  <FaUser className='text-xl'/>
+                <dd className="font-normal text-xl">{item?.professional}</dd>
+                </div>
+
+                <div className='flex mt-3 items-center gap-1'>
+                  <FaServicestack className='text-xl'/>
+                <dd className="font-normal text-xl">{item?.services}</dd>
+                </div>
+           
+                <div className='flex mt-3 items-center gap-1'>
+                  <FaLocationArrow className='text-xl'/>
+                <dd className="font-normal text-xl">{item?.location}</dd>
+                </div>
+           
+           
              </div>
+             
+
+             
            </dl>
-       
+           
            <div className="mt-6 flex items-center gap-8 text-xs">
-             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-               <svg
-                 className="h-4 w-4 text-indigo-700"
-                 xmlns="http://www.w3.org/2000/svg"
-                 fill="none"
-                 viewBox="0 0 24 24"
-                 stroke="currentColor"
-               >
-                 <path
-                   strokeLinecap="round"
-                   strokeLinejoin="round"
-                   strokeWidth="2"
-                   d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
-                 />
-               </svg>
+             <div className="sm:inline-flex items-center flex sm:shrink-0 sm:items-center sm:gap-2">
+               
+              
+            
        
                <div className="mt-1.5 sm:mt-0">
-                 <p className="text-gray-500">Parking</p>
+                 <p className="text-gray-500 text-lg">Date</p>
        
-                 <p className="font-medium">2 spaces</p>
+                <div className='flex gap-1 items-center'>
+                <FaCalendar className='text-xl'/> 
+                 <p className="font-medium text-lg">{item?.date}</p>
+                </div>
                </div>
              </div>
        
              <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-               <svg
-                 className="h-4 w-4 text-indigo-700"
-                 xmlns="http://www.w3.org/2000/svg"
-                 fill="none"
-                 viewBox="0 0 24 24"
-                 stroke="currentColor"
-               >
-                 <path
-                   strokeLinecap="round"
-                   strokeLinejoin="round"
-                   strokeWidth="2"
-                   d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                 />
-               </svg>
-       
+             
+        
                <div className="mt-1.5 sm:mt-0">
-                 <p className="text-gray-500">Bathroom</p>
+                 <p className="text-gray-500 text-lg">Time</p>
+
+       <div className='flex gap-1 items-center'>
+       <FaClock className='text-xl'/>
        
-                 <p className="font-medium">2 rooms</p>
+       <p className="font-medium text-lg">{item?.time}</p>
+       </div>
                </div>
              </div>
        
              <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-               <svg
-                 className="h-4 w-4 text-indigo-700"
-                 xmlns="http://www.w3.org/2000/svg"
-                 fill="none"
-                 viewBox="0 0 24 24"
-                 stroke="currentColor"
-               >
-                 <path
-                   strokeLinecap="round"
-                   strokeLinejoin="round"
-                   strokeWidth="2"
-                   d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                 />
-               </svg>
+             
+             
        
                <div className="mt-1.5 sm:mt-0">
-                 <p className="text-gray-500">Bedroom</p>
-       
-                 <p className="font-medium">4 rooms</p>
+                 <p className="text-gray-500 text-lg">Target People</p>
+                 <div className='flex items-center gap-1'>
+                 <FaUsers className='text-xl'/>
+                 <p className="font-medium text-lg">{item?.audience}</p>
+                 </div>
                </div>
-               <a
-  className="group  relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+              
+        
+             </div>
+
+
+             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+
+
+
+             </div>
+
+
+             <Link to={`/camp-details/${item?._id}`}>
+              
+              <a
+  className="inline-block rounded-full border border-indigo-600 p-3 text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
   href="/download"
 >
-  <span className="absolute -end-full transition-all  group-hover:end-4">
-    <svg
-      className="h-5 w-5 rtl:rotate-180"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M17 8l4 4m0 0l-4 4m4-4H3"
-      />
-    </svg>
-  </span>
+  <span className="sr-only"> camp detils</span>
 
-  <span className="text-sm   font-medium transition-all group-hover:me-4">
-    Join
-  </span>
+  <svg
+    className="h-5 w-5 rtl:rotate-180"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M14 5l7 7m0 0l-7 7m7-7H3"
+    />
+  </svg>
 </a>
-             </div>
+              </Link>
+
+            
+
            </div>
          </div>
        </a>
