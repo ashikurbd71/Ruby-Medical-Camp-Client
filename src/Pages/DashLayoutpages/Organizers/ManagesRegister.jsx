@@ -9,7 +9,8 @@ import useAuth from '../../../Hook/useAuth';
 import axoissecure from '../../../Hook/Axoissecure';
 import Loader from '../../../Shared/Loader';
 import Swal from 'sweetalert2';
-import { updateStatus } from '../../../API/Register/Register';
+import { deleteStatus, updateStatus } from '../../../API/Register/Register';
+import { deleteCampdata } from '../../../API/CampsData/addCamp';
 
 const ManagesRegister = () => {
 
@@ -30,11 +31,47 @@ const ManagesRegister = () => {
 
       console.log(campdata?.data)
 
+      // delete-------------------------------------------------
 
       const handledelte = (_id) => {
 
- console.log(_id)
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+      }).then(async (result) => {
+          if (result.isConfirmed) {
+              const res = await deleteStatus(_id);
+              console.log(res);
+              if (res.deletedCount > 0) {
+                 
+
+                  Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: `your request has been deleted`,
+                      showConfirmButton: false,
+                      timer: 1500
+                  });
+
+                  refetch()
+              }
+
+
+          }
+      });
+
+
       }
+
+      //--------------------------- updateeeee
+
+
+
 
       const handlestatus = async(_id) => {
 
@@ -98,11 +135,14 @@ const ManagesRegister = () => {
             fees
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+          payment
+          </th>
+          <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
             Cancel
           </th>
         </tr>
       </thead>
-
+     
       <tbody className="divide-y divide-[#1976D2]">
         
       {
@@ -132,8 +172,12 @@ const ManagesRegister = () => {
                      ${data?.campfees}
                     </td>
 
-              
+                    <td  className="whitespace-nowrap px-4 py-2 t text-green-500 ">
+                     {data?.payment === 'paid' ? 'Paid' : <button  className='text-red-700'>Upnpaid</button>}
+                    </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
+
+                      {/* to: conditional button base paid unpaid */}
                    <button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button>
                     </td>
               </tr>   
