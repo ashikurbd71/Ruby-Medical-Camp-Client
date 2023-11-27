@@ -30,6 +30,13 @@ export const updateStatus = async (_id,) => {
 
 // status update paid
 
+export const updatePaid = async (_id,) => {
+
+    
+    console.log("email from api 25 line --->",_id)
+    const{data} = await axoissecure.patch(`/register-camp/paid/${_id}`)
+     return data
+}
 
 // delete   register rquest
 

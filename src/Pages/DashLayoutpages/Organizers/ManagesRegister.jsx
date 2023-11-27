@@ -9,7 +9,7 @@ import useAuth from '../../../Hook/useAuth';
 import axoissecure from '../../../Hook/Axoissecure';
 import Loader from '../../../Shared/Loader';
 import Swal from 'sweetalert2';
-import { deleteStatus, updateStatus } from '../../../API/Register/Register';
+import { deleteStatus, updatePaid, updateStatus } from '../../../API/Register/Register';
 import { deleteCampdata } from '../../../API/CampsData/addCamp';
 
 const ManagesRegister = () => {
@@ -97,10 +97,22 @@ const ManagesRegister = () => {
       }
 
 
-      const handlespaid = () => {
+      const handlespaid = async(_id) => {
 
+      const res = await  updatePaid(_id)
 
-        
+      console.log(res.data)
+
+      if(res.modifiedCount > 0){
+        refetch()
+          Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title:'Paid Confrim',
+              showConfirmButton: false,
+              timer: 1500
+            });
+      }
       }
 
 
@@ -181,7 +193,7 @@ const ManagesRegister = () => {
                     </td>
 
                     <td  className="whitespace-nowrap px-4 py-2 t text-green-500 ">
-                     {data?.payment === 'paid' ? <button onClick={() => handlespaid(data?._id)} className='text-red-700'>Pendding</button> : <h1 className='text-red-500'>Unpaid</h1> }
+                     {data?.payment === 'paid' ? <button onClick={() => handlespaid(data?._id)} className='text-red-700'>Padding</button> : <h1 className='text-red-500'>{data?.payment === 'Confrimed' ? <h1 className='text-green-500'>Confrimed</h1> : "Uppaid"}</h1> }
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
 
