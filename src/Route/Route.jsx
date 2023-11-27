@@ -17,6 +17,8 @@ import CampDetails from "../Pages/MainlayoutPages/CampDetails";
 import Registerdcamp from "../Pages/DashLayoutpages/Particepnts/Registerdcamp";
 import FeedbackRatings from "../Pages/DashLayoutpages/Particepnts/FeedbackRatings";
 import PaymentHistory from "../Pages/DashLayoutpages/Particepnts/PaymentHistory";
+import HealthcraeProfile from "../Pages/DashLayoutpages/Professional/HealthcraeProfile";
+import Professionalroute from "./Professionalroute";
 // import Payment from "../Pages/DashLayoutpages/Particepnts/Payment";
 
 const router = createBrowserRouter([
@@ -104,11 +106,15 @@ const router = createBrowserRouter([
             element:<PrivteRoute><PaymentHistory/></PrivteRoute>
            
          },
-         // {
-         //    path:'/dashboard/payment',
-         //    element:<PrivteRoute><Payment/></PrivteRoute>
+     
+         // ------------------PROFESSINOL -------------------------
+
+         {
+
+            path:'/dashboard/professional-profile',
+            element:<Professionalroute><HealthcraeProfile/></Professionalroute>
            
-         // },
+         }
 
 
 

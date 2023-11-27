@@ -29,4 +29,28 @@ export const getRole = async email => {
 
 
 
+// post healcare dara
+
+
+export const postHealthcaredata = async profileinfo => {
+
+    console.log("email from 51 line",profileinfo)
+    const{data} = await axoissecure.post('/healthcareprofile',profileinfo)
+    return data.role
+}
+
+
+// --------get data by email
+
+export const getHealthcaredata = async email => {
+
+    console.log("email from 51 line",email)
+    const{data} = await axoissecure.get(`/healthcareprofile/${email}`,)
+    return data.role
+}
+
+
+
+
+
 

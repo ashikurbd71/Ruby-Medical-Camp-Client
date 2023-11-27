@@ -2,13 +2,14 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import img from '../../assets/logo.png'
 
-import { FaHome } from "react-icons/fa";
+import { FaClock, FaHome } from "react-icons/fa";
 import { FaHandHoldingMedical } from "react-icons/fa"
 import OrganizerMenu from '../../Shared/Organizer/OrganizerMenu';
 import useAuth from '../../Hook/useAuth';
 import useRole from '../../Hook/userRole';
 import { Helmet } from 'react-helmet';
 import PartecipentMenu from '../../Shared/Partecipent/PartecipentMenu';
+import Professionalmenu from '../../Shared/Profesional/Professionalmenu';
 const Dashboardlayout = () => {
 
   const{user,logOut} = useAuth()
@@ -43,6 +44,9 @@ const Dashboardlayout = () => {
 
      {role === 'organizer' && <OrganizerMenu/>}
      {role === 'participants' && <PartecipentMenu/>}
+     {role === 'professionals' && <Professionalmenu/>}
+
+     
 
     <span className="flex py-6 items-center">
 
@@ -68,7 +72,7 @@ const Dashboardlayout = () => {
        <Link to={'/avaliblecamps'}>
        <button
           href=""
-          className="block text-lg  w-full rounded-lg px-2 py-2  font-medium text-black hover:bg-gray-100 hover:text-gray-700"
+          className="block text-lg mb-3  w-full rounded-lg px-2 py-2  font-medium text-black hover:bg-gray-100 hover:text-gray-700"
         >
 
 <div className='flex items-center gap-2'>
@@ -78,6 +82,23 @@ const Dashboardlayout = () => {
        
         </button>
        </Link>  
+
+
+       <Link to={'/'}>
+       <button
+          href=""
+          className="block text-lg  w-full rounded-lg px-2 py-2  font-medium text-black hover:bg-gray-100 hover:text-gray-700"
+        >
+
+<div className='flex items-center gap-2'>
+          <FaClock className='text-xl'/> 
+        <h1>UpComing </h1>
+          </div>
+       
+        </button>
+       </Link>  
+      
+
       
 {/* user */}
    <Link to={'/dashboard/profile'}>
