@@ -92,6 +92,8 @@ const CheckoutForm = ({ data, closeModal }) => {
 
                     email:user?.email,
                     name:user?.displayName,
+                    status:data?.status,
+                    payment:data?.payment,
                     campname:data?.campname,
                     price:data?.campfees,
                     date:new Date(),
@@ -99,7 +101,7 @@ const CheckoutForm = ({ data, closeModal }) => {
                     transitionId:paymentIntent.id,
                     campid:data?._id,
                     registeredid:data?.campid,
-                    status:'padding'
+                    // status:'padding'
 
                 }
             

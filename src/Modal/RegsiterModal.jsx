@@ -25,7 +25,7 @@ const RegsiterModal = ({ closeModal, isOpen, item }) => {
             adress:data.adress,
             meassge:data.message,
             date:  new Date(),
-            Status:'pedding',
+            status:'pedding',
             payment:'unpaid',
             campid:item?._id,
           

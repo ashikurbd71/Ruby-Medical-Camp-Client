@@ -2,12 +2,12 @@ import axoissecure from "../Hook/Axoissecure"
 
 
 // post user info na drole
-export const postuser = async user => {
+export const postuser = async( user,role) => {
 
     const Info = {
 
        email :  user?.email,
-       role: 'participants',
+       role: role,
        status:'Verifyed'
     }
 

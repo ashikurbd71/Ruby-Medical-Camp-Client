@@ -16,6 +16,7 @@ const SignUp = () => {
 
     event.preventDefault()
     const from = event.target
+    const role = from?.role.value
     const name = from?.name.value
     const password = from?.password.value
     const email = from?.email.value
@@ -43,7 +44,7 @@ const SignUp = () => {
 
     //  save databages
 
-  const dbresult = await postuser(result?.user)
+  const dbresult = await postuser(result?.user,role)
    console.log(dbresult)
 
     // create token
@@ -69,6 +70,7 @@ const SignUp = () => {
     try{
       
 
+      
       // google sihn
 
       const result = await signInWithGoogle()
@@ -152,6 +154,20 @@ const SignUp = () => {
                 data-temp-mail-org='0'
               />
             </div>
+            <label className='block mb-2 text-sm'>
+    Select Role
+  </label>
+
+  <select
+    name="role"
+    id="HeadlineAct"
+    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#1976D2] bg-gray-200 text-gray-900'
+  >
+     <option value="participants">Participants</option>
+    <option value="organizer">Organizers</option>
+    <option value="professionals">Professionals</option>
+   
+  </select>
             <div>
               <div className='flex justify-between'>
                 <label htmlFor='password' className='text-sm mb-2'>

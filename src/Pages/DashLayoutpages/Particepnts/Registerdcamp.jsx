@@ -154,7 +154,7 @@ const Registerdcamp = () => {
                     </td>
                     <button>
                     <td className="whitespace-nowrap  font-medium  px-4 py-2 t text-green-500 ">
-                 { data?.status === 'Comfrimed' ? 'Comfrimed' : <h1 className='text-red-600'>Pendding</h1> }
+                 { data?.status === 'Confrimed' ? 'Confrimed' : <h1 className='text-red-600'>Pendding</h1> }
                     </td>
                     </button>
                    
@@ -165,13 +165,14 @@ const Registerdcamp = () => {
                    
                     <td  className="whitespace-nowrap px-4 py-2 t text-green-500 ">
                     <BookingModal setIsOpen={setIsOpen} closeModal={closeModal} isOpen={isOpen} data={data}/>
-                     {data?.payment === 'paid' ? 'Paid' :<button onClick={()=> setIsOpen(true)} className='text-red-700'>Pay</button>}
+                     {data?.payment === 'Confrimed' ? "paid":<button onClick={()=> setIsOpen(true)} className='text-red-700'>Pay</button>}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
                    
                     
                       {/* to: conditional button base paid unpaid */}
-                   <button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button>
+                   {data?.payment === 'Confrimed' ? '' :<button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button> }
+                  
                     </td>
                
               </tr>   

@@ -11,17 +11,28 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import img from "../assets/test-1.jpg"
+import useAuth from '../Hook/useAuth';
+import { useQuery } from '@tanstack/react-query';
+import axoispublic from './../Hook/AxoissecurePublic';
 const Testimonials = () => {
 
-    const[datas,setData] = useState()
-    useEffect(() => {
-  
-    
-    fetch('Ratting.json')
-    .then(res => res.json())
-    .then(data => setData(data))
-  
-    },[])
+  const { user, loading } = useAuth()
+
+  console.log(user?.email)
+ const { data: feeback, isLoading } = useQuery({
+   
+   enabled: !loading && !!user?.email,
+   queryFn: async () => await axoispublic('/feedback-camp'),
+   queryKey: ['feedback'],
+   
+ })
+
+ console.log()
+
+
+
+
+
 
     return (
 
@@ -42,21 +53,21 @@ const Testimonials = () => {
         {
   
   
-      datas?.map(data => <SwiperSlide key={data._id}>
+  feeback?.data?.map(data => <SwiperSlide key={data._id}>
   
   
    <div className='flex  flex-col justify-center ite items-center space-y-3 mx-14 lg:mx-28'>
  
-    <img src={img} alt="" className='rounded-full h-[100px] w-[150px]' />
+    <img src={data.photo} alt="" className='rounded-full h-[100px] w-[150px]' />
      
-     <h1 className='font-bold text-lg'>Ashikur Rahman Ovi</h1>
+     <h1 className='font-bold text-lg'>{data?.name}</h1>
     <Rating
-        style={{ maxWidth: 180 }}
-        value={data?.rating}
+        style={{ maxWidth: 120 }}
+        value={data?.rattng}
         readOnly
       />
    
-    <p className='text-[#CD9003] lg:text-[25px] text-2xl font-semibold'>{data?.campName}</p>
+    <p className='text-[#CD9003] lg:text-[25px] text-2xl font-semibold'>{data?.campname}</p>
      
     
 
