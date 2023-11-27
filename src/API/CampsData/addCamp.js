@@ -28,7 +28,7 @@ export const getCampdata = async email => {
 
 export const updateCampdata = async (_id,campInfo) => {
 
-    console.log("from 31 ---->",campInfo)
+    console.log("from 31 ---->",campInfo,_id)
     const{data} = await axoissecure.put(`/update-camp/${_id}`,campInfo)
    return data
 }

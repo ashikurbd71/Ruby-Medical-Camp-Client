@@ -28,6 +28,9 @@ export const updateStatus = async (_id,) => {
 }
 
 
+// status update paid
+
+
 // delete   register rquest
 
 export const deleteStatus = async (_id) => {
@@ -37,6 +40,20 @@ export const deleteStatus = async (_id) => {
     const{data} = await axoissecure.delete(`/register-camp/delete/${_id}`)
      return data
 }
+
+
+
+// GET REGISTER BY EMAIL
+
+
+export const getemailCamp = async email => {
+
+    console.log("email from api 48 line --->",email)
+    const{data} = await axoissecure.get(`/register-camp/email/${email}`)
+   return data
+}
+
+
 
 
 

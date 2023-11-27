@@ -14,6 +14,10 @@ import OrganizerRoute from "./OrganaizerRoute";
 import Profile from "../Shared/Profile";
 import UpdateCamp from "../Pages/DashLayoutpages/Organizers/UpdateCamp";
 import CampDetails from "../Pages/MainlayoutPages/CampDetails";
+import Registerdcamp from "../Pages/DashLayoutpages/Particepnts/Registerdcamp";
+import FeedbackRatings from "../Pages/DashLayoutpages/Particepnts/FeedbackRatings";
+import PaymentHistory from "../Pages/DashLayoutpages/Particepnts/PaymentHistory";
+// import Payment from "../Pages/DashLayoutpages/Particepnts/Payment";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +59,8 @@ const router = createBrowserRouter([
       path:'/dashboard',
       element:<PrivteRoute><Dashboardlayout/></PrivteRoute>,
       children:[
+
+
 // ----------------------organizer routee-----------------------
          {
             path:'/dashboard/add-a-camp',
@@ -77,7 +83,35 @@ const router = createBrowserRouter([
             element:<OrganizerRoute><UpdateCamp/></OrganizerRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/all-camp/${params.campId}`)
          },
+
+
+         // --------------------------- Partesipant Routee--------------------------------
        
+         {
+            path:'/dashboard/registered-camps',
+            element:<PrivteRoute><Registerdcamp/></PrivteRoute>
+           
+         },
+        
+         {
+            path:'/dashboard/feedback-and-ratings',
+            element:<PrivteRoute><FeedbackRatings/></PrivteRoute>
+           
+         },
+
+         {
+            path:'/dashboard/payment-history',
+            element:<PrivteRoute><PaymentHistory/></PrivteRoute>
+           
+         },
+         // {
+         //    path:'/dashboard/payment',
+         //    element:<PrivteRoute><Payment/></PrivteRoute>
+           
+         // },
+
+
+
       ]
     },
   

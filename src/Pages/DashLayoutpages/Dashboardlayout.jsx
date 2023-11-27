@@ -8,6 +8,7 @@ import OrganizerMenu from '../../Shared/Organizer/OrganizerMenu';
 import useAuth from '../../Hook/useAuth';
 import useRole from '../../Hook/userRole';
 import { Helmet } from 'react-helmet';
+import PartecipentMenu from '../../Shared/Partecipent/PartecipentMenu';
 const Dashboardlayout = () => {
 
   const{user,logOut} = useAuth()
@@ -41,6 +42,7 @@ const Dashboardlayout = () => {
    {/* menu */}
 
      {role === 'organizer' && <OrganizerMenu/>}
+     {role === 'participants' && <PartecipentMenu/>}
 
     <span className="flex py-6 items-center">
 

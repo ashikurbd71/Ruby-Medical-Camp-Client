@@ -1,122 +1,104 @@
-import React from 'react';
-import SectionTitle from '../../../Shared/SectionTitle';
-import { Helmet } from 'react-helmet';
+import React, { useState } from 'react';
 import Container from '../../../Shared/Container';
-import { FaEdit, FaTrashAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import SectionTitle from '../../../Shared/SectionTitle';
 import useAuth from '../../../Hook/useAuth';
-import axoissecure from '../../../Hook/Axoissecure';
+import { useQuery } from '@tanstack/react-query';
+
 import Loader from '../../../Shared/Loader';
+import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
-import { deleteStatus, updateStatus } from '../../../API/Register/Register';
-import { deleteCampdata } from '../../../API/CampsData/addCamp';
+import { deleteStatus, getemailCamp } from '../../../API/Register/Register';
+import { FaTrashAlt } from 'react-icons/fa';
+import BookingModal from '../../../Modal/BookingModal';
 
-const ManagesRegister = () => {
+// import { Link } from 'react-router-dom';
+// import CheckoutForm from '../../../From/CheckoutForm';
+// import Payment from './Payment';
 
-  const{user,loading} = useAuth()
-  const {
-      data: campdata = [],
-      isLoading,refetch
+const Registerdcamp = () => {
+
+  const[isOpen,setIsOpen] = useState(false)
+
+
+  const closeModal = () => {
+
+      setIsOpen(true)
+  }
+  
+    const{user,loading} = useAuth()
+    const {
+        data: campdata = [],
+        isLoading,refetch
+      
+      } = useQuery({
+        queryKey: ['registered',user?.email],
+        enabled: !loading && !!user?.email,
+        queryFn: async () => await getemailCamp(user?.email),
+      })
+  
+      if(isLoading){
+        return <Loader/>
+      }
+  
+        console.log(campdata)
+
+
+        const handledelte = (_id) => {
+
+            Swal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Yes, delete it!"
+          }).then(async (result) => {
+              if (result.isConfirmed) {
+                  const res = await deleteStatus(_id);
+                  console.log(res);
+                  if (res.deletedCount > 0) {
+                     
     
-    } = useQuery({
-      queryKey: ['register'],
-      enabled: !loading,
-      queryFn: async () => await axoissecure.get('/register-camp'),
-    })
-
-    if(isLoading){
-      return <Loader/>
-    }
-
-      console.log(campdata?.data)
-
-      // delete-------------------------------------------------
-
-      const handledelte = (_id) => {
-
-        Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!"
-      }).then(async (result) => {
-          if (result.isConfirmed) {
-              const res = await deleteStatus(_id);
-              console.log(res);
-              if (res.deletedCount > 0) {
-                 
-
-                  Swal.fire({
-                      position: "top-end",
-                      icon: "success",
-                      title: `your request has been deleted`,
-                      showConfirmButton: false,
-                      timer: 1500
-                  });
-
-                  refetch()
+                      Swal.fire({
+                          position: "top-end",
+                          icon: "success",
+                          title: `your request has been deleted`,
+                          showConfirmButton: false,
+                          timer: 1500
+                      });
+    
+                      refetch()
+                  }
+    
+    
               }
-
-
+          });
+    
+    
           }
-      });
-
-
-      }
-
-      //--------------------------- updateeeee
-
-
-
-
-      const handlestatus = async(_id) => {
-
-        console.log(_id)
-        const res = await updateStatus(_id)
-        console.log(res)
-      
-
-            console.log(res.data)
-
-            if(res.modifiedCount > 0){
-              refetch()
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title:'Confrim Request',
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-      
-
-      }
-
-
-      const handlespaid = () => {
-
-
-        
-      }
 
 
     return (
-<>
+       <>
 
 <Helmet>
-        <title>R M C || ManagesRegister</title>
+        <title>R M C || Registered Camps</title>
         
     </Helmet>
-        <div>
-            <SectionTitle heading={'Manages Register'} title={'All Register User'}/>
-        </div>
+       
+       <div>
+            <SectionTitle heading={'Registerd Camps'} title={'Your Restered Camp'}></SectionTitle>
+            </div>
 
-        <Container>
-        <div className="rounded-lg border border-gray-200">
+
+
+
+            <Container>
+
+
+
+ <div className="rounded-lg border border-gray-200">
   <div className="overflow-x-auto rounded-t-lg">
     <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
       <thead className="ltr:text-left rtl:text-right bg-[#1976D2]">
@@ -154,7 +136,7 @@ const ManagesRegister = () => {
       <tbody className="divide-y divide-[#1976D2]">
         
       {
-            campdata?.data?.map(data => 
+            campdata?.map(data => 
                 
                 <tr key={data?._id}>
                 <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
@@ -172,28 +154,31 @@ const ManagesRegister = () => {
                     </td>
                     <button>
                     <td className="whitespace-nowrap  font-medium  px-4 py-2 t text-green-500 ">
-                  {data?.status === 'Confrimed' ? 'Confrimed' : <button onClick={() => handlestatus(data?._id)} className='text-red-700'> Padding</button>}
+                 { data?.status === 'Comfrimed' ? 'Comfrimed' : <h1 className='text-red-600'>Pendding</h1> }
                     </td>
                     </button>
                    
                     <td  className="whitespace-nowrap px-4 py-2 t text-gray-900">
                      ${data?.campfees}
                     </td>
-
+    
+                   
                     <td  className="whitespace-nowrap px-4 py-2 t text-green-500 ">
-                     {data?.payment === 'paid' ? <button onClick={() => handlespaid(data?._id)} className='text-red-700'>Pendding</button> : <h1 className='text-red-500'>Unpaid</h1> }
+                    <BookingModal setIsOpen={setIsOpen} closeModal={closeModal} isOpen={isOpen} data={data}/>
+                     {data?.payment === 'paid' ? 'Paid' :<button onClick={()=> setIsOpen(true)} className='text-red-700'>Pay</button>}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-
-                      {/* to: conditional button base paid unpaid */}
-                  {
-                     data?.payment === 'unpaid'? "" : <button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button>
-                  }
                    
+                    
+                      {/* to: conditional button base paid unpaid */}
+                   <button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button>
                     </td>
+               
               </tr>   
-                
+               
                 )
+
+          
         }
                 
       
@@ -282,9 +267,13 @@ const ManagesRegister = () => {
   </div>
 </div>
 
-        </Container>
-</>
+
+
+            </Container>
+        
+         
+       </>
     );
 };
 
-export default ManagesRegister;
+export default Registerdcamp;

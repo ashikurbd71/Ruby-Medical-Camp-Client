@@ -1,15 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
-// import { Elements } from '@stripe/react-stripe-js'
-// import { format, getDate } from 'date-fns'
 import { Fragment } from 'react'
 import { useForm } from 'react-hook-form';
 import useAuth from '../Hook/useAuth';
 import Swal from 'sweetalert2';
 import { postRegister } from '../API/Register/Register';
-// import CheckoutForm from '../../From/CheckoutFrom'
-// import { loadStripe } from '@stripe/stripe-js'
 
-// const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK)
 
 const RegsiterModal = ({ closeModal, isOpen, item }) => {
 
@@ -22,6 +17,8 @@ const RegsiterModal = ({ closeModal, isOpen, item }) => {
 
           const registerInfo = {
             name: data.name,
+            campname:item?.campname,
+            location:item?.location,
             phone : data.phone,
             campfees: parseInt(data.fees) ,
             gender:data.gender,
@@ -141,8 +138,8 @@ const RegsiterModal = ({ closeModal, isOpen, item }) => {
     className="w-full rounded-lg  p-3  border-gray-300 text-gray-700 sm:text-sm"
   >
      {errors.gender && <span className="text-red-600">gender is required</span>}
-    <option value="Mela">Mela</option>
-    <option value="Mela">Mela</option>
+    <option value="Mela">Male</option>
+    <option value="Fmela">Fmela</option>
     <option value="Others">Others</option>
    
   </select>

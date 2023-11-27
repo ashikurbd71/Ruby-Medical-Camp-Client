@@ -20,22 +20,22 @@ const UpdateCamp = () => {
         const { register, handleSubmit,reset } = useForm()
         const onSubmit = async(data) => {
         
-            const imagefile = {image : data?.image[0]}
+          //   const imagefile = {image : data?.image[0]}
       
-            console.table(imagefile)
-            const res = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_API_KEY}`,imagefile,{
+          //   console.table(imagefile)
+          //   const res = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_API_KEY}`,imagefile,{
     
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-            })
-          console.log(res)
+          //   headers: {
+          //       'content-type': 'multipart/form-data'
+          //   }
+          //   })
+          // console.log(res)
           
  
     
          
               // now send the menu item data to the server with the image url
-              if (res.data.success){
+     
               
                 const campInfo = {
                     campname: data.name,
@@ -47,7 +47,6 @@ const UpdateCamp = () => {
                     date: data.date,
                     time:data.time,
                     message:data.message,
-                    image: res.data.data.display_url,
                     orgnaizer:{
                       email:user?.email,
                       name:user?.displayName
@@ -59,7 +58,7 @@ const UpdateCamp = () => {
              
               const campRes = await updateCampdata(campdata?._id,campInfo);
               console.log(campRes)
-              if(campRes.insertedId){
+              if(campRes.modifiedCount){
             
                   reset();
                   Swal.fire({
@@ -72,7 +71,7 @@ const UpdateCamp = () => {
       
                     console.log( 'with image url', res.data);
               }
-          }}
+            }
 
     return (
         <>
