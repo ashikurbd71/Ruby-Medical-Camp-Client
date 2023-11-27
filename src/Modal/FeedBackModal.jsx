@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import { useForm } from 'react-hook-form';
 import useAuth from '../Hook/useAuth';
 import Swal from 'sweetalert2';
-import { postRegister } from '../API/Register/Register';
+
 import { postFeedback } from '../API/Feedback/Feedback';
 
 

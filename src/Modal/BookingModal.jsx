@@ -40,7 +40,7 @@ const BookingModal = ({ closeModal, isOpen, data }) => {
                   as='h3'
                   className='text-lg font-medium text-center leading-6 text-gray-900'
                 >
-                  Review Info Before Reserve
+                  Before Payment Check Camp
                 </Dialog.Title>
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
@@ -63,7 +63,7 @@ const BookingModal = ({ closeModal, isOpen, data }) => {
 
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Price: $ {data?.campfees}
+                    Camp Fee: $ {data?.campfees}
                     
                   </p>
                 </div>

@@ -18,11 +18,16 @@ import BookingModal from '../../../Modal/BookingModal';
 const Registerdcamp = () => {
 
   const[isOpen,setIsOpen] = useState(false)
-
+  const [payments,setPayments] = useState()
 
   const closeModal = () => {
 
-      setIsOpen(true)
+      setIsOpen(false)
+  }
+
+  const hadnlemodal = (data) =>{
+    setPayments(data)
+    setIsOpen(true)
   }
   
     const{user,loading} = useAuth()
@@ -164,8 +169,8 @@ const Registerdcamp = () => {
     
                    
                     <td  className="whitespace-nowrap px-4 py-2 t text-green-500 ">
-                    <BookingModal setIsOpen={setIsOpen} closeModal={closeModal} isOpen={isOpen} data={data}/>
-                     {data?.payment === 'Confrimed' ? "paid":<button onClick={()=> setIsOpen(true)} className='text-red-700'>Pay</button>}
+                    
+                     {data?.payment === 'Confrimed' ? "paid":<button onClick={()=> hadnlemodal(data)} className='text-red-700'>Pay</button>}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
                    
@@ -272,6 +277,7 @@ const Registerdcamp = () => {
 
             </Container>
         
+            <BookingModal setIsOpen={setIsOpen} closeModal={closeModal} isOpen={isOpen} data={payments}/>
          
        </>
     );

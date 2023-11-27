@@ -8,12 +8,20 @@ import { getFeedback } from '../../../API/Feedback/Feedback';
 import Loader from '../../../Shared/Loader';
 import FeedBackModal from '../../../Modal/FeedBackModal';
 
+
 const FeedbackRatings = () => {
 
   const[isOpen,setIsOpen] = useState(false)
+  const[data,setData] = useState()
   const closeModal = () => {
 
       setIsOpen(false)
+  }
+ 
+  const handleopen = ( data) =>{
+
+     setData(data)
+     setIsOpen(true)
   }
 
   const{user,loading} = useAuth()
@@ -107,8 +115,8 @@ const FeedbackRatings = () => {
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
                    
-                    <FeedBackModal setIsOpen={setIsOpen} closeModal={closeModal} isOpen={isOpen} datas={data}/>
-                    <button onClick={() => setIsOpen(true)}
+                    
+                    <button onClick={() => handleopen(data)}
       className="inline-block rounded border border-current px-8 py-3 text-sm font-medium text-indigo-600 transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:text-indigo-500"
        href="/download"
        >
@@ -214,6 +222,7 @@ const FeedbackRatings = () => {
 
 
       </Container>
+      <FeedBackModal setIsOpen={setIsOpen} datas={data} closeModal={closeModal} isOpen={isOpen} />
       </>
     );
 };

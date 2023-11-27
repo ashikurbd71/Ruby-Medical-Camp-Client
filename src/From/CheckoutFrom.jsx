@@ -110,7 +110,7 @@ const CheckoutForm = ({ data, closeModal }) => {
 
                 const ress = await axoissecure.patch(`/payment/status/${data?._id}`)
 
-                console.log('update--->',data?._id)
+                console.log('update--->',ress.data)
 
              
                 if(res.data.insertedId){
