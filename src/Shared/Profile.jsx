@@ -16,7 +16,7 @@ const Profile = () => {
   return (
     <div className='flex justify-center items-center h-screen'>
       <Helmet>
-        <title>profile</title>
+        <title>Dashboard || Profile</title>
       </Helmet>
       <div className='bg-[#dad7cd] shadow-lg rounded-2xl w-3/5'>
         <img

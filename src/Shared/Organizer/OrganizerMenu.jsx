@@ -57,6 +57,39 @@ const OrganizerMenu = () => {
        </Link>
       </li>
 
+
+      
+      <li>
+       <Link to={'/dashboard/manage-registered-camps'}>
+       <button
+          href=""
+          className="block lg:text-lg  w-full rounded-lg  py-2  font-medium text-black hover:bg-gray-100 hover:text-gray-700"
+        >
+              <div className='flex items-center gap-1'>
+          <MdManageAccounts className='text-xl'/> 
+        <h1>UpComing Camp</h1>
+          </div>
+      
+        </button>
+       </Link>
+      </li>
+
+
+      <li>
+       <Link to={'/dashboard/manage-registered-camps'}>
+       <button
+          href=""
+          className="block lg:text-lg  w-full rounded-lg  py-2  font-medium text-black hover:bg-gray-100 hover:text-gray-700"
+        >
+              <div className='flex items-center gap-1'>
+          <MdManageAccounts className='text-xl'/> 
+        <h1>Manage Upcoming Camps</h1>
+          </div>
+      
+        </button>
+       </Link>
+      </li>
+
      
     </ul>
 

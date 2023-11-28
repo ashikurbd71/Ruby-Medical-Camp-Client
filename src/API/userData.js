@@ -23,6 +23,7 @@ export const getRole = async email => {
 
     console.log("email from 51 line",email)
     const{data} = await axoissecure.get(`/users/email/${email}`)
+    console.log(data)
     return data.role
 
 }
@@ -32,21 +33,30 @@ export const getRole = async email => {
 // post healcare dara
 
 
-export const postHealthcaredata = async profileinfo => {
+export const postHealthcaredata = async (email,profileinfo) => {
 
-    console.log("email from 51 line",profileinfo)
-    const{data} = await axoissecure.post('/healthcareprofile',profileinfo)
+    console.log("email from 51 line",email,profileinfo)
+    const{data} = await axoissecure.put(`/healthcareprofile/exit/${email}`,profileinfo)
     return data.role
 }
 
+
+// update data
+
+export const updateHealthcaredata = async (email,profileinfo) => {
+
+    console.log("email from 51 line",email,profileinfo)
+    const{data} = await axoissecure.patch(`/healthcareprofile/update/${email}`,profileinfo)
+    return data.role
+}
 
 // --------get data by email
 
 export const getHealthcaredata = async email => {
 
-    console.log("email from 51 line",email)
-    const{data} = await axoissecure.get(`/healthcareprofile/${email}`,)
-    return data.role
+    console.log("email from 48  line",email)
+    const{data} = await axoissecure.get(`/healthcareprofile/email/${email}`,)
+    return data
 }
 
 

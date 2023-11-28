@@ -3,12 +3,11 @@ import { Fragment } from 'react'
 import { useForm } from 'react-hook-form';
 import useAuth from '../Hook/useAuth';
 import Swal from 'sweetalert2';
-import { postRegister } from '../API/Register/Register';
 import axios from 'axios';
-import { postHealthcaredata } from '../API/userData';
+import { postHealthcaredata, updateHealthcaredata } from '../API/userData';
 
 
-const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
+const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
 
   
 
@@ -16,20 +15,6 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
     const { register, formState: { errors },handleSubmit,reset } = useForm()
 
     const onSubmit =async(data) => {
-    
-        const imagefile = {image : data?.image[0]}
-  
-        console.table(imagefile)
-        const res = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_API_KEY}`,imagefile,{
-          
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
-        })
-
-         
-        if (res.data.success) {
-
 
           const profileinfo = {
             name: data.name,
@@ -39,29 +24,29 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
             location : data.loaction,
              userimg:user?.photoURL,
              specialty:data.specialty,
-            certimg:res.data.data.image,
+      
                        
         }
 
-        const campRes = await postHealthcaredata(user?.email,profileinfo);
-   
+        const res = await updateHealthcaredata(user?.email,profileinfo);
         refetch()
-          if(campRes.insertedId){
-      
+        console.log('campRes:', res.data);
+
+       if (res.modifyCount > 0) {
             reset();
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `${user.name} Add Info Sucessfuly.`,
+                title: `${user.name} Add Info Successfully.`,
                 showConfirmButton: false,
                 timer: 1500
-              });
+            });
 
-              console.log( 'with image url', campRes.data);
-        }
+
+          }
       
 
-        }
+     
 
 
 
@@ -71,8 +56,8 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
         
         }
   return (
-    <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as='div' className='relative z-10 bg-[#EDF2F4]' onClose={closeModal}>
+    <Transition appear show={isOpens} as={Fragment}>
+      <Dialog as='div' className='relative z-10 bg-[#EDF2F4]' onClose={closeModals}>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -113,6 +98,7 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
               placeholder="Name"
               type="text"
               id="name"
+              defaultValue={info?.name}
             />
              {errors.name && <span className="text-red-600">name is required</span>}
           </div>
@@ -125,6 +111,7 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
                 placeholder="Phone Number"
                 type="tel"
                 id="phone"
+                defaultValue={info?.phone}
               />
                   {errors.phone && <span className="text-red-600">phone is required</span>}
             </div>
@@ -138,6 +125,7 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
                 placeholder="Email"
                 type="email"
                 id="email"
+                defaultValue={info?.emailid}
               />
                 {errors.age && <span className="text-red-600">age is required</span>}
             </div>
@@ -151,18 +139,20 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
                 placeholder="location"
                 type="text"
                 id="email"
+                defaultValue={info?.location}
               />
                 {errors.age && <span className="text-red-600">age is required</span>}
             </div>
 
             <div>
   
-
+            
   <select
     
     name="HeadlineAct"
     {...register('specialty', { required: true })}
     id="HeadlineAct"
+    defaultValue={info?.specialty}
     className="w-full rounded-lg  p-3  border-gray-300 text-gray-700 sm:text-sm"
   >
      {errors. specialty && <span className="text-red-600">gender is required</span>}
@@ -174,7 +164,7 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
 </div>
 
 
-<div className=' p-2 bg-white w-full  m-auto rounded-lg'>
+{/* <div className=' p-2 bg-white w-full  m-auto rounded-lg'>
               <div className='file_upload px-2 py-2 relative border-4 border-dotted border-gray-300 rounded-lg'>
                 <div className='flex flex-col w-full text-center'>
                   <label>
@@ -195,7 +185,7 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
                   </label>
                 </div>
               </div>
-            </div>
+            </div> */}
 
 
 
@@ -221,7 +211,7 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
               type="submit"
               className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
             >
-             Add Info
+             Update Profile
             </button>
           </div>
         </form>
@@ -237,4 +227,4 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
   )
 }
 
-export default InfoAddModal
+export default UpdateProfileModal

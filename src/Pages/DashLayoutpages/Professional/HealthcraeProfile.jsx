@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
 import Container from '../../../Shared/Container';
 import { Helmet } from 'react-helmet';
@@ -7,39 +7,64 @@ import useRole from '../../../Hook/userRole';
 import InfoAddModal from '../../../Modal/InfoAddModal';
 import { useQuery } from '@tanstack/react-query';
 import { getHealthcaredata } from '../../../API/userData';
+import Loader from '../../../Shared/Loader';
+import UpdateProfileModal from '../../../Modal/UpdateProfileModal';
 
 const HealthcraeProfile = () => {
 
     const[isOpen,setIsOpen] = useState(false)
+    const[isOpens,setIsOpens] = useState(false)
+   
     const closeModal = () => {
 
         setIsOpen(false)
     }
+
     const handleadd = () => {
 
         setIsOpen(true)
     }
 
 
+    const handleupdate = () => {
+
+      setIsOpens(true)
+
+    }
+    const closeModals = () => {
+
+      setIsOpens(false)
+  }
+
    
 
      
-
+  const [role] = useRole()
+  // const{infodata ,setinfodata} = useState(info)
      const { user, loading } = useAuth()
 
-     console.log(user?.email)
-    const { data: info, isLoading } = useQuery({
-      
+     
+     const { data: info, isLoading,refetch } = useQuery({
+      queryKey: ['updatebyprossionalprofile',user?.email],
       enabled: !loading && !!user?.email,
-      queryFn: async () => await getHealthcaredata(user?.email),
-      queryKey: ['healthcare'],
+      queryFn: async () =>  {return await getHealthcaredata(user?.email)},
+     
       
     })
+
+    console.log(info)
+ 
+
+
+
+    // if(isLoading){
+    //   return <Loader/>
+    // }
   
    
   
 
-  console.log(info)
+ 
 
     return (
      <>
@@ -53,7 +78,7 @@ const HealthcraeProfile = () => {
 
         <div className='flex mb-10 bg-gary-300 justify-center items-center h-full w-full'>
       <Helmet>
-        <title> HelatCare Profile</title>
+        <title> Dashbboard || HelatCare Profile</title>
       </Helmet>
       <div className=' min-h-secreen shadow-lg rounded-2xl w-3/5'>
         <img
@@ -65,25 +90,31 @@ const HealthcraeProfile = () => {
           <a href='#' className='relative block'>
             <img
               alt='profile'
-            //   src={user.photoURL}
+              src={info?.userimg}
               className='mx-auto object-cover rounded-full h-24 w-24  border-2 border-white '
             />
           </a>
 
           <p className='p-2 px-4 text-xs text-white bg-[#1976D2] rounded-full'>
-            {/* {role && role.toUpperCase()} */}
+            {role && role.toUpperCase()}
           </p>
         
           <div className='w-full p-2 mt-4 rounded-lg'>
             <div className='flex flex-wrap items-center justify-center text-sm text-gray-600 '>
               
               <div className='flex flex gap-3'>
-                <InfoAddModal closeModal={closeModal} isOpen={isOpen} />
+              <InfoAddModal closeModal={closeModal} isOpen={isOpen} refetch={refetch} />
+               {
+                info?.email === user?.email ?'':
+
+              
                 <button onClick={handleadd} className='bg-[#1976D2] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2] block mb-1'>
                  Add Details
                 </button>
+               }
                 
-                <button className='bg-[#1976D2] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2] block mb-1'>
+                 <UpdateProfileModal closeModals={closeModals} isOpens={isOpens} info={info} refetch={refetch}/>
+                <button onClick={handleupdate} className='bg-[#1976D2] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2] block mb-1'>
                  Update Profile
                 </button>
                 
@@ -92,28 +123,33 @@ const HealthcraeProfile = () => {
             </div>
 
  <hr className='my-3'/>
-              <div className='grid w-full mx-auto grid-cols-3 gap-3'>
 
-          <div className='flex flex-col '>
+ {/* {
+  info?.map(infos => )
+}
+   */}
+              <div className='grid w-full mx-auto grid-cols-3 gap-1'>
 
-            <h1 className='text-xl  font-semibold'>Name:</h1>
-              <p className='text-lg  font-extralight'>h</p>
+        <div className='flex flex-col '>
+
+            <h1 className='text-lg  font-semibold'>Name:</h1>
+              <p className='text-lg  font-extralight'>{info?.name}</p>
           </div>
 
 
 <div className='flex flex-col '>
 
-            <h1 className='text-xl  font-semibold'>certifications:</h1>
-              <img src="" alt="" className='h-16 w-16 rounded-lg object-cover shadow-sm' />
+            <h1 className='text-lg  font-semibold'>Certifications:</h1>
+              <img src={info?.certimg?.url} alt="" className='h-16 w-28 rounded-lg object-cover shadow-sm' />
           </div>
 
           <div className='flex flex-col '>
 
-            <h1 className='text-xl  font-semibold'>About:</h1>
-              <p className='text-lg  font-extralight'>Email:</p>
-              <p className='text-lg  font-extralight'>Phone:</p>
-              <p className='text-lg  font-extralight'>Location:</p>
-              <p className='text-lg  font-extralight'>specialty:</p>
+            <h1 className='text-xl  font-semibold'>Information:</h1>
+              <p className='text-lg  font-extralight'>Email: <span className=' font-medium text-sm'>{info?.emailid}</span></p>
+              <p className='text-lg  font-extralight'>Phone:  <span className=' font-medium text-sm'>{info?.phone}</span></p>
+              <p className='text-lg  font-extralight'>Location:  <span className=' font-medium text-sm'>{info?.location}</span></p>
+              <p className='text-lg  font-extralight'>specialty:  <span className=' font-medium text-sm'>{info?.specialty}</span></p>
 
             
           </div>
