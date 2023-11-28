@@ -134,7 +134,7 @@ const AvalibleCamps = () => {
              
            </dl>
            
-           <div className="mt-6 flex items-center gap-8 text-xs">
+           <div className="mt-6 flex items-center gap-5 text-xs">
              <div className="sm:inline-flex items-center flex sm:shrink-0 sm:items-center sm:gap-2">
                
               
@@ -180,17 +180,13 @@ const AvalibleCamps = () => {
              </div>
 
 
-             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-
-
-
-             </div>
+         
 
 
              <Link to={`/camp-details/${item?._id}`}>
               
               <a
-  className="inline-block rounded-full border border-indigo-600 p-3 text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
+  className="inline-block rounded-full border border-indigo-600 p-2 text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
   href="/download"
 >
   <span className="sr-only"> camp detils</span>

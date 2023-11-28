@@ -13,18 +13,28 @@ import { red } from '@mui/material/colors';
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import Groups2Icon from '@mui/icons-material/Groups2';
+import useAuth from '../Hook/useAuth';
+import { useQuery } from '@tanstack/react-query';
+import axoispublic from '../Hook/AxoissecurePublic';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Link } from 'react-router-dom';
 const PopularMedicalCamps = () => {
-    const[data,setData] = useState()
-  useEffect(() => {
+ 
+// 
 
-  
-  fetch('Campdata.json')
-  .then(res => res.json())
-  .then(data => setData(data))
+const { user, loading } = useAuth()
 
-  },[])
+console.log(user?.email)
+const { data: popularcamp, isLoading } = useQuery({
+ queryKey: ['popular',user?.email],
+ enabled: !loading && !!user?.email,
+ queryFn: async () =>  {return await axoispublic('/show-home')},
 
-  console.log(data?.Image)
+ 
+})
+console.log(popularcamp)
+
+
     return (
       
        <>
@@ -32,14 +42,26 @@ const PopularMedicalCamps = () => {
         
         <Container maxWidth="lg">
         <Box sx={{ width: '100%', my:10 }}>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 3 }}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 0 }}>
              
                   {
-                    data?.map(camp =><Grid sx={{mt:2}} key={camp?.title} item xs={8} sm={2} md={3} lg={4}>
-                        <Card sx={{maxHeight:500}}>
+                    popularcamp?.data?.map(camp =>
+                    
+                    <Grid sx={{mt:2 , px:1}} key={camp?._id} item xs={12} sm={2} md={3} lg={4} 
+                    
+                    style={{
+
+                      
+                      // display: 'flex',
+                      // justifyContent: 'center',
+                      // alignItems: 'center'
+                  }}
+                    
+                    >
+                        <Card sx={{maxHeight:500,maxWidth:500,}}>
                              <CardMedia
                                sx={{ height: 150 }}
-                               image='https://ibb.co/XZGgfcg'
+                               image={camp?.image}
                                
                                
                                title="green iguana"
@@ -47,34 +69,42 @@ const PopularMedicalCamps = () => {
                              <CardContent>
                               <Grid>
                               <Typography gutterBottom sx={{fontWeight:700}} variant="h6" component="div">
-                                 {camp?.CampName}
+                                 {camp?.campname}
                                </Typography >
-                               <Typography gutterBottom variant="h6" component="div">
-                               {camp?.CampFees}
+                               <Typography style={{display:'flex',justifyItems:'center'}} gutterBottom variant="h6" component="div">
+                               ${camp?.fees}
+                               <Button sx={{ml:24}} variant="outlined">join {camp?.registrationsCount}</Button>
                                </Typography>
                               </Grid>
                                <Typography variant="body2" color="text.secondary">
-                               <LocalHospitalIcon/>  {camp?.SpecializedServices}
+                               <LocalHospitalIcon/>  {camp?.services}
                                </Typography>
 
                                <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <PersonIcon/>  {camp?.HealthcareProfessionals}
+                               <PersonIcon/>  {camp?.professional}
                                </Typography>
 
                                <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <PinDropIcon/>  {camp?.VenueLocation}
+                               <PinDropIcon/>  {camp?.location}
                                </Typography>
-                        
+                               
                          <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                         <CalendarTodayIcon/> {camp?.ScheduledDateTime}
+                         <CalendarTodayIcon/> {camp?.date}
                                </Typography>
 
                                <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <Groups2Icon/>  {camp?.TargetAudience}
+                               <Groups2Icon/>  {camp?.audience}
                                </Typography>
 
-                        
+                               <Typography sx={{mt:2}} variant="body2" color="text.secondary">
+                               <Link to={`/camp-details/${camp?._id}`}>  <Button variant="contained">Details</Button></Link>
+                               </Typography>
+
+                               <Typography sx={{mt:2}} variant="body2" color="text.secondary">
+                               
+                               </Typography>
                              </CardContent>
+                           
                              <CardActions >
 
                               
@@ -87,7 +117,12 @@ const PopularMedicalCamps = () => {
                
            
         </Box>
-         
+
+     
+     <Link to={'/avaliblecamps'}>        
+     <Button variant="contained" >
+  SEE MORE CAMP <ArrowForwardIcon/>
+</Button></Link>
         </Container>
         </>
          );

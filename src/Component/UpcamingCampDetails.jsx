@@ -10,13 +10,25 @@ import RegsiterModal from '../Modal/RegsiterModal';
 import useAuth from '../Hook/useAuth';
 import useRole from '../Hook/userRole';
 import { Helmet } from 'react-helmet';
+import HealthcareRegisationModal from '../Modal/HealthcareRegisationModal';
+import PartecipentUpcamingRegister from '../Modal/PartecipentUpcamingRegister';
 
 const UpcamingCampDetails = () => {
     const[isOpen,setIsOpen] = useState(false)
+    const[isOpene,setIsOpene] = useState(false)
     const closeModal = () => {
 
         setIsOpen(false)
     }
+    const closeModale = () => {
+
+        setIsOpene(false)
+    }
+
+   const handlepro = () => {
+    setIsOpene(true)
+
+   }
   const item = useLoaderData()
   console.log(item)
   console.log(item)
@@ -134,16 +146,30 @@ const UpcamingCampDetails = () => {
 
 {
 
-    role === 'participants' ?
+    role === 'participants' &&
     <button 
     onClick={()=> setIsOpen(true) }
 
 className="inline-block rounded border border-current px-8 py-3 text-lg font-medium text-indigo-600 transition hover:-rotate-2 hover:scale-110 focus:outline-none focus:ring active:text-indigo-500"
 href="/download"
 >
-Join 
-</button> : ''
+Join Upcoming Camp 
+</button>
 }
+
+{
+
+role === 'professionals' &&
+<button 
+onClick={handlepro} 
+
+className="inline-block rounded border border-current px-8 py-3 text-lg font-medium text-indigo-600 transition hover:-rotate-2 hover:scale-110 focus:outline-none focus:ring active:text-indigo-500"
+href="/download"
+>
+Interested Camp 
+</button>
+}
+
 
             
 
@@ -155,7 +181,8 @@ Join
             
             </div>
 
-            <RegsiterModal closeModal={closeModal} item={item} isOpen={isOpen}></RegsiterModal>
+            <PartecipentUpcamingRegister closeModal={closeModal} item={item} isOpen={isOpen}></PartecipentUpcamingRegister>
+            <HealthcareRegisationModal closeModale={closeModale} item={item} isOpene={isOpene}/>
      </>
     );
 };

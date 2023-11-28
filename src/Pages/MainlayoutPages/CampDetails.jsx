@@ -128,7 +128,7 @@ const CampDetails = () => {
     <button 
     onClick={()=> setIsOpen(true) }
 
-className="inline-block rounded border border-current px-8 py-3 text-lg font-medium text-indigo-600 transition hover:-rotate-2 hover:scale-110 focus:outline-none focus:ring active:text-indigo-500"
+className="inline-block rounded border border-current px-5 py-3 text-lg font-medium text-indigo-600 transition hover:-rotate-2 hover:scale-110 focus:outline-none focus:ring active:text-indigo-500"
 href="/download"
 >
 Join 

@@ -19,9 +19,9 @@ const WhyChooseUs = () => {
 
       <Box sx={{ width: '100%', my:10 }}>
 
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 3 }}>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 0 }}>
 
-      <Grid sx={{mt:2}}  item xs={8} sm={2} md={3} lg={4}>
+      <Grid sx={{mt:2,px:1}}  item xs={12} sm={2} md={3} lg={4}>
 
       <Card sx={{ minWidth: 275, }}>
       <CardContent style={{textAlign:'center'}}>
@@ -47,7 +47,7 @@ const WhyChooseUs = () => {
 
 {/* card2 */}
 
-<Grid sx={{mt:2}}  item xs={8} sm={2} md={3} lg={4}>
+<Grid sx={{mt:2,px:1}}  item xs={12} sm={2} md={3} lg={4}>
 
       <Card sx={{ minWidth: 275, }}>
       <CardContent style={{textAlign:'center'}}>
@@ -74,7 +74,7 @@ const WhyChooseUs = () => {
       {/* card3 */}
 
 
-      <Grid sx={{mt:2}}  item xs={8} sm={2} md={3} lg={4}>
+      <Grid sx={{mt:2}}  item xs={12} sm={2} md={3} lg={4}>
 
       <Card sx={{ minWidth: 275, }}>
       <CardContent style={{textAlign:'center'}}>
