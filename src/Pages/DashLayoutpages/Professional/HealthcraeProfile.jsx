@@ -8,6 +8,7 @@ import InfoAddModal from '../../../Modal/InfoAddModal';
 import { useQuery } from '@tanstack/react-query';
 import { getHealthcaredata } from '../../../API/userData';
 import Loader from '../../../Shared/Loader';
+import img from '../../../assets/banner-2 (2).jpg'
 import UpdateProfileModal from '../../../Modal/UpdateProfileModal';
 
 const HealthcraeProfile = () => {
@@ -57,9 +58,9 @@ const HealthcraeProfile = () => {
 
 
 
-    // if(isLoading){
-    //   return <Loader/>
-    // }
+    if(isLoading){
+      return <Loader/>
+    }
   
    
   
@@ -83,7 +84,7 @@ const HealthcraeProfile = () => {
       <div className=' min-h-secreen shadow-lg rounded-2xl w-3/5'>
         <img
           alt='profile'
-         
+          src={img}
           className='w-full mb-4 rounded-t-lg h-36'
         />
         <div className='flex flex-col items-center justify-center p-4 -mt-16'>

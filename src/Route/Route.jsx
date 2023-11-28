@@ -19,6 +19,10 @@ import FeedbackRatings from "../Pages/DashLayoutpages/Particepnts/FeedbackRating
 import PaymentHistory from "../Pages/DashLayoutpages/Particepnts/PaymentHistory";
 import HealthcraeProfile from "../Pages/DashLayoutpages/Professional/HealthcraeProfile";
 import Professionalroute from "./Professionalroute";
+import UpcomingCamp from "../Component/UpcomingCamp";
+import MnagesUpcamingCamp from "../Pages/DashLayoutpages/Organizers/Upcomingcamp/MnagesUpcamingCamp";
+import AddUpcomingCamp from "../Pages/DashLayoutpages/Organizers/Upcomingcamp/AddUpcomingCamp";
+import UpcamingCampDetails from "../Component/UpcamingCampDetails";
 // import Payment from "../Pages/DashLayoutpages/Particepnts/Payment";
 
 const router = createBrowserRouter([
@@ -40,6 +44,12 @@ const router = createBrowserRouter([
          element:<PrivteRoute><CampDetails/></PrivteRoute>,
          loader: ({params}) => fetch (`http://localhost:5000/all-camp/${params.campId}`)
         },
+        {
+         path:'/upcamingcamp-details/:upcamingcampId',
+         element:<PrivteRoute><UpcamingCampDetails/></PrivteRoute>,
+         loader: ({params}) => fetch (`http://localhost:5000/all-upcamingcamp/${params.upcamingcampId}`)
+        },
+
 
         
 
@@ -80,11 +90,23 @@ const router = createBrowserRouter([
             path:'/dashboard/profile',
             element:<PrivteRoute><Profile/></PrivteRoute>
          },
+    
          {
             path:'/dashboard/update-camp/:campId',
             element:<OrganizerRoute><UpdateCamp/></OrganizerRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/all-camp/${params.campId}`)
          },
+         {
+            path:'/dashboard/add-upcoming-camp',
+            element:<OrganizerRoute><AddUpcomingCamp/></OrganizerRoute>,
+          
+         },
+         {
+            path:'/dashboard/manage-upcoming-camps',
+            element:<OrganizerRoute><MnagesUpcamingCamp/></OrganizerRoute>,
+          
+         },
+
 
 
          // --------------------------- Partesipant Routee--------------------------------

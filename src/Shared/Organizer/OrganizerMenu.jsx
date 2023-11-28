@@ -3,6 +3,8 @@ import { MdAddBusiness } from "react-icons/md";
 import { MdOutlineManageHistory } from "react-icons/md"
 import { MdManageAccounts } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import { LuCalendarClock } from "react-icons/lu";
+import { MdAddHomeWork } from "react-icons/md";
 const OrganizerMenu = () => {
     return (
         <div>
@@ -58,15 +60,20 @@ const OrganizerMenu = () => {
       </li>
 
 
+      <span className="flex items-center">
+  <span className="h-px flex-1 bg-black"></span>
+
+  <span className="h-px flex-1 bg-black"></span>
+</span>
       
       <li>
-       <Link to={'/dashboard/manage-registered-camps'}>
+       <Link to={'/dashboard/add-upcoming-camp'}>
        <button
           href=""
           className="block lg:text-lg  w-full rounded-lg  py-2  font-medium text-black hover:bg-gray-100 hover:text-gray-700"
         >
               <div className='flex items-center gap-1'>
-          <MdManageAccounts className='text-xl'/> 
+          <LuCalendarClock className='text-xl'/> 
         <h1>UpComing Camp</h1>
           </div>
       
@@ -76,14 +83,14 @@ const OrganizerMenu = () => {
 
 
       <li>
-       <Link to={'/dashboard/manage-registered-camps'}>
+       <Link to={'/dashboard/manage-upcoming-camps'}>
        <button
           href=""
           className="block lg:text-lg  w-full rounded-lg  py-2  font-medium text-black hover:bg-gray-100 hover:text-gray-700"
         >
               <div className='flex items-center gap-1'>
-          <MdManageAccounts className='text-xl'/> 
-        <h1>Manage Upcoming Camps</h1>
+          <MdAddHomeWork className='text-lg'/> 
+        <h1>Manage Upcaming Camps</h1>
           </div>
       
         </button>

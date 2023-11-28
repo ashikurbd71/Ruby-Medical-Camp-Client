@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import { useForm } from 'react-hook-form';
 import useAuth from '../Hook/useAuth';
 import Swal from 'sweetalert2';
-import axios from 'axios';
+
 import { postHealthcaredata, updateHealthcaredata } from '../API/userData';
 
 
@@ -14,36 +14,42 @@ const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
     const {user} = useAuth()
     const { register, formState: { errors },handleSubmit,reset } = useForm()
 
-    const onSubmit =async(data) => {
+    const onSubmit =(data) => {
 
-          const profileinfo = {
-            name: data.name,
-            phone:data?.phone,
-            emailid:data?.email,
-            email:user?.email,
-            location : data.loaction,
-             userimg:user?.photoURL,
-             specialty:data.specialty,
-      
-                       
-        }
+      const profileinfo = {
+        name: data.name,
+        phone: data?.phone,
+        emailid: data?.email,
+        email: user?.email,
+        location: data.loaction,
+        userimg: user?.photoURL,
+        specialty: data.specialty,
+    };
 
-        const res = await updateHealthcaredata(user?.email,profileinfo);
-        refetch()
-        console.log('campRes:', res.data);
+    updateHealthcaredata(user?.email, profileinfo)
+        .then((res) => {
+            console.log('campRes:', res.data);
 
-       if (res.modifyCount > 0) {
-            reset();
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `${user.name} Add Info Successfully.`,
-                showConfirmButton: false,
-                timer: 1500
-            });
+            if (res.modifyCount > 0) {
+                reset();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${user.name} Add Info Successfully.`,
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
+        })
+        .then(() => {
+            refetch();
+        })
+        .catch((error) => {
+            console.error('Error during update:', error);
+        });
+};
 
-
-          }
+          
       
 
      
@@ -54,7 +60,7 @@ const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
 
 
         
-        }
+        
   return (
     <Transition appear show={isOpens} as={Fragment}>
       <Dialog as='div' className='relative z-10 bg-[#EDF2F4]' onClose={closeModals}>

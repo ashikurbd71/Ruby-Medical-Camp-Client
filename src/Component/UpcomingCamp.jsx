@@ -13,18 +13,26 @@ import { red } from '@mui/material/colors';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import Groups2Icon from '@mui/icons-material/Groups2';
 import PinDropIcon from '@mui/icons-material/PinDrop';
+import axoispublic from '../Hook/AxoissecurePublic';
+import useAuth from '../Hook/useAuth';
+import { useQuery } from '@tanstack/react-query';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import { Link } from 'react-router-dom';
 const UpcomingCamp = () => {
-    const[data,setData] = useState()
-  useEffect(() => {
+ 
 
-  
-  fetch('Campdata.json')
-  .then(res => res.json())
-  .then(data => setData(data))
+  const { user, loading } = useAuth()
 
-  },[])
+     
+     const { data: upcoming, isLoading,refetch } = useQuery({
+      queryKey: ['upcoming',user?.email],
+      enabled: !loading && !!user?.email,
+      queryFn: async () =>  {return await axoispublic('/all-upcamingcamp')},
+     
+      
+    })
+ console.log(upcoming)
 
-  console.log(data?.Image)
     return (
       
        <>
@@ -35,11 +43,11 @@ const UpcomingCamp = () => {
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 3 }}>
              
                   {
-                    data?.map(camp =><Grid sx={{mt:2}} key={camp?.title} item xs={8} sm={2} md={3} lg={4}>
+                    upcoming?.data?.map(camp =><Grid sx={{mt:2}} key={camp?.title} item xs={8} sm={2} md={3} lg={4}>
                         <Card sx={{maxHeight:500}}>
                              <CardMedia
                                sx={{ height: 150 }}
-                               image={camp?.Image}
+                               image={camp?.image}
                                
                                
                                title="green iguana"
@@ -47,30 +55,30 @@ const UpcomingCamp = () => {
                              <CardContent>
                               <Grid>
                               <Typography gutterBottom sx={{fontWeight:700}} variant="h6" component="div">
-                                 {camp?.CampName}
+                                 {camp?.campname}
                                </Typography >
                                <Typography gutterBottom variant="h6" sx={{textColor:'#1976D2'}} component="div">
-                               {camp?.CampFees}
+                               ${camp?.fees}
                                </Typography>
                               </Grid>
                                <Typography variant="body2" color="text.secondary">
-                               <LocalHospitalIcon/>  {camp?.SpecializedServices}
+                               <LocalHospitalIcon/>  {camp?.services}
                                </Typography>
 
                                <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <PersonIcon/>  {camp?.HealthcareProfessionals}
+                               <AccessAlarmIcon/>  {camp?.time}
                                </Typography>
 
                                 <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <PinDropIcon/>  {camp?.VenueLocation}
+                               <PinDropIcon/>  {camp?.location}
                                </Typography>
 
                                           <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                         <CalendarTodayIcon/> {'upcoming'}
+                         <CalendarTodayIcon/> {camp?.date}
                                </Typography>
 
                                <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <Groups2Icon/>  {camp?.TargetAudience}
+                               <Groups2Icon/>  {camp?.audience}
                                </Typography>
 
 
@@ -79,6 +87,11 @@ const UpcomingCamp = () => {
                               
                              
                              </CardActions>
+
+                              <Link to={`/upcamingcamp-details/${camp?._id}`}>
+                              <Button variant="contained" disableElevation>
+                                     View Details
+                                     </Button></Link>
                            </Card>
                          </Grid>  )
                   }
