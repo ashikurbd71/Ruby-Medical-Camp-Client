@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../Hook/useAuth';
 import Swal from 'sweetalert2';
 
-import { postHealthcaredata, updateHealthcaredata } from '../API/userData';
+import {  updateHealthcaredata } from '../API/userData';
 
 
 const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
@@ -14,7 +14,7 @@ const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
     const {user} = useAuth()
     const { register, formState: { errors },handleSubmit,reset } = useForm()
 
-    const onSubmit =(data) => {
+    const onSubmit =  (data) => {
 
       const profileinfo = {
         name: data.name,
@@ -26,31 +26,37 @@ const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
         specialty: data.specialty,
     };
 
-    updateHealthcaredata(user?.email, profileinfo)
-        .then((res) => {
-            console.log('campRes:', res.data);
+   
+    try {
+      const campRes =  updateHealthcaredata(user?.email, profileinfo);
+      refetch()
+      console.log('Database response:', campRes.data);
 
-            if (res.modifyCount > 0) {
-                reset();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: `${user.name} Add Info Successfully.`,
-                    showConfirmButton: false,
-                    timer: 1500,
-                });
-            }
-        })
-        .then(() => {
-            refetch();
-        })
-        .catch((error) => {
-            console.error('Error during update:', error);
-        });
+      
+      if(campRes.insertedId){
+  
+        reset();
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} Add Info Sucessfuly.`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+
+          console.log( 'with image url', campRes.data);
+    }
+      // Continue with the rest of your code
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle the error if needed
+    }
+
+
 };
 
           
-      
+
 
      
 

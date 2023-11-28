@@ -43,22 +43,32 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
                        
         }
 
-        const campRes = await postHealthcaredata(user?.email,profileinfo);
-   
-        refetch()
-          if(campRes.insertedId){
-      
-            reset();
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `${user.name} Add Info Sucessfuly.`,
-                showConfirmButton: false,
-                timer: 1500
-              });
+     
+          try {
+            const campRes = await postHealthcaredata(user?.email, profileinfo);
+            console.log('Database response:', campRes);
 
-              console.log( 'with image url', campRes.data);
-        }
+            refetch()
+            if(campRes.insertedId){
+        
+              reset();
+              Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: `${user.name} Add Info Sucessfuly.`,
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+  
+                console.log( 'with image url', campRes.data);
+          }
+            // Continue with the rest of your code
+          } catch (error) {
+            console.error('Error:', error);
+            // Handle the error if needed
+          }
+    
+       
       
 
         }

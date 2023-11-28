@@ -26,7 +26,7 @@ const UpcomingCamp = () => {
      
      const { data: upcoming, isLoading,refetch } = useQuery({
       queryKey: ['upcoming',user?.email],
-      enabled: !loading && !!user?.email,
+      // enabled: !loading && !!user?.email,
       queryFn: async () =>  {return await axoispublic('/all-upcamingcamp')},
      
       

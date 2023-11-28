@@ -27,7 +27,7 @@ const { user, loading } = useAuth()
 console.log(user?.email)
 const { data: popularcamp, isLoading } = useQuery({
  queryKey: ['popular',user?.email],
- enabled: !loading && !!user?.email,
+ 
  queryFn: async () =>  {return await axoispublic('/show-home')},
 
  
