@@ -15,7 +15,7 @@ const PaymentHistory = () => {
     
     } = useQuery({
       queryKey: ['register'],
-      enabled: !loading || user?.email,
+      // enabled: !loading || user?.email,
       queryFn: async () => await getPaymnet(user?.email),
     })
 
@@ -81,7 +81,7 @@ const PaymentHistory = () => {
                  ${data?.price}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-                  {data?.paymnet === 'confrimed' ? "confrimed" : <h1 className='text-red-500'>Pedding</h1>}
+                  {data?.paymnet === 'paid' ? "paid" : <h1 className='text-red-500'>unpaid</h1>}
                     </td>
                     <button>
                     <td className="whitespace-nowrap  font-medium  px-4 py-2 t text-green-500 ">

@@ -1,16 +1,18 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { useForm } from 'react-hook-form';
-import useAuth from '../Hook/useAuth';
+
 import Swal from 'sweetalert2';
+
+
+
+
+import { postHealthcaredata } from '../API/userData';
+import useAuth from '../Hook/useAuth';
 import useRole from '../Hook/userRole';
-import { postUpcomingRegsiter } from '../API/UpcamingCamp/UpcamingCamp';
-import { updateprofileOrgarole } from '../API/PorfileUpdate/OrganizerProfile';
 
 
-const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
-
-    console.log(info?.data?.story )
+const PartecipentProfileModal = ({ closeModalss, Opens}) => {
 
     const {user} = useAuth()
     const[role] = useRole()
@@ -19,20 +21,21 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
     const onSubmit =async(data) => {
     
          
-        const Info = {
-            name: data.name,
+
+          const Info = {
+          
             phone:data?.phone,
-            impact:data.adress,
-            story:data.message,
+            preferences :data.preferences ,
+            Interests :data.interests ,
             adress:data.adress,
             date:  new Date(),
             email: user?.user,
             role:role,
         }
 
-        const res = await   updateprofileOrgarole(role, Info);
-        console.log(res.data)
-        if(res.data.modifiedCount > 0){
+        const campRes = await postHealthcaredata(user?.email,Info);
+        console.log(campRes.data.data)
+        if(campRes.data.data.insertedId){
       
             reset();
             Swal.fire({
@@ -51,8 +54,8 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
         
         }
   return (
-    <Transition appear show={Open} as={Fragment}>
-      <Dialog as='div' className='relative z-10 bg-[#EDF2F4]' onClose={closeModals}>
+    <Transition appear show={Opens} as={Fragment}>
+      <Dialog as='div' className='relative z-10 bg-[#EDF2F4]' onClose={closeModalss}>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -81,7 +84,7 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
                   as='h3'
                   className='text-xl font-medium text-center leading-6 text-[#1976D2]'
                 >
-              Update Your Profile
+               Create Your Profile
                 </Dialog.Title>
                 <div className="  lg:col-span-3 lg:p-12">
                 <form onSubmit={handleSubmit(onSubmit)}  className="space-y-4">
@@ -93,7 +96,6 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
               placeholder="Phone"
               type="text"
               id="name"
-              defaultValue={info?.data?.phone}
             />
              {errors.phone && <span className="text-red-600">name is required</span>}
           </div>
@@ -109,7 +111,6 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
                 placeholder="adress"
                 type="text"
                 id="email"
-                defaultValue={info?.data?.adress}
               />
                 {errors.adress && <span className="text-red-600">phone is required</span>}
             </div>
@@ -128,14 +129,13 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
             <label className="sr-only" >Message</label>
 
             <textarea
-               {...register('message', { required: true })}
+               {...register('preferences', { required: true })}
               className="w-full rounded-lg border-gray-200 p-3 text-sm"
-              placeholder=" organizer's impact,"
+              placeholder=" personal preferences,"
               rows="3"
               id="message"
-              defaultValue={info?.data?.impact}
             ></textarea>
-             {errors.message && <span className="text-red-600">message is required</span>}
+             {errors.preferences && <span className="text-red-600">message is required</span>}
           </div>
 
 
@@ -144,14 +144,13 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
             <label className="sr-only" >Message</label>
 
             <textarea
-               {...register('message', { required: true })}
+               {...register('interests', { required: true })}
               className="w-full rounded-lg border-gray-200 p-3 text-sm"
-              placeholder="success stories"
+              placeholder="Interests in specific medical areas"
               rows="3"
               id="message"
-              defaultValue={info?.data?.story}
             ></textarea>
-             {errors.message && <span className="text-red-600">message is required</span>}
+             {errors.interests && <span className="text-red-600">message is required</span>}
           </div>
 
           <div className="mt-4">
@@ -159,7 +158,7 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
               type="submit"
               className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
             >
-       Update Profile
+          Create Profile
             </button>
           </div>
         </form>
@@ -175,4 +174,4 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
   )
 }
 
-export default OrganizerUpdateModal
+export default PartecipentProfileModal

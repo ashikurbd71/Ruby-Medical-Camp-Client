@@ -22,6 +22,7 @@ import MnagesUpcamingCamp from "../Pages/DashLayoutpages/Organizers/Upcomingcamp
 import AddUpcomingCamp from "../Pages/DashLayoutpages/Organizers/Upcomingcamp/AddUpcomingCamp";
 import UpcamingCampDetails from "../Component/UpcamingCampDetails";
 import OrganizerProfile from "../Pages/DashLayoutpages/Organizers/OrganizerProfile";
+import PartrcipentProfile from "../Pages/DashLayoutpages/Particepnts/PartrcipentProfile";
 // import Payment from "../Pages/DashLayoutpages/Particepnts/Payment";
 
 const router = createBrowserRouter([
@@ -133,6 +134,11 @@ const router = createBrowserRouter([
          {
             path:'/dashboard/payment-history',
             element:<PrivteRoute><PaymentHistory/></PrivteRoute>
+           
+         },
+         {
+            path:'/dashboard/partrcipentProfile',
+            element:<PrivteRoute><PartrcipentProfile/></PrivteRoute>
            
          },
      

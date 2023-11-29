@@ -5,22 +5,23 @@ import useRole from "../../../Hook/userRole";
 import { Helmet } from "react-helmet";
 import Container from "../../../Shared/Container";
 
-import OrganizerProfileModal from "../../../Modal/OrganizerProfileModal";
 import axoissecure from "../../../Hook/Axoissecure";
 import { useQuery } from "@tanstack/react-query";
-import OrganizerUpdateModal from "../../../Modal/OrganizerUpdateModal";
 
-const OrganizerProfile = () => {
+import PartecipentProfileModal from "../../../Modal/PartecipentProfileModal";
+import PartecipentUpdateModal from "../../../Modal/PartecipentUpdateModal";
+
+const PartrcipentProfile = () => {
   const { user, logOut,loading } = useAuth();
   const [role] = useRole();
   console.log(user);
 
   const [isOpen,setIsOpen] = useState(false)
-  const[Open,setOpen] = useState(false)
+  const[Opens,setOpens] = useState(false)
 
-  const closeModals = () => {
+  const closeModalss = () => {
 
-    setOpen(false)
+    setOpens(false)
   }
 
   const closeModal = () => {
@@ -37,38 +38,24 @@ const OrganizerProfile = () => {
 
 
      
-     const { data: info, isLoading,refetch } = useQuery({
-      queryKey: ['updatebyprossionalprofileinfo',user?.email],
+     const { data: partecipentdata } = useQuery({
+      queryKey: ['partecipentdatainfo',user?.email],
       enabled: !loading && !!user?.email,
       queryFn: async () =>  {return await axoissecure.get(`healthcareprofile/role/${role}`)},
      
       
     })
 
-    // console.log(info?.data)
+
+    console.log(partecipentdata?.data)
 
 
-    const { data: organozercamp } = useQuery({
-      queryKey: ['organozercamps',user?.email],
-      enabled: !loading && !!user?.email,
-      queryFn: async () =>  {return await axoissecure.get(`/add-a-camp/${user?.email}`)},
-     
-      
-    })
 
-    // console.log(organozercamp?.data)
+ 
 
 
     
-    const { data: feedbacks } = useQuery({
-      queryKey: ['feedbackS',role],
-      enabled: !loading && !!role,
-      queryFn: async () =>  {return await axoissecure.get('/feedback-camp')},
-     
-      
-    })
-
-    console.log(feedbacks?.data)
+ 
 
 
    
@@ -82,7 +69,7 @@ const OrganizerProfile = () => {
       <Container>
         <div className="w-full min-h-screen">
           <Helmet>
-            <title>Dashboard || Organizer Profile</title>
+            <title>Dashboard || Partecipent Profile</title>
           </Helmet>
           <div className="bg-[#dad7cd] shadow-lg rounded-2xl ">
             <img
@@ -107,18 +94,20 @@ const OrganizerProfile = () => {
               </p>
               <div className="flex mt-5 lg:flex-row flex-col  gap-3">
                 {
-                    user.email === info?.data?.email ? '' : <button onClick={() => setIsOpen(true)} className="bg-[#1976D2] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2] block mb-1">
+
+   partecipentdata?.data?.email === user?.email ? '' :
+                 <button onClick={() => setOpens(true)} className="bg-[#1976D2] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2] block mb-1">
                     Create Profile
                   </button>
                 
                 }
               
-                <button onClick={() => setOpen(true)} className="bg-[#1976D2] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2]">
+                <button onClick={() => setIsOpen(true)} className="bg-[#1976D2] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2]">
                   Update Profile
                 </button>
               
-                <OrganizerProfileModal isOpen={isOpen} closeModal={closeModal}/>
-                <OrganizerUpdateModal closeModals={closeModals} Open={Open} info={info}></OrganizerUpdateModal>
+                <PartecipentUpdateModal isOpen={isOpen} closeModal={closeModal} partecipentdata={partecipentdata?.data}/> 
+                <PartecipentProfileModal closeModalss={closeModalss} Opens={Opens}></PartecipentProfileModal> 
                 <button
                   onClick={handlelogout}
                   className="bg-[#1976D2] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2]"
@@ -146,12 +135,12 @@ const OrganizerProfile = () => {
    
             <p className="flex flex-col">
               Phone
-              <span className="font-bold text-black ">{info?.data?.phone}</span>
+              <span className="font-bold text-black ">{partecipentdata?.data.phone}</span>
             </p>
 
             <p className="flex flex-col">
               Adress
-              <span className="font-bold text-black ">{info?.data?.adress}</span>
+              <span className="font-bold text-black ">{partecipentdata?.data.adress}</span>
             </p>
           </div>
 
@@ -159,13 +148,13 @@ const OrganizerProfile = () => {
             <div className="span col-span-4 mt-5">
               <h1 className="text-lg font-medium">
                 {" "}
-                Organizer impact :{" "}
+                personal preferences :{" "}
               </h1>
-              {info?.data?.impact}
+              {partecipentdata?.data.preferences}
             </div>
             <div className="span mt-5 col-span-4">
-              <h1 className="text-lg font-medium"> Success Stroy : </h1>
-             {info?.data?.story}
+              <h1 className="text-lg font-medium"> Interests in specific medical areas : </h1>
+             {partecipentdata?.data.Interests}
             </div>
           </div>
 
@@ -174,54 +163,7 @@ const OrganizerProfile = () => {
 
  
 
-                 <div className="mt-5 grid grid-cols-8">
-
-                    <div className="span col-span-4">
-                    <h1 className="text-xl  font font-medium my-3"> Organized camps : </h1>
-                      <div className="grid grid-cols-2 gap-2">
-
-                     
-
-                      {
-                       
-                       organozercamp?.data?.map(infos => 
-
-                        <div key={infos?._id}>
-                        <img src={infos?.image} alt="" className="w-20 h-10"  />
-                     <p className="text-sm">{infos?.campname}</p>
-                       </div>
-                       )
-
-
-                      }
-                      </div>
- 
-                    </div>
-
-
-                     <div className="span col-span-4">
-                     <h1 className="text-xl  font font-medium my-3"> Partecipent Feedback : </h1>
-                        <div className=" grid grid-cols-2 gap-2">
-                            {
-
-                             feedbacks?.data?.map(infoss => 
-                              
-
-                              <div key={infoss?._id}>
-                              <div className='flex  justify-center item-center'>
-                              <img src={infoss?.photo} alt="" className="rouned rounded-full w-10 h-10" />
-                              </div>
-                           <p className="text-center">{infoss?.feedback}</p>
-
-                             </div>
-                              )
-
-                            }
-                        </div>
-
-                     </div>
-
-                 </div>
+               
               </div>
             </div>
           </div>
@@ -231,4 +173,4 @@ const OrganizerProfile = () => {
   );
 };
 
-export default OrganizerProfile;
+export default PartrcipentProfile;

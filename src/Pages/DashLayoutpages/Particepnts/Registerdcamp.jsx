@@ -170,13 +170,13 @@ const Registerdcamp = () => {
                    
                     <td  className="whitespace-nowrap px-4 py-2 t text-green-500 ">
                     
-                     {data?.payment === 'Confrimed' ? "paid":<button onClick={()=> hadnlemodal(data)} className='text-red-700'>{data?.payment === 'paid' ? 'pedding' : 'pay'}</button>}
+                     {data?.payment === 'paid' ? "paid":<button onClick={()=> hadnlemodal(data)} className='text-red-700'>pay</button>}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
                    
                     
                       {/* to: conditional button base paid unpaid */}
-                   {data?.payment === 'Confrimed' ? '' :<button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button> }
+                   {data?.payment === 'paid' ? '' :<button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button> }
                   
                     </td>
                

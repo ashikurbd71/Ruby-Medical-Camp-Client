@@ -1,8 +1,12 @@
 import React from 'react';
 import { FaBook, FaPaypal, FaQuoteLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useAuth from '../../Hook/useAuth';
 
 const PartecipentMenu = () => {
+
+  const {user} = useAuth()
+
     return (
         <div>
                     <div>
@@ -56,11 +60,32 @@ const PartecipentMenu = () => {
                 </button>
                </Link>
               </li>
+
+
+
         
              
             </ul>
         
                 </div>
+
+                <Link to={'/dashboard/partrcipentProfile'}>
+   
+   <div className=" mt-10 inset-x-0 bottom-0 border-t">
+    <a href="#" className="flex gap-2 items-center  mt-5 w-full ">
+      <img
+        alt="Man"
+        src={user?.photoURL}
+        className="h-10 w-10 rounded-full object-cover"
+      />
+
+      <div className='text-lg font-semibold'>
+         <p className='text-sm'>Profile</p>
+        Partecipent
+      </div>
+    </a>
+  </div>
+   </Link>
         </div>
     );
 };

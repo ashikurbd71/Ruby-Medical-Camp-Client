@@ -4,13 +4,12 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../Hook/useAuth';
 import Swal from 'sweetalert2';
 import useRole from '../Hook/userRole';
-import { postUpcomingRegsiter } from '../API/UpcamingCamp/UpcamingCamp';
-import { updateprofileOrgarole } from '../API/PorfileUpdate/OrganizerProfile';
+import { updateprofileOrgarole, updateprofilePartecipent } from '../API/PorfileUpdate/OrganizerProfile';
 
 
-const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
+const PartecipentUpdateModal = ({ closeModal, isOpen, partecipentdata }) => {
 
-    console.log(info?.data?.story )
+    console.log(partecipentdata )
 
     const {user} = useAuth()
     const[role] = useRole()
@@ -20,17 +19,17 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
     
          
         const Info = {
-            name: data.name,
+          
             phone:data?.phone,
-            impact:data.adress,
-            story:data.message,
+            preferences :data.preferences ,
+            Interests :data.interests ,
             adress:data.adress,
             date:  new Date(),
             email: user?.user,
             role:role,
         }
 
-        const res = await   updateprofileOrgarole(role, Info);
+        const res = await   updateprofilePartecipent(role, Info);
         console.log(res.data)
         if(res.data.modifiedCount > 0){
       
@@ -43,7 +42,7 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
                 timer: 1500
               });
 
-              console.log( 'with image url', campRes.data);
+            
         }
         console.table(Info)
 
@@ -51,8 +50,8 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
         
         }
   return (
-    <Transition appear show={Open} as={Fragment}>
-      <Dialog as='div' className='relative z-10 bg-[#EDF2F4]' onClose={closeModals}>
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as='div' className='relative z-10 bg-[#EDF2F4]' onClose={closeModal}>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -93,7 +92,7 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
               placeholder="Phone"
               type="text"
               id="name"
-              defaultValue={info?.data?.phone}
+              defaultValue={partecipentdata?.phone}
             />
              {errors.phone && <span className="text-red-600">name is required</span>}
           </div>
@@ -109,7 +108,7 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
                 placeholder="adress"
                 type="text"
                 id="email"
-                defaultValue={info?.data?.adress}
+                defaultValue={partecipentdata?.adress}
               />
                 {errors.adress && <span className="text-red-600">phone is required</span>}
             </div>
@@ -128,14 +127,14 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
             <label className="sr-only" >Message</label>
 
             <textarea
-               {...register('message', { required: true })}
+               {...register('preferences', { required: true })}
               className="w-full rounded-lg border-gray-200 p-3 text-sm"
-              placeholder=" organizer's impact,"
+              placeholder=" personal preferences,"
               rows="3"
               id="message"
-              defaultValue={info?.data?.impact}
+              defaultValue={partecipentdata?.preferences}
             ></textarea>
-             {errors.message && <span className="text-red-600">message is required</span>}
+             {errors.preferences && <span className="text-red-600">message is required</span>}
           </div>
 
 
@@ -144,14 +143,14 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
             <label className="sr-only" >Message</label>
 
             <textarea
-               {...register('message', { required: true })}
+               {...register('interests', { required: true })}
               className="w-full rounded-lg border-gray-200 p-3 text-sm"
-              placeholder="success stories"
+              placeholder="Interests in specific medical areas"
               rows="3"
               id="message"
-              defaultValue={info?.data?.story}
+              defaultValue={partecipentdata?.Interests}
             ></textarea>
-             {errors.message && <span className="text-red-600">message is required</span>}
+             {errors.interests && <span className="text-red-600">message is required</span>}
           </div>
 
           <div className="mt-4">
@@ -159,7 +158,7 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
               type="submit"
               className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
             >
-       Update Profile
+             Update Profile
             </button>
           </div>
         </form>
@@ -175,4 +174,4 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
   )
 }
 
-export default OrganizerUpdateModal
+export default PartecipentUpdateModal

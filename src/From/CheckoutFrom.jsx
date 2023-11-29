@@ -101,7 +101,7 @@ const CheckoutForm = ({ data, closeModal }) => {
                     transitionId:paymentIntent.id,
                     campid:data?._id,
                     registeredid:data?.campid,
-                    // status:'padding'
+                
 
                 }
             

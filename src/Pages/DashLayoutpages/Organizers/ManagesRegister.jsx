@@ -193,7 +193,7 @@ const ManagesRegister = () => {
                     </td>
 
                     <td  className="whitespace-nowrap px-4 py-2 t text-green-500 ">
-                     {data?.payment === 'paid' ? <button onClick={() => handlespaid(data?._id)} className='text-red-700'>Padding</button> : <h1 className='text-red-500'>{data?.payment === 'Confrimed' ? <h1 className='text-green-500'>Confrimed</h1> : "Uppaid"}</h1> }
+                     {data?.payment === 'paid' ? 'paid' : <h1 className='text-red-500'> Uppaid</h1> }
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
 
