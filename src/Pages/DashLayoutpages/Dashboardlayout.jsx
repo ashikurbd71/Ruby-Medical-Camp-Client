@@ -101,26 +101,8 @@ const Dashboardlayout = () => {
 
       
 {/* user */}
-   <Link to={'/dashboard/profile'}>
+
    
-   <div className=" mt-10 inset-x-0 bottom-0 border-t">
-    <a href="#" className="flex gap-2 items-center  mt-5 w-full ">
-      <img
-        alt="Man"
-        src={user?.photoURL}
-        className="h-10 w-10 rounded-full object-cover"
-      />
-
-      <div>
-        <p className="text-xs">
-          <strong className="block font-medium text-black">{user?.displayName}</strong>
-
-          <span> {user?.email} </span>
-        </p>
-      </div>
-    </a>
-  </div>
-   </Link>
   </div>
 
   

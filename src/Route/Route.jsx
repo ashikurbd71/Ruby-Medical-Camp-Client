@@ -11,7 +11,6 @@ import SignUp from "../From/Signup";
 import Signin from "../From/Signin";
 import PrivteRoute from "./PrivteRoute";
 import OrganizerRoute from "./OrganaizerRoute";
-import Profile from "../Shared/Profile";
 import UpdateCamp from "../Pages/DashLayoutpages/Organizers/UpdateCamp";
 import CampDetails from "../Pages/MainlayoutPages/CampDetails";
 import Registerdcamp from "../Pages/DashLayoutpages/Particepnts/Registerdcamp";
@@ -19,10 +18,10 @@ import FeedbackRatings from "../Pages/DashLayoutpages/Particepnts/FeedbackRating
 import PaymentHistory from "../Pages/DashLayoutpages/Particepnts/PaymentHistory";
 import HealthcraeProfile from "../Pages/DashLayoutpages/Professional/HealthcraeProfile";
 import Professionalroute from "./Professionalroute";
-import UpcomingCamp from "../Component/UpcomingCamp";
 import MnagesUpcamingCamp from "../Pages/DashLayoutpages/Organizers/Upcomingcamp/MnagesUpcamingCamp";
 import AddUpcomingCamp from "../Pages/DashLayoutpages/Organizers/Upcomingcamp/AddUpcomingCamp";
 import UpcamingCampDetails from "../Component/UpcamingCampDetails";
+import OrganizerProfile from "../Pages/DashLayoutpages/Organizers/OrganizerProfile";
 // import Payment from "../Pages/DashLayoutpages/Particepnts/Payment";
 
 const router = createBrowserRouter([
@@ -74,6 +73,14 @@ const router = createBrowserRouter([
 
 
 // ----------------------organizer routee-----------------------
+
+
+         
+{
+   path:'/dashboard/organizer-profile',
+   element:<OrganizerRoute><OrganizerProfile/></OrganizerRoute>
+},
+
          {
             path:'/dashboard/add-a-camp',
             element:<OrganizerRoute><AddCamp/></OrganizerRoute>
@@ -86,10 +93,10 @@ const router = createBrowserRouter([
             path:'/dashboard/manage-registered-camps',
             element:<OrganizerRoute><ManagesRegister/></OrganizerRoute>
          },
-         {
-            path:'/dashboard/profile',
-            element:<PrivteRoute><Profile/></PrivteRoute>
-         },
+         // {
+         //    path:'/dashboard/profile',
+         //    element:<PrivteRoute><Profile/></PrivteRoute>
+         // },
     
          {
             path:'/dashboard/update-camp/:campId',

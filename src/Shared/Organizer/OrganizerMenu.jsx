@@ -5,7 +5,10 @@ import { MdManageAccounts } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { LuCalendarClock } from "react-icons/lu";
 import { MdAddHomeWork } from "react-icons/md";
+import useAuth from '../../Hook/useAuth';
 const OrganizerMenu = () => {
+
+  const {user} = useAuth()
     return (
         <div>
             
@@ -97,6 +100,23 @@ const OrganizerMenu = () => {
        </Link>
       </li>
 
+      <Link to={'/dashboard/organizer-profile'}>
+   
+   <div className=" mt-10 inset-x-0 bottom-0 border-t">
+    <a href="#" className="flex gap-2 items-center  mt-5 w-full ">
+      <img
+        alt="Man"
+        src={user?.photoURL}
+        className="h-10 w-10 rounded-full object-cover"
+      />
+
+      <div className='text-lg font-semibold'>
+         <p className='text-sm'>Profile</p>
+        Organizer
+      </div>
+    </a>
+  </div>
+   </Link>
      
     </ul>
 
