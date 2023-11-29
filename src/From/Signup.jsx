@@ -7,7 +7,7 @@ import axios from 'axios';
 import { GiSpinalCoil } from "react-icons/gi"
 import useAuth from '../Hook/useAuth';
 import toast from 'react-hot-toast';
-import { postuser } from '../API/userData';
+import { getToken, postuser } from '../API/userData';
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -49,7 +49,7 @@ const SignUp = () => {
 
     // create token
 
-//    await getToken(result?.user?.email)
+   await getToken(result?.user?.email)
     toast.success('sucessfuly signup')
     navigate('/')
 
@@ -83,7 +83,7 @@ const SignUp = () => {
       
           // create token
       
-        //  await getToken(result?.user?.email)
+         await getToken(result?.user?.email)
           toast.success('sucessfuly signup')
           navigate('/')
       

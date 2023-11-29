@@ -1,6 +1,35 @@
 import axoissecure from "../Hook/Axoissecure"
 
 
+export const getToken = async email => {
+
+  
+    const{data} = await axoissecure.post('/jwt',email)
+
+     console.log('token 9  ------>',email)
+
+    return data
+
+
+}
+
+
+// token remove
+export const removeToken = async () => {
+
+  
+    const{data} = await axoissecure.get('/logout')
+
+    return data
+
+
+}
+
+
+
+
+
+
 // post user info na drole
 export const postuser = async( user,role) => {
 

@@ -21,7 +21,7 @@ const Testimonials = () => {
   console.log(user?.email)
  const { data: feeback, isLoading } = useQuery({
    
-   enabled: !loading && !!user?.email,
+  //  enabled: !loading && !!user?.email,
    queryFn: async () => await axoispublic('/feedback-camp'),
    queryKey: ['feedback'],
    

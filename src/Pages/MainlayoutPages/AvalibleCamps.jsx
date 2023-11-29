@@ -15,7 +15,7 @@ const AvalibleCamps = () => {
   const { user, loading } = useAuth()
 
    console.log(user?.email)
-  const { data, isLoading } = useQuery({
+  const { data, isLoading,refetch } = useQuery({
     queryKey: ['campinfo'],
     enabled: !loading && !!user?.email,
     queryFn: async () => await axoissecure.get(`/all-camp?page=${page}`),
@@ -231,7 +231,8 @@ const AvalibleCamps = () => {
   className="inline-flex mb-10 w-full items-center justify-center rounded bg-blue-600 py-1 text-white"
 >
   <button
-   onClick={() => setPage(page -1)}
+   onClick={() => setPage(page -1) }
+   
     href="#"
     className="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
   >

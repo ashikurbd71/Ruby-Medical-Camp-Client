@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import { auth } from './Firebase.config'
+import { removeToken } from '../API/userData'
 
 
 
@@ -50,6 +51,7 @@ const AuthProvider = ({ children }) => {
 // logout 
   const logOut = async () => {
     setLoading(true)
+    await removeToken()
     return signOut(auth)
   }
 

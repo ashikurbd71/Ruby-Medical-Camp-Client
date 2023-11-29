@@ -5,7 +5,7 @@ import { FcGoogle } from 'react-icons/fc'
 import toast from 'react-hot-toast'
 import { GiSpinalCoil } from "react-icons/gi"
 import useAuth from '../Hook/useAuth'
-import { postuser } from '../API/userData'
+import { getToken, postuser } from '../API/userData'
 
 const Signin = () => {
   
@@ -35,7 +35,7 @@ const Signin = () => {
 
     // create token
 
-//    await getToken(result?.user?.email)
+   await getToken(result?.user?.email)
     toast.success('sucessfuly signin')
     navigate(location?.state ? location?.state : '/')
 
@@ -69,7 +69,7 @@ const Signin = () => {
       
           // create token
       
-        //  await getToken(result?.user?.email)
+         await getToken(result?.user?.email)
           toast.success('sucessfuly signin')
           navigate('/')
       
