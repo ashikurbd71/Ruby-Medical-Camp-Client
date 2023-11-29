@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../Hook/useAuth';
 import Swal from 'sweetalert2';
 import { postRegister } from '../API/Register/Register';
+import axoissecure from '../Hook/Axoissecure';
+import axoispublic from '../Hook/AxoissecurePublic';
 
 
 const RegsiterModal = ({ closeModal, isOpen, item }) => {
@@ -52,6 +54,8 @@ const RegsiterModal = ({ closeModal, isOpen, item }) => {
         }
         console.table(registerInfo)
 
+         const countRes = await  axoispublic.patch(`/camp-count/${item?._id}`,{count : 1},)
+         console.log(countRes.data)
 
         
         }

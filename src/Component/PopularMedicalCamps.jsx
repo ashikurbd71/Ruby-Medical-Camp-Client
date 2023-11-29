@@ -73,7 +73,7 @@ console.log(popularcamp)
                                </Typography >
                                <Typography style={{display:'flex',justifyItems:'center'}} gutterBottom variant="h6" component="div">
                                ${camp?.fees}
-                               <Button sx={{ml:24}} variant="outlined">join {camp?.registrationsCount}</Button>
+                               <Button sx={{ml:24}} variant="outlined">join {camp?.count}</Button>
                                </Typography>
                               </Grid>
                                <Typography variant="body2" color="text.secondary">

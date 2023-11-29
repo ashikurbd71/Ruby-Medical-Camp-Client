@@ -42,12 +42,12 @@ const router = createBrowserRouter([
           {
          path:'/camp-details/:campId',
          element:<PrivteRoute><CampDetails/></PrivteRoute>,
-         loader: ({params}) => fetch (`http://localhost:5000/all-camp/${params.campId}`)
+         loader: ({params}) => fetch (`http://localhost:5000/all-camp/${params.campId}`,{ credentials: 'include'})
         },
         {
          path:'/upcamingcamp-details/:upcamingcampId',
          element:<PrivteRoute><UpcamingCampDetails/></PrivteRoute>,
-         loader: ({params}) => fetch (`http://localhost:5000/all-upcamingcamp/${params.upcamingcampId}`)
+         loader: ({params}) => fetch (`http://localhost:5000/all-upcamingcamp/${params.upcamingcampId}`,{ credentials: 'include'})
         },
 
 
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
          {
             path:'/dashboard/update-camp/:campId',
             element:<OrganizerRoute><UpdateCamp/></OrganizerRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/all-camp/${params.campId}`)
+            loader: ({params}) => fetch(`http://localhost:5000/all-camp/${params.campId}`,{ credentials: 'include'})
          },
          {
             path:'/dashboard/add-upcoming-camp',

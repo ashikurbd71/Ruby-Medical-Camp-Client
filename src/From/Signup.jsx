@@ -9,14 +9,18 @@ import useAuth from '../Hook/useAuth';
 import toast from 'react-hot-toast';
 import { getToken, postuser } from '../API/userData';
 
+
 const SignUp = () => {
   const navigate = useNavigate()
+
+  
+
   const{createUser,updateUserProfile,loading,signInWithGoogle,logOut}=useAuth()
    const handlesubmit = async(event) => {
 
     event.preventDefault()
     const from = event.target
-    const role = from?.role.value
+    const role = from?.role.value || 'participant'
     const name = from?.name.value
     const password = from?.password.value
     const email = from?.email.value
@@ -50,9 +54,10 @@ const SignUp = () => {
     // create token
 
    await getToken(result?.user?.email)
+   
+   
     toast.success('sucessfuly signup')
-    navigate('/')
-
+    navigate(location?.state ? location?.state : '/')
     }
 
     catch(err){
@@ -85,7 +90,9 @@ const SignUp = () => {
       
          await getToken(result?.user?.email)
           toast.success('sucessfuly signup')
-          navigate('/')
+
+          navigate(location?.state ? location?.state : '/')
+
       
           }
       

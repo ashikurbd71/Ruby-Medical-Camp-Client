@@ -6,8 +6,12 @@ import toast from 'react-hot-toast'
 import { GiSpinalCoil } from "react-icons/gi"
 import useAuth from '../Hook/useAuth'
 import { getToken, postuser } from '../API/userData'
+import useRole from '../Hook/userRole'
+
 
 const Signin = () => {
+
+  const[role] = useRole()
   
   const location = useLocation()
   const navigate = useNavigate()
@@ -30,13 +34,13 @@ const Signin = () => {
       console.log(result)
     //  save databages
 
-  const dbresult = await postuser(result?.user)
+  const dbresult = await postuser(result?.user,role)
    console.log(dbresult)
-
+   toast.success('sucessfuly signin')
     // create token
 
    await getToken(result?.user?.email)
-    toast.success('sucessfuly signin')
+  
     navigate(location?.state ? location?.state : '/')
 
 
@@ -64,7 +68,7 @@ const Signin = () => {
       console.log(result)
           //  save databages
       
-        const dbresult = await postuser(result?.user)
+        const dbresult = await postuser(result?.user,role)
          console.log(dbresult)
       
           // create token
@@ -72,7 +76,6 @@ const Signin = () => {
          await getToken(result?.user?.email)
           toast.success('sucessfuly signin')
           navigate('/')
-      
           }
       
           catch(err){

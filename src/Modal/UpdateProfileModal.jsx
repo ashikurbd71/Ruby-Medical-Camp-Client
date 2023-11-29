@@ -33,7 +33,7 @@ const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
       console.log('Database response:', campRes.data);
 
       
-      if(campRes.insertedId){
+      if(campRes.data.insertedId){
   
         reset();
         Swal.fire({

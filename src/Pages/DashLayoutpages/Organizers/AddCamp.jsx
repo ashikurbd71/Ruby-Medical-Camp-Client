@@ -47,6 +47,7 @@ const{user} = useAuth()
               time:data.time,
               message:data.message,
               image: res.data.data.display_url,
+              count: 0,
               orgnaizer:{
                 email:user?.email,
                 name:user?.displayName

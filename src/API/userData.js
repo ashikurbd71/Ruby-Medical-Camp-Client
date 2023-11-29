@@ -1,4 +1,5 @@
 import axoissecure from "../Hook/Axoissecure"
+import axoispublic from "../Hook/AxoissecurePublic"
 
 
 export const getToken = async email => {
@@ -35,12 +36,12 @@ export const postuser = async( user,role) => {
 
     const Info = {
 
-       email :  user?.email,
-       role: role,
+       email :user?.email,
+       role:role,
        status:'Verifyed'
     }
 
-    const{data} = await axoissecure.put(`/users/${user?.email}`,Info)
+    const{data} = await axoispublic.put(`/users/${user?.email}`,Info)
 
     return data
 
@@ -51,7 +52,7 @@ export const postuser = async( user,role) => {
 export const getRole = async email => {
 
     console.log("email from 51 line",email)
-    const{data} = await axoissecure.get(`/users/email/${email}`)
+    const{data} = await axoispublic.get(`/users/email/${email}`)
     console.log(data)
     return data.role
 
