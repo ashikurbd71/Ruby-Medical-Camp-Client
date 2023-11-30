@@ -30,7 +30,8 @@ const HealthcareRegisationModal = ({ closeModale, isOpene, item }) => {
             status:'pendding',
             emailid:data.email,
             upcamingcampid:item?._id,
-            email: user?.email
+            email: user?.email,
+            review:'pendding'
         }
 
         const campRes = await postUpcomingRegsiter(upcamingcampInfo);

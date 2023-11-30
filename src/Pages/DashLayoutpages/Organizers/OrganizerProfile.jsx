@@ -118,7 +118,7 @@ const OrganizerProfile = () => {
                 </button>
               
                 <OrganizerProfileModal isOpen={isOpen} closeModal={closeModal}/>
-                <OrganizerUpdateModal closeModals={closeModals} Open={Open} info={info}></OrganizerUpdateModal>
+                <OrganizerUpdateModal closeModals={closeModals} refetch={refetch} Open={Open} info={info}></OrganizerUpdateModal>
                 <button
                   onClick={handlelogout}
                   className="bg-[#1976D2] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2]"

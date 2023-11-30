@@ -7,7 +7,7 @@ import useRole from '../Hook/userRole';
 import { updateprofileOrgarole, updateprofilePartecipent } from '../API/PorfileUpdate/OrganizerProfile';
 
 
-const PartecipentUpdateModal = ({ closeModal, isOpen, partecipentdata }) => {
+const PartecipentUpdateModal = ({ closeModal, isOpen, partecipentdata ,refetch}) => {
 
     console.log(partecipentdata )
 
@@ -32,7 +32,7 @@ const PartecipentUpdateModal = ({ closeModal, isOpen, partecipentdata }) => {
         const datas = await   updateprofilePartecipent(user?.email, Info);
         console.log(datas)
         if(datas.modifiedCount > 0){
-      
+          refetch()
             reset();
             Swal.fire({
                 position: "top-end",

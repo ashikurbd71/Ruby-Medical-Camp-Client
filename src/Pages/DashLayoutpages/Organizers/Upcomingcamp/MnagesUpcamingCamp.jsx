@@ -5,6 +5,9 @@ import useAuth from '../../../../Hook/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../../../../Shared/Loader';
 import axoissecure from '../../../../Hook/Axoissecure';
+import { FaEdit, FaEye, FaPodcast, FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const MnagesUpcamingCamp = () => {
 
@@ -26,6 +29,46 @@ const MnagesUpcamingCamp = () => {
       console.log(upcamcampdata?.data)
   
 
+
+      const hanfdlelte = (_id)  => {
+
+        console.log(_id)
+
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+      }).then(async (result) => {
+          if (result.isConfirmed) {
+              const res = await axoissecure.delete(`/upcam-camp/delete/${_id}`);
+              console.log(res.data);
+              if (res.data.deletedCount > 0) {
+                 
+                refetch()
+                  Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: `${upcamcampdata?.campname} has been deleted`,
+                      showConfirmButton: false,
+                      timer: 1500
+                  });
+
+                
+              }
+
+
+          }
+      });
+
+
+      }
+
+
+ 
 
     return (
        <>
@@ -51,23 +94,36 @@ const MnagesUpcamingCamp = () => {
          Venu
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Target Audience
+          Audience
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Participant Count
+          Participant
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
         
-        Professionals Count
+        Professionals 
+          </th>
+          
+          <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+          Partecipent info
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            fees
+          Healthcare info
           </th>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Review
+           Satatus
           </th>
+
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Public
+          Post
+          </th>
+
+          <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+           Edit
+          </th>
+
+          <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+           Delete
           </th>
         </tr>
       </thead>
@@ -89,27 +145,58 @@ const MnagesUpcamingCamp = () => {
                  {data?.audience}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-                  {data?.meassge}
+                    {data?.partecipent}
                     </td>
                     <button>
-                    <td className="whitespace-nowrap  font-medium  px-4 py-2 t text-green-500 ">
-                  {/* {data?.status === 'Confrimed' ? 'Confrimed' : <button onClick={() => handlestatus(data?._id)} className='text-red-700'> Padding</button>} */}
+                    <td className="whitespace-nowrap  font-medium  px-4 py-2 t  text-gray-900  ">
+                    {data?.healthcare}
                     </td>
                     </button>
                    
-                    <td  className="whitespace-nowrap px-4 py-2 t text-gray-900">
-                     ${data?.fees}
-                    </td>
+                   
 
-                    <td  className="whitespace-nowrap px-4 py-2 t text-green-500 ">
-                     {/* {data?.payment === 'paid' ? <button onClick={() => handlespaid(data?._id)} className='text-red-700'>Padding</button> : <h1 className='text-red-500'>{data?.payment === 'Confrimed' ? <h1 className='text-green-500'>Confrimed</h1> : "Uppaid"}</h1> } */}
+                    <td  className="whitespace-nowrap px-4 py-2 t  ">
+                        <div className='flex'>
+                      <FaEye/>
+
+                        </div>
+                    </td>
+                    <td  className="whitespace-nowrap px-4 py-2 t ">
+                        <div className='flex'>
+                      <FaEye/>
+
+                        </div>
+                    </td>
+                    <td  className="whitespace-nowrap px-4 py-2 t  ">
+                        <div className='flex'>
+                  
+
+                        </div>
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
 
                       {/* to: conditional button base paid unpaid */}
-                  {
-                    //  data?.payment === 'unpaid'? "" : <button onClick={() => handledelte(data?._id)}> <FaTrashAlt className='text-2xl text-red-500'/></button>
-                  }
+                       
+                       <FaPodcast/>
+                   
+                    </td>
+
+                    <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
+
+                      {/* to: conditional button base paid unpaid */}
+                <Link to={`/dashboard/upcamingcampupdate/${data?._id}`}>
+                <FaEdit className='text-green-500'/>
+                </Link>
+
+                    </td>
+
+
+                    <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
+
+                      {/* to: conditional button base paid unpaid */}
+         <button onClick={() => hanfdlelte (data?._id)}>
+         <FaTrashAlt className='text-red-500'/>
+         </button>
                    
                     </td>
               </tr>   

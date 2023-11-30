@@ -38,7 +38,7 @@ const PartrcipentProfile = () => {
 
 
      
-     const { data: partecipentdata } = useQuery({
+     const { data: partecipentdata,refetch } = useQuery({
       queryKey: ['partecipentdatainfo',user?.email],
       enabled: !loading && !!user?.email,
       queryFn: async () =>  {return await axoissecure.get(`healthcareprofile/email/${user?.email}`)},
@@ -106,7 +106,7 @@ const PartrcipentProfile = () => {
                   Update Profile
                 </button>
               
-                <PartecipentUpdateModal isOpen={isOpen} closeModal={closeModal} partecipentdata={partecipentdata?.data}/> 
+                <PartecipentUpdateModal isOpen={isOpen} closeModal={closeModal} refetch={refetch} partecipentdata={partecipentdata?.data}/> 
                 <PartecipentProfileModal closeModalss={closeModalss} Opens={Opens}></PartecipentProfileModal> 
                 <button
                   onClick={handlelogout}

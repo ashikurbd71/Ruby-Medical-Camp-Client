@@ -23,6 +23,7 @@ import AddUpcomingCamp from "../Pages/DashLayoutpages/Organizers/Upcomingcamp/Ad
 import UpcamingCampDetails from "../Component/UpcamingCampDetails";
 import OrganizerProfile from "../Pages/DashLayoutpages/Organizers/OrganizerProfile";
 import PartrcipentProfile from "../Pages/DashLayoutpages/Particepnts/PartrcipentProfile";
+import UpcamingCampUpdate from "../Pages/DashLayoutpages/Organizers/UpcamingCampUpdate";
 // import Payment from "../Pages/DashLayoutpages/Particepnts/Payment";
 
 const router = createBrowserRouter([
@@ -103,6 +104,11 @@ const router = createBrowserRouter([
             path:'/dashboard/update-camp/:campId',
             element:<OrganizerRoute><UpdateCamp/></OrganizerRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/all-camp/${params.campId}`,{ credentials: 'include'})
+         },
+         {
+            path:'/dashboard/upcamingcampupdate/:campId',
+            element:<OrganizerRoute><UpcamingCampUpdate/></OrganizerRoute>,
+            loader: ({params}) => fetch(`http://localhost:5000/all-upcamingcamp/${params.campId}`,{ credentials: 'include'})
          },
          {
             path:'/dashboard/add-upcoming-camp',

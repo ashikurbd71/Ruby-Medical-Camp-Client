@@ -114,7 +114,7 @@ const HealthcraeProfile = () => {
                 </button>
                }
                 
-                 <UpdateProfileModal closeModals={closeModals} isOpens={isOpens} info={info} refetch={refetch}/>
+                 <UpdateProfileModal closeModals={closeModals} isOpens={isOpens} refetch={refetch} info={info} refetch={refetch}/>
                 <button onClick={handleupdate} className='bg-[#1976D2] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2] block mb-1'>
                  Update Profile
                 </button>

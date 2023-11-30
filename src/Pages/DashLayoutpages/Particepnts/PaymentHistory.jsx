@@ -79,7 +79,7 @@ const PaymentHistory = () => {
                 {data?.location}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-                 ${data?.price}
+                 ${data?.campfees}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
                   {data?.payment === 'paid' ? <h1 className='text-green-500'>paid</h1> : <h1 className='text-red-500'>unpaid</h1>}

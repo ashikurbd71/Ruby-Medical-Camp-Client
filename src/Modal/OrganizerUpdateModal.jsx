@@ -8,7 +8,7 @@ import { postUpcomingRegsiter } from '../API/UpcamingCamp/UpcamingCamp';
 import { updateprofileOrgarole } from '../API/PorfileUpdate/OrganizerProfile';
 
 
-const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
+const OrganizerUpdateModal = ({ closeModals, Open, info ,refetch}) => {
 
     console.log(info?.data?.story )
 
@@ -33,7 +33,7 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
         const res = await   updateprofileOrgarole(user?.email, Info);
         console.log(res)
         if(res.modifiedCount > 0){
-      
+          refetch()
             reset();
             Swal.fire({
                 position: "top-end",

@@ -29,12 +29,12 @@ const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
    
     try {
       const campRes =  updateHealthcaredata(user?.email, profileinfo);
-      refetch()
+      
       console.log('Database response:', campRes.data);
 
       
       if(campRes.modifiedCount > 0){
-  
+        refetch()
         reset();
         Swal.fire({
             position: "top-end",
