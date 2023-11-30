@@ -10,6 +10,7 @@ import { getHealthcaredata } from '../../../API/userData';
 import Loader from '../../../Shared/Loader';
 import img from '../../../assets/banner-2 (2).jpg'
 import UpdateProfileModal from '../../../Modal/UpdateProfileModal';
+import axoissecure from '../../../Hook/Axoissecure';
 
 const HealthcraeProfile = () => {
 
@@ -53,7 +54,17 @@ const HealthcraeProfile = () => {
       
     })
 
-    console.log(info)
+
+         
+    const { data: organozercamp } = useQuery({
+
+      queryKey: ['organozercamp',user?.email],
+      enabled: !loading && !!user?.email,
+      queryFn: async () =>  {return await axoissecure.get(`/accpected-camp/${user?.email}`)},
+     
+      
+    })
+    // console.log(organozercamp)
  
 
 
@@ -154,6 +165,29 @@ const HealthcraeProfile = () => {
 
             
           </div>
+
+
+
+    <h1 className='text-xl font-medium'>Your Interted Camp:</h1>
+          <div className=" grid grid-cols-2 gap-2">
+                            {
+
+organozercamp?.data?.map(infoss => 
+                              
+
+                              <div key={infoss?._id}>
+                              <div className='flex  justify-center item-center'>
+                              <img src={infoss?.image} alt="" className="rouned rounded-full w-10 h-10" />
+                              </div>
+                           <p className="text-center">{infoss?.campname}</p>
+
+                             </div>
+                              )
+
+                            }
+                        </div>
+
+
 
               </div>
           </div>

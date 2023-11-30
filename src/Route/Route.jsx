@@ -24,12 +24,15 @@ import UpcamingCampDetails from "../Component/UpcamingCampDetails";
 import OrganizerProfile from "../Pages/DashLayoutpages/Organizers/OrganizerProfile";
 import PartrcipentProfile from "../Pages/DashLayoutpages/Particepnts/PartrcipentProfile";
 import UpcamingCampUpdate from "../Pages/DashLayoutpages/Organizers/UpcamingCampUpdate";
+import Error from "../Component/Error";
+import AcppectedCamp from "../Pages/DashLayoutpages/Professional/AcppectedCamp";
 // import Payment from "../Pages/DashLayoutpages/Particepnts/Payment";
 
 const router = createBrowserRouter([
     {
      path:'/',
      element: <MainLayout/>,
+     errorElement:<Error/>,
      children:[
         {
          path:'/',
@@ -154,6 +157,13 @@ const router = createBrowserRouter([
 
             path:'/dashboard/professional-profile',
             element:<Professionalroute><HealthcraeProfile/></Professionalroute>
+           
+         },
+
+         {
+
+            path:'/dashboard/accpected-camp',
+            element:<Professionalroute><AcppectedCamp/></Professionalroute>
            
          }
 

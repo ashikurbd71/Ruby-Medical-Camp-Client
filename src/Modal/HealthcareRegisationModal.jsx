@@ -30,7 +30,9 @@ const HealthcareRegisationModal = ({ closeModale, isOpene, item }) => {
             status:'pendding',
             emailid:data.email,
             upcamingcampid:item?._id,
+            audience:item?.audience,
             email: user?.email,
+            image:item?.image,
             review:'pendding'
         }
 
