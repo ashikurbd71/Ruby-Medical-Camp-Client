@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { postRegister } from '../API/Register/Register';
 import useRole from '../Hook/userRole';
 import { postUpcomingRegsiter } from '../API/UpcamingCamp/UpcamingCamp';
+import axoissecure from '../Hook/Axoissecure';
 
 
 const HealthcareRegisationModal = ({ closeModale, isOpene, item }) => {
@@ -40,15 +41,17 @@ const HealthcareRegisationModal = ({ closeModale, isOpene, item }) => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `${data.name} Register Sucessfuly.`,
+                title: `${data.user?.displayName} Register Sucessfuly.`,
                 showConfirmButton: false,
                 timer: 1500
               });
 
               console.log( 'with image url', campRes.data);
         }
-        console.table(registerInfo)
+        console.table(upcamingcampInfo)
 
+        const countRes = await  axoissecure.patch(`upcaminghealthcare-count/id/${item?._id}`,{healthcare : 1},)
+        console.log(countRes.data)
 
         
         }

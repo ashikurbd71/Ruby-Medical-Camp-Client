@@ -34,8 +34,8 @@ const PartecipentProfileModal = ({ closeModalss, Opens}) => {
         }
 
         const campRes = await postHealthcaredata(user?.email,Info);
-        console.log(campRes.data.data)
-        if(campRes.data.data.insertedId){
+        console.log(campRes)
+        if(campRes.insertedId){
       
             reset();
             Swal.fire({

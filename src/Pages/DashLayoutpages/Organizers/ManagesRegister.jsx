@@ -22,7 +22,7 @@ const ManagesRegister = () => {
     } = useQuery({
       queryKey: ['register'],
       enabled: !loading,
-      queryFn: async () => await axoissecure.get('/register-camp'),
+      queryFn: async () => await axoissecure.get(`/register-camp/email/${user?.email}`),
     })
 
     if(isLoading){

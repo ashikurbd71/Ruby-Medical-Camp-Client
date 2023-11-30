@@ -30,15 +30,15 @@ const OrganizerUpdateModal = ({ closeModals, Open, info }) => {
             role:role,
         }
 
-        const res = await   updateprofileOrgarole(role, Info);
-        console.log(res.data)
-        if(res.data.modifiedCount > 0){
+        const res = await   updateprofileOrgarole(user?.email, Info);
+        console.log(res)
+        if(res.modifiedCount > 0){
       
             reset();
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `${data.name} Register Sucessfuly.`,
+                title: `${user.displayName} Update Sucessfuly.`,
                 showConfirmButton: false,
                 timer: 1500
               });

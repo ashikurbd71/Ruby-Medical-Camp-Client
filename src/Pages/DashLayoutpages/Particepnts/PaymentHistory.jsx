@@ -5,6 +5,7 @@ import useAuth from '../../../Hook/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../../../Shared/Loader';
 import { getPaymnet } from '../../../API/Payment/Payment';
+import axoissecure from '../../../Hook/Axoissecure';
 
 const PaymentHistory = () => {
 
@@ -14,16 +15,16 @@ const PaymentHistory = () => {
       isLoading,refetch
     
     } = useQuery({
-      queryKey: ['register'],
-      // enabled: !loading || user?.email,
-      queryFn: async () => await getPaymnet(user?.email),
+      queryKey: ['paymnet history'],
+      enabled: !loading && !!user?.email,
+      queryFn: async () => await axoissecure.get(`/paymenthistorys/email/${user?.email}`),
     })
 
     if(isLoading){
       return <Loader/>
     }
 
-      console.log(campdata)
+      console.log(campdata?.data)
 
 
     return (
@@ -67,7 +68,7 @@ const PaymentHistory = () => {
       <tbody className="divide-y divide-[#1976D2]">
         
       {
-            campdata?.map(data => 
+            campdata?.data?.map(data => 
                 
                 <tr key={data?._id}>
                 <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
@@ -81,7 +82,7 @@ const PaymentHistory = () => {
                  ${data?.price}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 t text-gray-900">
-                  {data?.paymnet === 'paid' ? "paid" : <h1 className='text-red-500'>unpaid</h1>}
+                  {data?.payment === 'paid' ? <h1 className='text-green-500'>paid</h1> : <h1 className='text-red-500'>unpaid</h1>}
                     </td>
                     <button>
                     <td className="whitespace-nowrap  font-medium  px-4 py-2 t text-green-500 ">

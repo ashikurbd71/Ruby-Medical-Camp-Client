@@ -16,12 +16,14 @@ const MnagesUpcamingCamp = () => {
       } = useQuery({
         queryKey: ['upcamcamp'],
         enabled: !loading ,
-        queryFn: async () => await axoissecure.get('/all-upcamingcamp'),
+        queryFn: async () => await axoissecure.get(`/all-upcamingcamp/email/${user?.email}`),
       })
   
       if(isLoading){
         return <Loader/>
       }
+
+      console.log(upcamcampdata?.data)
   
 
 

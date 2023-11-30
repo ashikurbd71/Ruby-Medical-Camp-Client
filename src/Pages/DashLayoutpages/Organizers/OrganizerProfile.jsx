@@ -40,7 +40,7 @@ const OrganizerProfile = () => {
      const { data: info, isLoading,refetch } = useQuery({
       queryKey: ['updatebyprossionalprofileinfo',user?.email],
       enabled: !loading && !!user?.email,
-      queryFn: async () =>  {return await axoissecure.get(`healthcareprofile/role/${role}`)},
+      queryFn: async () =>  {return await axoissecure.get(`healthcareprofile/email/${user?.email}`)},
      
       
     })
@@ -63,7 +63,7 @@ const OrganizerProfile = () => {
     const { data: feedbacks } = useQuery({
       queryKey: ['feedbackS',role],
       enabled: !loading && !!role,
-      queryFn: async () =>  {return await axoissecure.get('/feedback-camp')},
+      queryFn: async () =>  {return await axoissecure.get(`/feedback-camp/email/${user?.email}`)},
      
       
     })

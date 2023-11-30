@@ -22,7 +22,9 @@ const FeedBackModal = ({ closeModal, isOpen, datas }) => {
             feedback:data.feedback,
             rattng: parseInt(data.rating),
             campname : datas.campname,
-            date:datas?.date }
+            date:datas?.date ,
+            email:datas?.email
+          }
 
         const campRes = await postFeedback(feedbackInfo);
         console.log(campRes)

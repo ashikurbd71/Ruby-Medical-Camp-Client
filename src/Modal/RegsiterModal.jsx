@@ -30,7 +30,7 @@ const RegsiterModal = ({ closeModal, isOpen, item }) => {
             status:'pedding',
             payment:'unpaid',
             campid:item?._id,
-          
+            emailid:item?.email,
             participants:{
               email:user?.email,
               name:user?.displayName

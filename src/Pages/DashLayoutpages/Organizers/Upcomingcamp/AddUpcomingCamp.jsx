@@ -42,10 +42,10 @@ const AddUpcomingCamp = () => {
               time:data.time,
               message:data.message,
               image: res.data.data.display_url,
-              orgnaizer:{
-                email:user?.email,
-                name:user?.displayName
-              }
+              partecipent:0,
+              healthcare:0,
+              email:user?.email,
+              name:user?.email
           }
           // 
           console.log(campInfo)

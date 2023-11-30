@@ -41,7 +41,7 @@ const PartrcipentProfile = () => {
      const { data: partecipentdata } = useQuery({
       queryKey: ['partecipentdatainfo',user?.email],
       enabled: !loading && !!user?.email,
-      queryFn: async () =>  {return await axoissecure.get(`healthcareprofile/role/${role}`)},
+      queryFn: async () =>  {return await axoissecure.get(`healthcareprofile/email/${user?.email}`)},
      
       
     })

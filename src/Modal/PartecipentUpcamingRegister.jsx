@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { postRegister } from '../API/Register/Register';
 import useRole from '../Hook/userRole';
 import { postUpcomingRegsiter } from '../API/UpcamingCamp/UpcamingCamp';
+import axoissecure from '../Hook/Axoissecure';
 
 
 const PartecipentUpcamingRegister = ({ closeModal, isOpen, item }) => {
@@ -28,7 +29,6 @@ const PartecipentUpcamingRegister = ({ closeModal, isOpen, item }) => {
             meassge:data.message,
             email:user?.email,
             date:  new Date(),
-     
             upcamingcampid:item?._id,
              role :role
       
@@ -49,9 +49,10 @@ const PartecipentUpcamingRegister = ({ closeModal, isOpen, item }) => {
 
               console.log( 'with image url', campRes.data);
         }
-        console.table(registerInfo)
+        console.table(upcamingcampInfo)
 
-
+        const countRes = await  axoissecure.patch(`/upcamingpartecipent/id/${item?._id}`,{partecipent : 1},)
+        console.log(countRes.data)
         
         }
   return (

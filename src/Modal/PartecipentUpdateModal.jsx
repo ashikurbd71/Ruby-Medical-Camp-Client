@@ -29,15 +29,15 @@ const PartecipentUpdateModal = ({ closeModal, isOpen, partecipentdata }) => {
             role:role,
         }
 
-        const res = await   updateprofilePartecipent(role, Info);
-        console.log(res.data)
-        if(res.data.modifiedCount > 0){
+        const datas = await   updateprofilePartecipent(user?.email, Info);
+        console.log(datas)
+        if(datas.modifiedCount > 0){
       
             reset();
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `${data.name} Register Sucessfuly.`,
+                title: `${user?.displayName} update Sucessfuly.`,
                 showConfirmButton: false,
                 timer: 1500
               });

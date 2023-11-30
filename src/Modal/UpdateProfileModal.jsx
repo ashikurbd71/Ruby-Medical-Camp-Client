@@ -33,13 +33,13 @@ const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
       console.log('Database response:', campRes.data);
 
       
-      if(campRes.data.insertedId){
+      if(campRes.modifiedCount > 0){
   
         reset();
         Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${user.name} Add Info Sucessfuly.`,
+            title: `${user.user?.displayName} Add Info Sucessfuly.`,
             showConfirmButton: false,
             timer: 1500
           });

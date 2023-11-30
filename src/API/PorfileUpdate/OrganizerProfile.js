@@ -9,18 +9,18 @@ import axoissecure from "../../Hook/Axoissecure"
 
 
 
-export const updateprofileOrgarole = async (role,Info) => {
+export const updateprofileOrgarole = async (email,Info) => {
 
-    console.log("email from 5100 line",role,Info)
-    const{data} = await axoissecure.patch(`/organizerprofileupdate/role/${role}`,Info)
-    return data.role
+    console.log("email from 5100 line",email,Info)
+    const{data} = await axoissecure.patch(`/organizerprofileupdate/email/${email}`,Info)
+    return data
 }
 
 // ppar
 
-export const updateprofilePartecipent = async (role,Info) => {
+export const updateprofilePartecipent = async (email,Info) => {
 
-    console.log("email from 5100 line",role,Info)
-    const{data} = await axoissecure.patch(`/updateprofilePartecipent/role/${role}`,Info)
-    return data.role
+    console.log("email from 5100 line",email,Info)
+    const{data} = await axoissecure.patch(`/updateprofilePartecipent/email/${email}`,Info)
+    return data
 }

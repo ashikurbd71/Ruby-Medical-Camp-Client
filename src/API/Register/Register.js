@@ -56,7 +56,7 @@ export const deleteStatus = async (_id) => {
 export const getemailCamp = async email => {
 
     console.log("email from api 48 line --->",email)
-    const{data} = await axoissecure.get(`/register-camp/email/${email}`)
+    const{data} = await axoissecure.get(`/register-camp/emails/${email}`)
    return data
 }
 

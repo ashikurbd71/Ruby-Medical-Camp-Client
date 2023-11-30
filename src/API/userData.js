@@ -67,7 +67,7 @@ export const postHealthcaredata = async (email,profileinfo) => {
 
     console.log("email from 51 line",email,profileinfo)
     const{data} = await axoissecure.put(`/healthcareprofile/exit/${email}`,profileinfo)
-    return data.role
+    return data
 }
 
 
@@ -77,7 +77,7 @@ export const updateHealthcaredata = async (email,profileinfo) => {
 
     console.log("email from 51 line",email,profileinfo)
     const{data} = await axoissecure.patch(`/healthcareprofile/update/${email}`,profileinfo)
-    return data.role
+    return data
 }
 
 // --------get data by email

@@ -2,11 +2,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 
 // import { getToken, saveuser } from '../../API/Userdata'
-import toast from 'react-hot-toast'
+
 import { GiSpinalCoil } from "react-icons/gi"
 import useAuth from '../Hook/useAuth'
 import { getToken, postuser } from '../API/userData'
 import useRole from '../Hook/userRole'
+import toast from 'react-hot-toast'
 
 
 const Signin = () => {
@@ -36,12 +37,21 @@ const Signin = () => {
 
   const dbresult = await postuser(result?.user,role)
    console.log(dbresult)
-   toast.success('sucessfuly signin')
+
     // create token
 
-   await getToken(result?.user?.email)
+    getToken(result?.user?.email)
   
-    navigate(location?.state ? location?.state : '/')
+   .then(res => {console.log(res.user)
+    toast.success('sucessfuly signup')
+    navigate(location?.state ? location?.state : '/dashboard')
+ 
+     
+  })
+  .catch((error) => {
+      console.log(error)
+     // ..
+   });
 
 
 
@@ -73,9 +83,17 @@ const Signin = () => {
       
           // create token
       
-         await getToken(result?.user?.email)
-          toast.success('sucessfuly signin')
-          navigate('/')
+         getToken(result?.user?.email)
+         .then(res => {console.log(res.user)
+        
+          navigate(location?.state ? location?.state : '/dashboard')
+          
+           return toast.success('sucessfuly signup')
+        })
+        .catch((error) => {
+            console.log(error)
+           // ..
+         });
           }
       
           catch(err){

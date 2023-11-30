@@ -57,7 +57,7 @@ const SignUp = () => {
    
    
     toast.success('sucessfuly signup')
-    navigate(location?.state ? location?.state : '/')
+    navigate(location?.state ? location?.state : '/dashboard')
     }
 
     catch(err){

@@ -48,10 +48,9 @@ const{user} = useAuth()
               message:data.message,
               image: res.data.data.display_url,
               count: 0,
-              orgnaizer:{
                 email:user?.email,
                 name:user?.displayName
-              }
+             
           }
           // 
           console.log(campInfo)
