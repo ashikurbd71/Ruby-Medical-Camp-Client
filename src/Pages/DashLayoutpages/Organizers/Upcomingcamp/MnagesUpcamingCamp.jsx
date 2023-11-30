@@ -52,7 +52,7 @@ const MnagesUpcamingCamp = () => {
                   Swal.fire({
                       position: "top-end",
                       icon: "success",
-                      title: `${upcamcampdata?.campname} has been deleted`,
+                      title: `${upcamcampdata?.data?.campname} has been deleted`,
                       showConfirmButton: false,
                       timer: 1500
                   });

@@ -106,7 +106,7 @@ const Dashboardlayout = () => {
   </div>
 
   
-   <div className='w-full h-full col-span-8'>
+   <div className='w-full h-full '>
 
     <Outlet/>
 
