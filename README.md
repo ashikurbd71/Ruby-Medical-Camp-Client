@@ -21,4 +21,4 @@
 
 
 # Name : ruby-medical-camps
-# link : ruby-medical-camps.surge.sh
+# link : https://ruby-medical-camps.surge.sh/
