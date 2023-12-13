@@ -24,8 +24,8 @@ const Dashboardlayout = () => {
     </Helmet>
         <div>
            
-           <div className=" min-h-screen flex  border-e">
-  <div className="px-12 py-6 bg-[#1976D2]">
+           <div className="  grid lg:grid-cols-10  ">
+  <div className=" pl-3 grid lg:col-span-2  spspace-x-3 py-6 bg-[#1976D2]">
   <span
       className="grid h-10  w-full place-content-center rounded-lg  text-black"
     >
@@ -106,7 +106,7 @@ const Dashboardlayout = () => {
   </div>
 
   
-   <div className='w-full h-full '>
+   <div className=' grid lg:col-span-8 h-full '>
 
     <Outlet/>
 

@@ -72,7 +72,8 @@ const MnagesUpcamingCamp = () => {
 
     return (
        <>
-        <div>
+       <div className='overflow-x-auto'>
+        <div >
             <SectionTitle heading={'Manges Upcaming Camp'} title={'Manages Tour Camp'}></SectionTitle>
             </div>
 
@@ -80,7 +81,7 @@ const MnagesUpcamingCamp = () => {
             <Container>
 
             <div className="rounded-lg border border-gray-200">
-  <div className="overflow-x-auto rounded-t-lg">
+  <div className=" rounded-t-lg">
     <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
       <thead className="ltr:text-left rtl:text-right bg-[#1976D2]">
         <tr>
@@ -291,6 +292,8 @@ const MnagesUpcamingCamp = () => {
 </div>
 
             </Container>
+
+            </div>
        </>
     );
 };

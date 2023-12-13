@@ -39,7 +39,7 @@ const UpdateProfileModal = ({ closeModals, isOpens, info,refetch }) => {
         Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${user.user?.displayName} Add Info Sucessfuly.`,
+            title: `${user.user?.displayName} update Sucessfuly.`,
             showConfirmButton: false,
             timer: 1500
           });

@@ -118,7 +118,7 @@ const AcppectedCamp = () => {
 
     return (
 <>
-
+<div>
 <Helmet>
         <title>R M C || ManagesRegister</title>
         
@@ -271,6 +271,7 @@ const AcppectedCamp = () => {
 </div>
 
         </Container>
+        </div>
 </>
     );
 };

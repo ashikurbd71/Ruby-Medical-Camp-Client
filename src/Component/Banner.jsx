@@ -30,42 +30,42 @@ const Banner = () => {
         <SwiperSlide>
           <img src={img1} alt="" className='w-full h-screen' />
           <div className='absolute text-2xl font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center'>The number of people who attended the campaign or actively participated in its activitie.</h1>
+            <h1 className='text-center  font-medium'>The number of people who attended the campaign or actively participated in its activitie.</h1>
           </div>
           <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img2} alt="" className='w-full h-screen' />
           <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center'> If the campaign included health screenings or medical services</h1>
+            <h1 className='text-center  font-medium'> If the campaign included health screenings or medical services</h1>
           </div>
           <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img3} alt="" className='w-full h-screen' />
           <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center'> If one of the goals was to raise awareness or educate the community about specific health issues</h1>
+            <h1 className='text-center  font-medium'> If one of the goals was to raise awareness or educate the community about specific health issues</h1>
           </div>
           <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img4} alt="" className='w-full h-screen' />
           <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center'>Gathering feedback from participants, volunteers, and stakeholders can provide valuable insights into the perceived success</h1>
+            <h1 className='text-center  font-medium'>Gathering feedback from participants, volunteers, and stakeholders can provide valuable insights into the perceived success</h1>
           </div>
           <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img5} alt="" className='w-full h-screen' />
           <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center'>Success can also be measured by the campaign's ability to achieve long-term impact</h1>
+            <h1 className='text-center  font-medium'>Success can also be measured by the campaign's ability to achieve long-term impact</h1>
           </div>
           <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img6} alt="" className='w-full h-screen' />
           <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center'> If the campaign received positive media coverage and generated public interest</h1>
+            <h1 className='text-center font-medium'> If the campaign received positive media coverage and generated public interest</h1>
           </div>
           <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
         </SwiperSlide>

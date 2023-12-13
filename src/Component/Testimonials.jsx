@@ -43,7 +43,8 @@ const Testimonials = () => {
         <Container maxWidth='lg'>
 
             
-        <Box sx={{my:10}}>
+        <Box  data-aos="fade-up"
+     data-aos-duration="3000" sx={{my:10}}>
 
         <Swiper navigation={true} modules={[Navigation,Autoplay]} className="mySwiper">
         

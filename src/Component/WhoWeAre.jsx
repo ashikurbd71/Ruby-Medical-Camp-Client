@@ -14,7 +14,9 @@ const WhoWeAre = () => {
 
             <Box sx={{my:10}}>
 
-                <Grid >
+                <Grid data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
                   <img src={banner} alt="" />
                 </Grid>
 
@@ -24,7 +26,10 @@ const WhoWeAre = () => {
                 </Typography>
                </Grid>
 
-                <Grid>
+                <Grid  data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="500" >
                     <Typography sx={{fontWeight: 'light' }}>
                     The Hon'ble Chief Minister Shri Jyoti Basu inaugurated Ruby General Hospital on 25th April 1995. Mother Teresa opened the Cardiac Unit on 28th October 1995.
 

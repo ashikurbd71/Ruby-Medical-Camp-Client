@@ -19,7 +19,9 @@ const WhyChooseUs = () => {
 
       <Box sx={{ width: '100%', my:10 }}>
 
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 0 }}>
+      <Grid data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 0 }}>
 
       <Grid sx={{mt:2,px:1}}  item xs={12} sm={2} md={3} lg={4}>
 
@@ -74,7 +76,10 @@ const WhyChooseUs = () => {
       {/* card3 */}
 
 
-      <Grid sx={{mt:2}}  item xs={12} sm={2} md={3} lg={4}>
+      <Grid data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="500" sx={{mt:2}}  item xs={12} sm={2} md={3} lg={4}>
 
       <Card sx={{ minWidth: 275, }}>
       <CardContent style={{textAlign:'center'}}>

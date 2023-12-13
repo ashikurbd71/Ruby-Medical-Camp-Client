@@ -14,22 +14,22 @@ const axoissecure = axios.create({
 
 
 
-axoissecure.interceptors.response.use(response => response
-    ,
+// axoissecure.interceptors.response.use(response => response
+//     ,
     
-    async error => {
+//     async error => {
 
-        console.log('error from axoissecure',error.response)
+//         console.log('error from axoissecure',error.response)
 
-        if(error.response &&
+//         if(error.response &&
             
-           ( error.response.status === 401 || error.response.status === 403)
+//            ( error.response.status === 401 || error.response.status === 403)
             
-            ){
-                await removeToken()
-                window.location.replace('/signin')
-            }
+//             ){
+//                 await removeToken()
+//                 window.location.replace('/signin')
+//             }
 
-            return Promise.reject(error)})
+//             return Promise.reject(error)})
 
 export default axoissecure

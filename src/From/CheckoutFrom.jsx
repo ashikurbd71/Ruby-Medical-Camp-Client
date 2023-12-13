@@ -85,7 +85,7 @@ const CheckoutForm = ({ data, closeModal }) => {
                 console.log('paymnet ',paymentIntent)
               if(paymentIntent.status === 'succeeded'){
 
-                setSuccess(paymentIntent.status)}
+                setSuccess(paymentIntent.id)}
 
                 
                 const payment = {

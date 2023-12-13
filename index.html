@@ -4,10 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="shortcut icon" href="public/logo.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Ruby Medical Camps</title>
   </head>
-  <body>
+  <body class="overflow-x-hidden">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+  <!--js link-->
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+emailjs.init("t24f2NMOEqSuvH5pl");
+})();
+</script>
+<!-- end js link-->
+    
   </body>
 </html>

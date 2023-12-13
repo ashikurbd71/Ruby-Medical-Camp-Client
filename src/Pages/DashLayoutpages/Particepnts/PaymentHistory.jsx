@@ -30,6 +30,8 @@ const PaymentHistory = () => {
     return (
        
         <>
+
+        <div className='overF overflow-x-hidden'>
         
         <div>
            
@@ -189,7 +191,7 @@ const PaymentHistory = () => {
 
             
         </Container>
-        
+        </div> 
         </>
     );
 };

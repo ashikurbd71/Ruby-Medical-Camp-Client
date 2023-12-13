@@ -42,7 +42,8 @@ console.log(popularcamp)
         
         <Container maxWidth="lg">
         <Box sx={{ width: '100%', my:10 }}>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 0 }}>
+            <Grid   data-aos="fade-up"
+     data-aos-duration="3000" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 0 }}>
              
                   {
                     popularcamp?.data?.map(camp =>

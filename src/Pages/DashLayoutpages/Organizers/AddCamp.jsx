@@ -174,7 +174,7 @@ const{user} = useAuth()
                    {...register('audience', { required: true })}
                 className="w-full rounded-lg border-gray-200 p-3 text-sm"
                 placeholder="Target Audience"
-                type="number"
+                type="text"
                 id="phone"
               />
               {errors.audience && <span className="text-red-600">Target is required</span>}

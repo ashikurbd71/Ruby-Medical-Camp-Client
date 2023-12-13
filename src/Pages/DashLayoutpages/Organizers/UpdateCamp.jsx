@@ -64,7 +64,7 @@ const UpdateCamp = () => {
                   Swal.fire({
                       position: "top-end",
                       icon: "success",
-                      title: `${data.name} is added to the menu.`,
+                      title: `${data.name} is update succussfully.`,
                       showConfirmButton: false,
                       timer: 1500
                     });

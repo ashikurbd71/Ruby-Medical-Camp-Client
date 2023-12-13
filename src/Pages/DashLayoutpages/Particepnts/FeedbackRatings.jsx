@@ -46,6 +46,7 @@ const FeedbackRatings = () => {
     return (
       <>
       
+      <div className='over overflow-x-auto'>
       <div>
             <SectionTitle heading={'Feedback Ratings'} title={'Please Send Feedback'}></SectionTitle>
             </div>
@@ -53,7 +54,7 @@ const FeedbackRatings = () => {
 
         
       <div className="rounded-lg border border-gray-200">
-  <div className="overflow-x-auto rounded-t-lg">
+  <div className=" rounded-t-lg">
     <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
       <thead className="ltr:text-left rtl:text-right bg-[#1976D2]">
         <tr>
@@ -223,6 +224,7 @@ const FeedbackRatings = () => {
 
       </Container>
       <FeedBackModal setIsOpen={setIsOpen} datas={data} closeModal={closeModal} isOpen={isOpen} />
+      </div>
       </>
     );
 };

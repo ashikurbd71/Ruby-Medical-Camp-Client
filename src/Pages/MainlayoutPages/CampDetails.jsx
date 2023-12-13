@@ -26,7 +26,7 @@ const CampDetails = () => {
            </div>
             <Container>
 
-            <a href="#" className="w-full mb-5 rounded-lg p-4 shadow-sm shadow-indigo-100">
+            <a data-aos="zoom-out-up" href="#" className="w-full mb-5 rounded-lg p-4 shadow-sm shadow-indigo-100">
          <img
            alt="Home"
            src={item?.image}

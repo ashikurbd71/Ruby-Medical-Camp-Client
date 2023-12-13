@@ -175,7 +175,7 @@ const Navber = () => {
     isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
-<MenuItem>Home</MenuItem>
+<MenuItem sx={{fontWeight:600}}>Home</MenuItem>
 </NavLink>
 
 
@@ -185,7 +185,7 @@ const Navber = () => {
     isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
-<MenuItem>Available Camps</MenuItem>
+<MenuItem sx={{fontWeight:600}}>Available Camps</MenuItem>
 </NavLink>
 
 <NavLink
@@ -194,7 +194,7 @@ const Navber = () => {
     isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
-<MenuItem>Dashboard</MenuItem>
+<MenuItem sx={{fontWeight:600}}>Dashboard</MenuItem>
 </NavLink>
 
 <NavLink
@@ -203,7 +203,7 @@ const Navber = () => {
     isPending ? "pending" : isActive ? "text-green-400" : ""
   }
 >
-<MenuItem>Contact Us</MenuItem>
+<MenuItem sx={{fontWeight:600}}>Contact Us</MenuItem>
 </NavLink>
                         </Box>
 
@@ -234,17 +234,18 @@ const Navber = () => {
                 <ListItem>
                 <button onClick={handlelogout}>
                 LogOut 
+                
                 </button>
                
                 </ListItem>
             </Menu>
         </Box> :  <Box className={'flex gap-2'}>
         <Link to={'/signin'} >
-                                    <MenuItem>Login </MenuItem>
+                                    <MenuItem sx={{fontWeight:600}}>Login </MenuItem>
                                 </Link>
 
                                 <Link to={'/signup'}>
-                                    <MenuItem sx={{mr:2}}>Register </MenuItem>
+                                    <MenuItem sx={{mr:2, fontWeight:600}} >Register </MenuItem>
                                 </Link>
         </Box>
          }

@@ -67,6 +67,10 @@ const ManagesCamp = () => {
 
     return (
    <>
+
+   <div className='over overflow-auto'>
+
+    <div className='over overflow-auto'>
         <Helmet>
         <title>R M C || ManagesCamps</title>
         
@@ -75,11 +79,11 @@ const ManagesCamp = () => {
             <SectionTitle heading={'Manages Camps'} title={'Update & Cancel Camp'}/>
         </div>
 
-        <Container>
+        <Container className=''>
 
-        <div className="rounded-lg border border-gray-200">
-  <div className="overflow-x-auto rounded-t-lg">
-    <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+        <div  className="rounded-lg border border-gray-200">
+  <div className="rounded-t-lg">
+    <table className=" divide-y-2 divide-gray-200 bg-white text-sm">
       <thead className="ltr:text-left rtl:text-right bg-[#1976D2]">
         <tr>
           <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
@@ -232,6 +236,8 @@ const ManagesCamp = () => {
 </div>
 
         </Container>
+        </div>
+        </div>
    </>
     );
 };

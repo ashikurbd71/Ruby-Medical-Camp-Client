@@ -87,6 +87,8 @@ const Registerdcamp = () => {
     return (
        <>
 
+       <div className='overflow-x-auto'>
+
 <Helmet>
         <title>R M C || Registered Camps</title>
         
@@ -104,7 +106,7 @@ const Registerdcamp = () => {
 
 
  <div className="rounded-lg border border-gray-200">
-  <div className="overflow-x-auto rounded-t-lg">
+  <div className=" rounded-t-lg">
     <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
       <thead className="ltr:text-left rtl:text-right bg-[#1976D2]">
         <tr>
@@ -278,7 +280,7 @@ const Registerdcamp = () => {
             </Container>
         
             <BookingModal setIsOpen={setIsOpen} closeModal={closeModal} isOpen={isOpen} data={payments}/>
-         
+            </div>
        </>
     );
 };

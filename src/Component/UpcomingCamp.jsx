@@ -39,14 +39,15 @@ const UpcomingCamp = () => {
         <SectionTitle title={' Discover Tomorrows Path to Health Today'} heading={'Upcoming Camps'}></SectionTitle>
         
         <Container maxWidth="lg">
-        <Box sx={{ width: '100%', my:10 }}>
+        <Box  data-aos="fade-up"
+     data-aos-duration="3000" sx={{ width: '100%', my:10 }}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 0 }}>
              
                   {
                     upcoming?.data?.map(camp =>
                     <Grid sx={{mt:2,px:1}} key={camp?.title} item xs={12} sm={2} md={3} lg={4}
                     >
-                        <Card sx={{maxHeight:600,maxWidth:500 ,}}>
+                        <Card sx={{maxHeight:500,maxWidth:500 ,}}>
                              <CardMedia
                                sx={{ height: 150 }}
                                image={camp?.image}
@@ -84,7 +85,7 @@ const UpcomingCamp = () => {
                                </Typography>
 
                                <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <Link to={`/upcamingcamp-details/${camp?._id}`}>  <Button variant="contained">View Details</Button></Link>
+                               <Link to={`/upcamingcamp-details/${camp?._id}`}>  <Button variant="contained">Details</Button></Link>
                                </Typography>
                              </CardContent>
                              <CardActions sx={{mx:5}}>

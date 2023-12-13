@@ -135,17 +135,27 @@ const SignUp = () => {
                 data-temp-mail-org='0'
               />
             </div>
-            <div>
-              <label htmlFor='image' className='block mb-2 text-sm'>
-                Select Image:
-              </label>
-              <input
-                required
-                type='file'
-                id='image'
-                name='image'
-                accept='image/*'
-              />
+            <div className=' p-2 bg-white w-full  m-auto rounded-lg'>
+              <div className='file_upload px-2 py-2 relative border-4 border-dotted border-gray-300 rounded-lg'>
+                <div className='flex flex-col w-max mx-auto text-center'>
+                  <label>
+                    <input
+                    // onChange={e => handleImageChange(e.target.files[0])}
+                      className='text-sm cursor-pointer w-20 hidden'
+                      type='file'
+                      name='image'
+                     
+                      id='image'
+                      accept='image/*'
+                      hidden
+                    />
+                      
+                    <div className='bg-[#1976D2] text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-[#1976D2]'>
+                     Upload Your Photo
+                    </div>
+                  </label>
+                </div>
+              </div>
             </div>
             <div>
               <label htmlFor='email' className='block mb-2 text-sm'>
@@ -207,7 +217,7 @@ const SignUp = () => {
         <div className='flex items-center pt-4 space-x-1'>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
           <p className='px-3 text-sm dark:text-gray-400'>
-            Signup with social accounts
+            {/* Signup with social accounts */}
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
@@ -219,10 +229,10 @@ const SignUp = () => {
         <p className='px-6 text-sm text-center text-gray-400'>
           Already have an account?{' '}
           <Link
-            to='/login'
+            to='/signin'
             className='hover:underline hover:text-rose-500 text-gray-600'
           >
-            Login
+            Signin
           </Link>
           .
         </p>

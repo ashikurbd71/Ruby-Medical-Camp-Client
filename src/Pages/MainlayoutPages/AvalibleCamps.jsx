@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '../../Shared/Container';
 import bg from '../../assets/avalible.jpg'
 import { Helmet } from 'react-helmet';
@@ -7,10 +7,22 @@ import { useQuery } from '@tanstack/react-query';
 import axoissecure from '../../Hook/Axoissecure';
 import { Link } from 'react-router-dom';
 import { FaCalendar, FaClock, FaLocationArrow, FaServicestack, FaUser, FaUsers } from 'react-icons/fa';
+import axoispublic from '../../Hook/AxoissecurePublic';
+import axios from 'axios';
+
+  
 
 const AvalibleCamps = () => {
 
   const[page,setPage] = useState(0)
+
+
+  const handlechnage = async (event) => {
+
+    console.log(event.target.value)
+    const key = event.target.value
+    const result = await axios(`https://medical-campaign-server.vercel.app/all-camp/${key}`) 
+  }
 
   const { user, loading } = useAuth()
 
@@ -41,9 +53,14 @@ const AvalibleCamps = () => {
         <div className='bg-black bg-blend-overlay bg-opacity-70 lg:h-[800px] my-16 bg-fixed lg:mb-10' style={{ backgroundImage: `url('${bg}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
 
       
-<div className='text-center lg:pt-44 pt-20 md:pt-20'>
+<div  data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="500" className='text-center lg:pt-44 pt-20 md:pt-20'>
 
- <h1 className='lg:text-5xl font-bold text-[#1976D2]  text-2xl'>Ruby Medical Camps</h1>
+ <h1 data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine" className='lg:text-5xl font-bold text-[#1976D2]  text-2xl'>Ruby Medical Camps</h1>
  <div className=' flex justify-center lg:pb-0 pb-5'>
  <p className='text-[#fff] w-[60%] text-xl font-medium py-4'>Welcome to Ruby Medical Camps, where health meets compassion! Our mission is to provide accessible healthcare to all, and our medical camps are designed to bring quality services directly to the community. Join us for a day of wellness, featuring free health check-ups, consultations with skilled healthcare professionals, and informative sessions on leading a healthy lifestyle</p>
  </div>
@@ -57,6 +74,8 @@ const AvalibleCamps = () => {
   <input
     type="text"
     id="Search"
+ 
+    onChange={handlechnage}
     placeholder="Search for..."
     className="w-full  rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"
   />
@@ -87,7 +106,8 @@ const AvalibleCamps = () => {
 </div>
         <Container>
           
-          <div className='grid lg:grid-cols-3 gap-4 mb-10 grid-cols-1'>
+          <div   data-aos="fade-up"
+     data-aos-duration="3000" className='grid lg:grid-cols-3 gap-4 mb-10 grid-cols-1'>
           {
             data?.data?.map(item => 
               
