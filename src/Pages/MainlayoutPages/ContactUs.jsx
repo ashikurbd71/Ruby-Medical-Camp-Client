@@ -110,7 +110,7 @@ required
 <div className="flex items-start">
 
 
-<button type="submit" value="Send" className="btn py-1 rounded font-semibold px-2 bg-[#1976D2]">Send Message</button>
+<button type="submit" value="Send" className="btn py-2 rounded font-semibold px-2 bg-[#1976D2]">Send Message</button>
 
  
 </div>

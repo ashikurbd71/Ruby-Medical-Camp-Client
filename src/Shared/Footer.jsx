@@ -2,6 +2,8 @@ import React from 'react';
 import logo from '../assets/logo.png'
 import { Link,NavLink } from 'react-router-dom';
 const Footer = () => {
+
+    const year = new Date().getFullYear()
     return (
         <div>
            
@@ -39,7 +41,7 @@ const Footer = () => {
             </ul>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span className="block text-lg text-[#fff] sm:text-center dark:text-gray-400">© 2023 <a href="#" className="hover:underline">Ruby Medical Camps™</a>. All Rights Reserved.</span>
+        <span className="block text-lg text-[#fff] sm:text-center dark:text-gray-400">© {year} <a href="#" className="hover:underline">Ruby Medical Camps™</a>. All Rights Reserved.</span>
     </div>
 </footer>
 
