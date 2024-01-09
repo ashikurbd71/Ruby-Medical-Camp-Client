@@ -110,7 +110,7 @@ const Signin = () => {
 
 
   return (
-    <div className='flex justify-center items-center my-28 min-h-screen'>
+    <div className='mx-5 lg:mx-[400px] my-28 min-h-screen'>
 
             {/* <div className='  w-[400px]'>
        <img src={log} alt="" />
@@ -118,7 +118,7 @@ const Signin = () => {
             </div> */}
 
 
-            <div className=' max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
+            <div className=' p-6 rounded-md sm:p-10 bg-[#092635] text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold text-[#1976D2]'>Log In</h1>
           <p className='text-sm text-gray-400'>
@@ -196,7 +196,7 @@ const Signin = () => {
           Don&apos;t have an account yet?{' '}
           <Link
             to='/signup'
-            className='hover:underline hover:text-[#1976D2] text-gray-600'
+            className='hover:underline hover:text-[#1976D2] text-white'
           >
             Sign up
           </Link>

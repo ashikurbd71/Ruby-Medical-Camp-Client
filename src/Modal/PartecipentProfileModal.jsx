@@ -12,7 +12,7 @@ import useAuth from '../Hook/useAuth';
 import useRole from '../Hook/userRole';
 
 
-const PartecipentProfileModal = ({ closeModalss, Opens}) => {
+const PartecipentProfileModal = ({ closeModalss, Opens,refetch}) => {
 
     const {user} = useAuth()
     const[role] = useRole()
@@ -38,6 +38,7 @@ const PartecipentProfileModal = ({ closeModalss, Opens}) => {
         if(campRes.insertedId){
       
             reset();
+            refetch()
             Swal.fire({
                 position: "top-end",
                 icon: "success",

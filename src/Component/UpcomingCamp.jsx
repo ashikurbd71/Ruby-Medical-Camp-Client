@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../Shared/SectionTitle';
-import { Container ,Grid,Box} from '@mui/material'
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import PersonIcon from '@mui/icons-material/Person';
-import { red } from '@mui/material/colors';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import Groups2Icon from '@mui/icons-material/Groups2';
-import PinDropIcon from '@mui/icons-material/PinDrop';
 import axoispublic from '../Hook/AxoissecurePublic';
 import useAuth from '../Hook/useAuth';
 import { useQuery } from '@tanstack/react-query';
-import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import { Link } from 'react-router-dom';
+import { FaCalendar, FaClock, FaLocationArrow, FaServicestack, FaUser, FaUsers } from 'react-icons/fa';
+import Container from '../Shared/Container';
 const UpcomingCamp = () => {
  
 
@@ -38,73 +26,150 @@ const UpcomingCamp = () => {
        <>
         <SectionTitle title={' Discover Tomorrows Path to Health Today'} heading={'Upcoming Camps'}></SectionTitle>
         
-        <Container maxWidth="lg">
-        <Box  data-aos="fade-up"
-     data-aos-duration="3000" sx={{ width: '100%', my:10 }}>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 0 }}>
+        <Container>
+
+        <div   data-aos="fade-up"
+     data-aos-duration="3000"  className='grid lg:grid-cols-3 gap-4 mb-10 grid-cols-1 max-w-[1250px] mx-auto' >
              
                   {
                     upcoming?.data?.map(camp =>
-                    <Grid sx={{mt:2,px:1}} key={camp?.title} item xs={12} sm={2} md={3} lg={4}
-                    >
-                        <Card sx={{maxHeight:500,maxWidth:500 ,}}>
-                             <CardMedia
-                               sx={{ height: 150 }}
-                               image={camp?.image}
-                               
-                               
-                               title="green iguana"
-                             />
-                             <CardContent>
-                              <Grid>
-                              <Typography gutterBottom sx={{fontWeight:700}} variant="h6" component="div">
-                                 {camp?.campname}
-                               </Typography >
-                               <Typography gutterBottom variant="h6" sx={{textColor:'#1976D2'}} component="div">
-                               ${camp?.fees}
-                               </Typography>
-                              </Grid>
-                               <Typography variant="body2" color="text.secondary">
-                               <LocalHospitalIcon/>  {camp?.services}
-                               </Typography>
+                      <div key={camp.id}>
 
-                               <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <AccessAlarmIcon/>  {camp?.time}
-                               </Typography>
+<a href="#" className="block rounded-lg p-4 lg:h-[500px] shadow-sm bg-[#FFFFFF]">
+         <img
+           alt="Home"
+           src={camp?.image}
+           className="h-[170px] w-full rounded-md object-cover"
+         />
+       
+         <div className="mt-2">
+           <dl>
+             <div>
+               <dt className="sr-only">Feee</dt>
+       
+             
+               <dd className="text-xl text-gray-500">${camp?.fees}</dd>
+               
+               
 
-                                <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <PinDropIcon/>  {camp?.location}
-                               </Typography>
+             </div>
+       
+             <div>
+               <dt className="sr-only">Camp Name</dt>
+       
+               <dd className="font-medium text-xl">{camp?.campname}</dd>
 
-                                          <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                         <CalendarTodayIcon/> {camp?.date}
-                               </Typography>
+                <div className='flex mt-3 items-center gap-1'>
+                  <FaUser className='text-xl'/>
+                <dd className="font-normal text-xl">{camp?.professional}</dd>
+                </div>
 
-                               <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <Groups2Icon/>  {camp?.audience}
-                               </Typography>
+                <div className='flex mt-3 items-center gap-1'>
+                  <FaServicestack className='text-xl'/>
+                <dd className="font-normal text-xl">{camp?.services}</dd>
+                </div>
+           
+                <div className='flex mt-3 items-center gap-1'>
+                  <FaLocationArrow className='text-xl'/>
+                <dd className="font-normal text-xl">{camp?.location}</dd>
+                </div>
+           
+           
+             </div>
+             
 
-                               <Typography sx={{mt:2}} variant="body2" color="text.secondary">
-                               <Link to={`/upcamingcamp-details/${camp?._id}`}>  <Button variant="contained">Details</Button></Link>
-                               </Typography>
-                             </CardContent>
-                             <CardActions sx={{mx:5}}>
-                              
-                             
-                             </CardActions>
+             
+           </dl>
+           
+           <div className="mt-6 flex items-center gap-5 text-xs">
+             <div className="sm:inline-flex items-center flex sm:shrink-0 sm:items-center sm:gap-2">
+               
+              
+            
+       
+               <div className="mt-1.5 sm:mt-0">
+                 <p className="text-gray-500 text-lg">Date</p>
+       
+                <div className='flex gap-1 items-center'>
+                <FaCalendar className='text-xl'/> 
+                 <p className="font-medium text-lg">{camp?.date}</p>
+                </div>
+               </div>
+             </div>
+       
+             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+             
+        
+               <div className="mt-1.5 sm:mt-0">
+                 <p className="text-gray-500 text-lg">Time</p>
 
-                              {/* <Link to={`/upcamingcamp-details/${camp?._id}`}>
-                              <Button variant="contained" disableElevation>
-                                     View Details
-                                     </Button></Link> */}
-                           </Card>
-                         </Grid>  )
+       <div className='flex gap-1 items-center'>
+       <FaClock className='text-xl'/>
+       
+       <p className="font-medium text-lg">{camp?.time}</p>
+       </div>
+               </div>
+             </div>
+       
+             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+             
+             
+       
+               <div className="mt-1.5 sm:mt-0">
+                 <p className="text-gray-500 text-lg">Target People</p>
+                 <div className='flex items-center gap-1'>
+                 <FaUsers className='text-xl'/>
+                 <p className="font-medium text-lg">{camp?.audience}</p>
+                 </div>
+               </div>
+              
+        
+             </div>
+
+
+         
+
+
+             <Link to={`/upcamingcamp-details/${camp?._id}`}>
+              
+              <a
+  className="inline-block rounded-full border border-[#08C1E7] p-2  hover:bg-[#08C1E7] hover:text-white focus:outline-none "
+  href="/download"
+>
+  <span className="sr-only"> camp detils</span>
+
+  <svg
+    className="h-5 w-5 rtl:rotate-180"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M14 5l7 7m0 0l-7 7m7-7H3"
+    />
+  </svg>
+</a>
+              </Link>
+
+            
+
+           </div>
+         </div>
+       </a>
+
+
+
+                      </div> )
                   }
    
-                </Grid>
+   </div>
                
    
-        </Box>
+       
          
  
         </Container>

@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import PartecipentProfileModal from "../../../Modal/PartecipentProfileModal";
 import PartecipentUpdateModal from "../../../Modal/PartecipentUpdateModal";
+import img from '../../../assets/27202.jpg'
 
 const PartrcipentProfile = () => {
   const { user, logOut,loading } = useAuth();
@@ -74,8 +75,8 @@ const PartrcipentProfile = () => {
           <div className="bg-[#dad7cd] shadow-lg rounded-2xl ">
             <img
               alt="profile"
-              //   src={img}
-              className="w-full mb-4 rounded-t-lg h-36"
+                src={img}
+              className="w-full mb-4 rounded-t-lg h-64"
             />
             <div className="flex flex-col items-center justify-center p-4 -mt-16">
               <a href="#" className="relative block">
@@ -107,7 +108,7 @@ const PartrcipentProfile = () => {
                 </button>
               
                 <PartecipentUpdateModal isOpen={isOpen} closeModal={closeModal} refetch={refetch} partecipentdata={partecipentdata?.data}/> 
-                <PartecipentProfileModal closeModalss={closeModalss} Opens={Opens}></PartecipentProfileModal> 
+                <PartecipentProfileModal closeModalss={closeModalss} refetch={refetch} Opens={Opens}></PartecipentProfileModal> 
                 <button
                   onClick={handlelogout}
                   className="bg-[#1976D2] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#1976D2]"

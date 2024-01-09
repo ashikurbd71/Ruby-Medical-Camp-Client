@@ -7,38 +7,50 @@ import { useQuery } from '@tanstack/react-query';
 import axoissecure from '../../Hook/Axoissecure';
 import { Link } from 'react-router-dom';
 import { FaCalendar, FaClock, FaLocationArrow, FaServicestack, FaUser, FaUsers } from 'react-icons/fa';
-import axoispublic from '../../Hook/AxoissecurePublic';
-import axios from 'axios';
+
 
   
 
 const AvalibleCamps = () => {
 
-  const[page,setPage] = useState(0)
 
-
-  const handlechnage = async (event) => {
-
-    console.log(event.target.value)
-    const key = event.target.value
-    const result = await axios(`https://medical-campaign-server.vercel.app/all-camp/${key}`) 
-  }
 
   const { user, loading } = useAuth()
 
-   console.log(user?.email)
-  const { data, isLoading,refetch } = useQuery({
-    queryKey: ['campinfo'],
-    enabled: !loading && !!user?.email,
-    queryFn: async () => await axoissecure.get(`/all-camp?page=${page}`),
-    
+  console.log(user?.email)
+ const { data, isLoading,refetch } = useQuery({
+   queryKey: ['campinfo'],
+   enabled: !loading && !!user?.email,
+   queryFn: async () => await axoissecure.get(`/all-camp`),
   
-  }
-  
-  
-  )
+ 
+ }
+ 
+ )
 
-  console.log(data?.data)
+ console.log(data?.data)
+
+ useEffect(() => {
+  setCamps(data)
+}, [isLoading])
+
+// console.log(foods)
+
+  const [input, setInput] = useState('');
+  const [camps, setCamps] = useState();
+
+
+ 
+
+
+  const handsearch = async (event) => {
+
+       const res = await axoissecure.get(`/all-camp?search=${input}`)
+        setCamps(res);
+        setInput('');
+  }
+
+ 
 
     return (
         <>
@@ -50,7 +62,7 @@ const AvalibleCamps = () => {
     </Helmet>
 
 
-        <div className='bg-black bg-blend-overlay bg-opacity-70 lg:h-[800px] my-16 bg-fixed lg:mb-10' style={{ backgroundImage: `url('${bg}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+        <div className='bg-black bg-blend-overlay bg-opacity-70 lg:h-[800px]  bg-fixed lg:mb-10' style={{ backgroundImage: `url('${bg}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
 
       
 <div  data-aos="fade-left"
@@ -62,7 +74,7 @@ const AvalibleCamps = () => {
      data-aos-offset="300"
      data-aos-easing="ease-in-sine" className='lg:text-5xl font-bold text-[#1976D2]  text-2xl'>Ruby Medical Camps</h1>
  <div className=' flex justify-center lg:pb-0 pb-5'>
- <p className='text-[#fff] w-[60%] text-xl font-medium py-4'>Welcome to Ruby Medical Camps, where health meets compassion! Our mission is to provide accessible healthcare to all, and our medical camps are designed to bring quality services directly to the community. Join us for a day of wellness, featuring free health check-ups, consultations with skilled healthcare professionals, and informative sessions on leading a healthy lifestyle</p>
+ <p className='text-[#fff] lg:w-[60%] lg:text-xl font-medium py-4'>Welcome to Ruby Medical Camps, where health meets compassion! Our mission is to provide accessible healthcare to all, and our medical camps are designed to bring quality services directly to the community. Join us for a day of wellness, featuring free health check-ups, consultations with skilled healthcare professionals, and informative sessions on leading a healthy lifestyle</p>
  </div>
 </div>
 
@@ -73,16 +85,15 @@ const AvalibleCamps = () => {
 
   <input
     type="text"
+    onChange={(e) => setInput(e.target.value)}
     id="Search"
- 
-    onChange={handlechnage}
-    placeholder="Search for..."
+    placeholder="Search for Camp Name"
     className="w-full  rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"
   />
 
   <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
-    <button type="button" className="text-gray-600 hover:text-gray-700">
-      <span className="sr-only">Search</span>
+    <button onClick={handsearch} type="button" className="text-gray-600 hover:text-gray-700">
+     
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -107,18 +118,18 @@ const AvalibleCamps = () => {
         <Container>
           
           <div   data-aos="fade-up"
-     data-aos-duration="3000" className='grid lg:grid-cols-3 gap-4 mb-10 grid-cols-1'>
+     data-aos-duration="3000" className='grid lg:grid-cols-3 gap-4 mb-10 grid-cols-1 max-w-[1250px] mx-auto'>
           {
-            data?.data?.map(item => 
+            camps?.data?.map(item => 
               
               
               <div key={item?._id} >
 
-         <a href="#" className="block rounded-lg p-4 shadow-sm shadow-indigo-100">
+         <a href="#" className="block rounded-lg p-4 lg:h-[500px] shadow-sm bg-[#FFFFFF]">
          <img
            alt="Home"
            src={item?.image}
-           className="h-56 w-full rounded-md object-cover"
+           className="h-[170px] w-full rounded-md object-cover"
          />
        
          <div className="mt-2">
@@ -208,7 +219,7 @@ const AvalibleCamps = () => {
              <Link to={`/camp-details/${item?._id}`}>
               
               <a
-  className="inline-block rounded-full border border-indigo-600 p-2 text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
+  className="inline-block rounded-full border border-[#08C1E7] p-2  hover:bg-[#08C1E7] hover:text-white focus:outline-none"
   href="/download"
 >
   <span className="sr-only"> camp detils</span>
@@ -247,66 +258,7 @@ const AvalibleCamps = () => {
           }
 </div>
        
-<div
-  className="inline-flex mb-10 w-full items-center justify-center rounded bg-blue-600 py-1 text-white"
->
-  <button
-   onClick={() => setPage(page -1) }
-   
-    href="#"
-    className="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
-  >
-   
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-10 w-10"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-    >
-      <path
-        fillRule="evenodd"
-        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-        clipRule="evenodd"
-      />
-    </svg>
-  </button>
 
-  <span className="h-4 w-px bg-white/25" aria-hidden="true"></span>
-
-  <div>
-    <label htmlFor="PaginationPage" className="sr-only">Page</label>
-
-    <input
-      type="number"
-      className="h-8 w-12 rounded border-none bg-transparent p-0 text-center text-lg font-medium [-moz-appearance:_textfield] focus:outline-none focus:ring-inset focus:ring-white [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-      min="1"
-      value={page}
-      id="PaginationPage"
-    />
-  </div>
-
-  <span className="h-4 w-px bg-white/25"></span>
-
-  <button
-  onClick={() => setPage(page + 1)}
-    href="#"
-    className="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
-  >
-    
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-10 w-10"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-    >
-      <path
-        fillRule="evenodd"
-        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-        clipRule="evenodd"
-      />
-    </svg>
-  </button>
-</div>
        
         </Container>
         </>

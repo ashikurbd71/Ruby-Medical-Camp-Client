@@ -109,8 +109,11 @@ const SignUp = () => {
 
 
   return (
-    <div className='flex justify-center items-center my-28 min-h-screen'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-[#f8f9fa] text-gray-900'>
+    <div className=''>
+
+  
+    <div className=' mx-5 lg:mx-[400px] my-28 min-h-screen'>
+      <div className='flex flex-col max-w-lg p-6 rounded-md sm:p-10 bg-[#092635] text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold text-[#1976D2]'>Register</h1>
           <p className='text-sm text-gray-400'>Welcome to Ruby Medical Camps</p>
@@ -123,7 +126,7 @@ const SignUp = () => {
         >
           <div className='space-y-4'>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
+              <label htmlFor='email' className='block text-white mb-2 text-sm'>
                 Name
               </label>
               <input
@@ -136,7 +139,7 @@ const SignUp = () => {
               />
             </div>
             <div className=' p-2 bg-white w-full  m-auto rounded-lg'>
-              <div className='file_upload px-2 py-2 relative border-4 border-dotted border-gray-300 rounded-lg'>
+              <div className='file_upload px-1 py-1 relative border-4 border-dotted border-gray-300 rounded-lg'>
                 <div className='flex flex-col w-max mx-auto text-center'>
                   <label>
                     <input
@@ -158,7 +161,7 @@ const SignUp = () => {
               </div>
             </div>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
+              <label htmlFor='email' className='block mb-2 text-white text-sm'>
                 Email address
               </label>
               <input
@@ -171,7 +174,7 @@ const SignUp = () => {
                 data-temp-mail-org='0'
               />
             </div>
-            <label className='block mb-2 text-sm'>
+            <label className='block mb-2 text-sm text-white'>
     Select Role
   </label>
 
@@ -182,12 +185,13 @@ const SignUp = () => {
   >
      <option value="participants">Participants</option>
     <option value="organizer">Organizers</option>
-    <option value="professionals">Professionals</option>
+    <option value="organizer">Professional</option>
+    {/* <option value="professionals">Professionals</option> */}
    
   </select>
             <div>
               <div className='flex justify-between'>
-                <label htmlFor='password' className='text-sm mb-2'>
+                <label htmlFor='password' className='text-sm mb-2 text-white'>
                   Password
                 </label>
               </div>
@@ -230,13 +234,14 @@ const SignUp = () => {
           Already have an account?{' '}
           <Link
             to='/signin'
-            className='hover:underline hover:text-rose-500 text-gray-600'
+            className='hover:underline hover:text-rose-500 text-white'
           >
             Signin
           </Link>
           .
         </p>
       </div>
+    </div>
     </div>
   )
 }

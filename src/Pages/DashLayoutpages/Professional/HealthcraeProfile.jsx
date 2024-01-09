@@ -88,11 +88,11 @@ const HealthcraeProfile = () => {
 
         <Container>
 
-        <div className='flex mb-10 bg-gary-300 justify-center items-center h-full w-full'>
+        <div className='flex mb-10 bg-gary-300 justify-center items-center w-full'>
       <Helmet>
         <title> Dashbboard || HelatCare Profile</title>
       </Helmet>
-      <div className=' min-h-secreen shadow-lg rounded-2xl w-3/5'>
+      <div className=' min-h-secreen shadow-lg rounded-2xl '>
         <img
           alt='profile'
           src={img}
@@ -102,7 +102,7 @@ const HealthcraeProfile = () => {
           <a href='#' className='relative block'>
             <img
               alt='profile'
-              src={info?.userimg}
+              src={user?.photoURL}
               className='mx-auto object-cover rounded-full h-24 w-24  border-2 border-white '
             />
           </a>

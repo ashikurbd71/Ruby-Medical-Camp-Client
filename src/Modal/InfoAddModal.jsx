@@ -55,7 +55,7 @@ const InfoAddModal = ({ closeModal, isOpen, refetch }) => {
               Swal.fire({
                   position: "top-end",
                   icon: "success",
-                  title: `${user.name} Add Info Sucessfuly.`,
+                  title: `${user?.displayName} Add Info Sucessfuly.`,
                   showConfirmButton: false,
                   timer: 1500
                 });

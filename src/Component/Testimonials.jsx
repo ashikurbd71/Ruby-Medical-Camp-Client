@@ -59,7 +59,7 @@ const Testimonials = () => {
   
    <div className='flex  flex-col justify-center ite items-center space-y-3 mx-14 lg:mx-28'>
  
-    <img src={data.photo} alt="" className='rounded-full h-[100px] w-[150px]' />
+    <img src={data.photo} alt="" className='rounded-full h-[100px] w-[100px]' />
      
      <h1 className='font-bold text-lg'>{data?.name}</h1>
     <Rating

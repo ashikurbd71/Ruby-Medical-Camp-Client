@@ -9,6 +9,8 @@ import img3 from '../assets/banner-3 (1).jpg'
 import img4 from '../assets/banner-4 (1).jpg'
 import img5 from '../assets/banner-5 (1).jpg'
 import img6 from '../assets/banner-6 (1).jpg'
+import { FaArrowAltCircleRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
@@ -29,45 +31,87 @@ const Banner = () => {
       >
         <SwiperSlide>
           <img src={img1} alt="" className='w-full h-screen' />
-          <div className='absolute text-2xl font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center  font-medium'>The number of people who attended the campaign or actively participated in its activitie.</h1>
-          </div>
-          <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
+            <div className='absolute  top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2  '>
+               <h1 className='lg:text-6xl text-2xl font-bold text-[#fff]'>Get Better Care For <br /> Your <span className='text-[#0CA2DA]'>Health</span></h1>
+               <p className='text-lg font-normal pt-5 text-gray-200'>Empowerment through Compassionate Care: Join Us for a Transformative Medical Camp Experience, Fostering Wellness, Unity, and Lifelong Health for All</p>
+      
+               <div className='flex 0 items-center gap-2 bg-gradient-to-r from-[#1934AC] to-[#08C1E7] w-[180px] mt-5 text-black px-6 py-2 rounded-full font-semibold'>
+                               <h1>Explorer Camp</h1>
+                               <FaArrowAltCircleRight/>
+                           </div>
+            </div>
+          
+          <div className="absolute z-10 inset-0 bg-black opacity-50"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img2} alt="" className='w-full h-screen' />
-          <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center  font-medium'> If the campaign included health screenings or medical services</h1>
-          </div>
-          <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
+            <div className='absolute  top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2  '>
+               <h1 className='lg:text-6xl text-2xl font-bold text-[#fff]'>Get Better Care For <br /> Your <span className='text-[#0CA2DA]'>Health</span></h1>
+               <p className='text-lg font-normal pt-5 text-gray-200'>Empowerment through Compassionate Care: Join Us for a Transformative Medical Camp Experience, Fostering Wellness, Unity, and Lifelong Health for All</p>
+      
+               <div className='flex 0 items-center gap-2 bg-gradient-to-r from-[#1934AC] to-[#08C1E7] w-[180px] mt-5 text-black px-6 py-2 rounded-full font-semibold'>
+                               <h1>Explorer Camp</h1>
+                               <FaArrowAltCircleRight/>
+                           </div>
+            </div>
+          
+          <div className="absolute z-10 inset-0 bg-black opacity-50"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img3} alt="" className='w-full h-screen' />
-          <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center  font-medium'> If one of the goals was to raise awareness or educate the community about specific health issues</h1>
-          </div>
-          <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
+            <div className='absolute  top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2  '>
+               <h1 className='lg:text-6xl text-2xl font-bold text-[#fff]'>Get Better Care For <br /> Your <span className='text-[#0CA2DA]'>Health</span></h1>
+               <p className='text-lg font-normal pt-5 text-gray-200'>Empowerment through Compassionate Care: Join Us for a Transformative Medical Camp Experience, Fostering Wellness, Unity, and Lifelong Health for All</p>
+      
+               <div className='flex 0 items-center gap-2 bg-gradient-to-r from-[#1934AC] to-[#08C1E7] w-[180px] mt-5 text-black px-6 py-2 rounded-full font-semibold'>
+                               <h1>Explorer Camp</h1>
+                               <FaArrowAltCircleRight/>
+                           </div>
+            </div>
+          
+          <div className="absolute z-10 inset-0 bg-black opacity-50"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img4} alt="" className='w-full h-screen' />
-          <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center  font-medium'>Gathering feedback from participants, volunteers, and stakeholders can provide valuable insights into the perceived success</h1>
-          </div>
-          <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
+            <div className='absolute  top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2  '>
+               <h1 className='lg:text-6xl text-2xl font-bold text-[#fff]'>Get Better Care For <br /> Your <span className='text-[#0CA2DA]'>Health</span></h1>
+               <p className='text-lg font-normal pt-5 text-gray-200'>Empowerment through Compassionate Care: Join Us for a Transformative Medical Camp Experience, Fostering Wellness, Unity, and Lifelong Health for All</p>
+      
+               <div className='flex 0 items-center gap-2 bg-gradient-to-r from-[#1934AC] to-[#08C1E7] w-[180px] mt-5 text-black px-6 py-2 rounded-full font-semibold'>
+                               <h1>Explorer Camp</h1>
+                               <FaArrowAltCircleRight/>
+                           </div>
+            </div>
+          
+          <div className="absolute z-10 inset-0 bg-black opacity-50"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img5} alt="" className='w-full h-screen' />
-          <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center  font-medium'>Success can also be measured by the campaign's ability to achieve long-term impact</h1>
-          </div>
-          <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
+            <div className='absolute  top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2  '>
+               <h1 className='lg:text-6xl text-2xl font-bold text-[#fff]'>Get Better Care For <br /> Your <span className='text-[#0CA2DA]'>Health</span></h1>
+               <p className='text-lg font-normal pt-5 text-gray-200'>Empowerment through Compassionate Care: Join Us for a Transformative Medical Camp Experience, Fostering Wellness, Unity, and Lifelong Health for All</p>
+      
+               <div className='flex 0 items-center gap-2 bg-gradient-to-r from-[#1934AC] to-[#08C1E7] w-[180px] mt-5 text-black px-6 py-2 rounded-full font-semibold'>
+                               <h1>Explorer Camp</h1>
+                               <FaArrowAltCircleRight/>
+                           </div>
+            </div>
+          
+          <div className="absolute z-10 inset-0 bg-black opacity-50"></div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img6} alt="" className='w-full h-screen' />
-          <div className='absolute text-2xl  font-bold font-serif top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-50'>
-            <h1 className='text-center font-medium'> If the campaign received positive media coverage and generated public interest</h1>
-          </div>
-          <div class="absolute z-10 inset-0 bg-black opacity-70"></div>
+            <div className='absolute  top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2  '>
+               <h1 className='lg:text-6xl text-2xl font-bold text-[#fff]'>Get Better Care For <br /> Your <span className='text-[#0CA2DA]'>Health</span></h1>
+               <p className='text-lg font-normal pt-5 text-gray-200'>Empowerment through Compassionate Care: Join Us for a Transformative Medical Camp Experience, Fostering Wellness, Unity, and Lifelong Health for All</p>
+      
+               <div className='flex 0 items-center gap-2 bg-gradient-to-r from-[#1934AC] to-[#08C1E7] w-[180px] mt-5 text-black px-6 py-2 rounded-full font-semibold'>
+                               <h1>Explorer Camp</h1>
+                               <FaArrowAltCircleRight/>
+                           </div>
+            </div>
+          
+          <div className="absolute z-10 inset-0 bg-black opacity-50"></div>
         </SwiperSlide>
       </Swiper>
     </div>

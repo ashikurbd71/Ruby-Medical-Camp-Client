@@ -6,6 +6,8 @@ import WhoWeAre from '../../Component/WhoWeAre';
 import WhyChooseUs from '../../Component/WhyChooseUs';
 import UpcomingCamp from '../../Component/UpcomingCamp';
 import { Helmet } from 'react-helmet';
+import Service from '../../Component/Service';
+import OurDepartmrnt from '../../Component/OurDepartmrnt';
 
 const Home = () => {
     return (
@@ -18,7 +20,10 @@ const Home = () => {
             <PopularMedicalCamps/>
             <WhoWeAre/>
           <WhyChooseUs/>
+          <Service/>
+          <OurDepartmrnt/>
          <UpcomingCamp/>
+         
         <Testimonials/>
         </div>
     );

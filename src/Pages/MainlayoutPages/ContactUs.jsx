@@ -37,7 +37,7 @@ const ContactUs = () => {
         
     </Helmet>
 
-<div className='bg-black bg-blend-overlay bg-opacity-70 lg:h-[800px] my-16 bg-fixed lg:mb-40' style={{ backgroundImage: `url('${bg}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+<div className='bg-black bg-blend-overlay bg-opacity-70 lg:h-[800px]  bg-fixed lg:mb-40' style={{ backgroundImage: `url('${bg}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
 
       
         <div  data-aos="fade-left"
@@ -47,7 +47,7 @@ const ContactUs = () => {
 
          <h1 className='lg:text-5xl font-bold text-[#1976D2]  text-2xl'>Contact</h1>
          <div className=' flex justify-center lg:pb-0 pb-5'>
-         <p className='text-[#fff] w-[60%] text-xl font-medium py-4'>Join us for a transformative healthcare experience at our upcoming medical camp! Dedicated to community well-being, our camp offers free health check-ups, consultations with experienced medical professionals, and informative sessions on preventive care. From basic screenings to personalized advice, we are committed to enhancing your health and promoting a healthier community. Don't miss this opportunity to prioritize your well-being</p>
+         <p className='text-[#fff] lg:w-[60%] lg:text-xl font-medium py-4'>Join us for a transformative healthcare experience at our upcoming medical camp! Dedicated to community well-being, our camp offers free health check-ups, consultations with experienced medical professionals, and informative sessions on preventive care. From basic screenings to personalized advice, we are committed to enhancing your health and promoting a healthier community. Don't miss this opportunity to prioritize your well-being</p>
          </div>
         </div>
     
